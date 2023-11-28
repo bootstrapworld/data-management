@@ -1,4 +1,6 @@
 # data-management
+This repository contains issues and communications related to our user, event, enrollment, attendance, assessment system. However, the guts of the system live in google sheets. See below for links to the most important sheets and overview of how they work together.
+
 ## Master Data Files
 [Teacher Success Master](https://docs.google.com/spreadsheets/d/1mAK24P4T3YYHqIG9F468CR4y4VLo3fNj1fE53w6hsSk/edit?usp=sharing)
 Teacher Success Master contains the systems data for the user/events/enrollments/attendance system. This file also currently does the work of connecting rosters from the original attendance system.
