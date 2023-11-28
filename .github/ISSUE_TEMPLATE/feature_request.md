@@ -6,6 +6,8 @@ labels: feature request
 assignees: er1c456
 
 ---
+**Link to comment, if any**
+If you created a comment in one of our spreadsheets, click on the menu inside of the comment and select "get link to this comment".
 
 **Is your feature request related to a problem? Please describe.**
 A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
