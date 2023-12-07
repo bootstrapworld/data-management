@@ -3,83 +3,137 @@
 #+PROPERTY: header-args :tangle yes
 * Overview
 
+This is the data definition and architecture expressed in POSTGRESQL
+for Bootstrap participants and partners. 
+
+We seek to capture the changing roles educators have to their external
+organizations and students and how that affects their relationship
+with us.
+* Entity Table Concepts
+** Contacts
+Anyone who has interacted with Bootstrap, who ever signed up for an
+event, even if they did not attend. Anyone who joined the mailing
+list through a web form, reached out directly to Bootstrap staff,
+messaged through social media, requested answer keys, or joined Discourse.
+
+** Users
+All of the individual persons who make up the Bootstrap event
+facilitation ecosystem. Users are required to submit a full
+personal and professional questionaire.
+
+** Events
+Bootstrap facilitates events for professional educators. These
+events focus on the conceptual understanding and implementation of
+Bootstrap curriculum.
+
+** Organizations
+Bootstrap partners with external organizations to build contracts
+for facilitated events. Organizations can be municipal or state
+level education districts, non-profits, individual schools, private
+individuals, or Bootstrap itself.
+- State
+- Main Email
+- Type
+
+* Relationship Table Concepts
+** Internal and external roles
+People have different relationships to our facilitated
+events. Current roles relative to events are Facilitator,
+Participant, Admin, and Master Teacher in Training.
+*** User-Event (Enrollments)
+*** User-Organization (Roles)
+*** User-Event-Attendance (Attendance)
+*** User-Facilitator-Evidence (Assessment)
 
 
+** Coaching
+Coaching is included in some contracts. The coaching table is a
+postive entry table. Users present in the coaching table are
+invited to coaching sessions throughout the year. Enrollment in
+coaching is for one year and is specific to a curriculum. Usually
+you are assigned coaching for the curriculum in which you were
+trained in the same calendar year.
+
+** Attendance
+** Assessment
+
+* Helper Table Concepts
 
 * Create Tables
 ** Helper Tables
 
 #+begin_src sql
---Helper Tables
-CREATE TABLE Roles (
-       RoleID varchar(255) -- Facilitator, Participant, Admin, Master Teacher in Training
-);
+  --Helper Tables
+  CREATE TABLE Roles (
+  RoleID varchar(255) -- Facilitator, Participant, Admin, Master Teacher in Training
+  );
 
-CREATE TABLE Race (
-       RaceID varchar(255)
-);
+  CREATE TABLE Race (
+  RaceID varchar(255)
+  );
 
-CREATE TABLE Gender (
-       GenderID varchar(255)
-);
+  CREATE TABLE Gender (
+  GenderID varchar(255)
+  );
+
+  CREATE TABLE License (
+  LicenseID varchar(255),
+  LicenseState varchar(255)
+  );
+
+  CREATE TABLE OrgTypes (
+  OrgID varchar(255),
+  OrgState varchar(255),
+  OrgEmail varchar(255),
+  OrgType varchar(255)
+  );
+
+	  CREATE TABLE Subjects (
+	  SubjectID varchar(255)
+	  );
+
+	  CREATE TABLE GradesTaught (
+	  GradesID varchar(255)
+	  );
+
+	  CREATE TABLE Textbooks (
+	  TextBookID varchar(255)
+	  );
+
+	  CREATE TABLE 
+
 #+end_src
-
-** Main Tables
+** Entity Tables
 
 #+begin_src sql
 
---Main Tables
--- Users, Organizations, Events
+  --Main Tables Users, Organizations, Events
 
-CREATE TABLE Users (
-       UserID varchar(255),
-       LastName varchar(255),
-       FirstName varchar(255),
-       UserAddress varchar(255),
-       UserCity varchar(255),
-       UserState varchar(255),
-       HomePhone int,
-       CellPhone int,
-       WorkPhone int,
-       Gender varchar(255),
-       Race varchar(255)
-);
+  CREATE TABLE Users ( UserID varchar(255), LastName varchar(255),
+	 FirstName varchar(255), UserAddress varchar(255), UserCity
+	 varchar(255), UserState varchar(255), HomePhone int, CellPhone
+	 int, WorkPhone int, Gender varchar(255), Race varchar(255) );
 
-CREATE TABLE Organizations (
-       OrgID varchar(255),
-       OrgAddress varchar(255),
-       OrgCity varchar(255),
-       OrgState varchar(255)
-);
+  CREATE TABLE Organizations ( OrgID varchar(255), OrgAddress
+	 varchar(255), OrgCity varchar(255), OrgState varchar(255) );
 
-CREATE TABLE Events (
-       EventID varchar(255),
-);
+  CREATE TABLE Events ( EventID varchar(255), );
 
---Relationship Tables
-CREATE TABLE Enrollments (
-       EnrollmentID varchar(255),
-       UserID
-);
-
-CREATE TABLE Attendance (
-       UserID varchar(255),
-       EventID varchar(255),
-       AttendanceDate Date,
-       AttendancePeriod varchar(255),
-       AttendanceValue varchar(255)
-);
-
-CREATE TABLE Comments (
-       AuthorUserID varchar(255),
-       RegardingUserID varchar(255),
-       CommentDate varchar(255),
-       TagUserID
-);
-
---list       
-
---assessments
 #+end_src
+** Relationship Tables
+  #+begin_src sql
+  --Relationship Tables CREATE TABLE Enrollments ( EnrollmentID
+  varchar(255), UserID );
 
+  CREATE TABLE Attendance ( UserID varchar(255), EventID varchar(255),
+	 AttendanceDate Date, AttendancePeriod varchar(255),
+	 AttendanceValue varchar(255) );
+
+  CREATE TABLE Comments ( AuthorUserID varchar(255), RegardingUserID
+	 varchar(255), CommentDate varchar(255), TagUserID );
+
+  --list
+
+  --assessments
+  #+end_src
 
