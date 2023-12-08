@@ -1,30 +1,167 @@
 #+PROPERTY: header-args :engine postgresql
 #+PROPERTY: header-args :exports code
 #+PROPERTY: header-args :tangle yes
+
 * Overview
 
 This is the data definition and architecture expressed in POSTGRESQL
-for Bootstrap participants and partners. 
+for Bootstrap participants and partners. This is a literate file
+written in Orgmode and tangled using org-babel. 
 
 We seek to capture the changing roles educators have to their external
 organizations and students and how that affects their relationship
 with us.
-* Entity Table Concepts
+
+
+* Custom Types and Helper Tables
+
+Some or all of these helper tables will probably be implemented as ENUM data types,
+not tables. I'm still working out, which helper collections are ENUM
+types and which we add to a helper table. My intuition is that there
+are short sets that we know already and that aren't likely to change,
+such as race, and there are longer sets like the textbooks that might
+continue to grow.
+
+** Roles
+
+#+begin_src sql
+  CREATE TYPE roles AS ENUM ('facilitator', 'participant', 'admin', 'master teacher in training' );
+
+#+end_src
+
+** Race and Ethnicity
+
+#+begin_src sql
+  CREATE TYPE race AS ENUM ('American Indian or Alaska Native', 'Asian', 'Black or African American', 'Native Hawaiian or Other Pacific Islander', 'White' );
+
+  CREATE TYPE ethnicity AS ENUM ('Hispanic or Latino', 'Not Hispanic or Latino' );
+
+#+end_src
+
+** Gender
+
+#+begin_src sql
+  CREATE TYPE gender AS ENUM ('Male', 'Female', 'Transgender', 'None of these');
+
+#+end_src
+
+** License
+
+#+begin_src sql
+  CREATE TYPE license AS ENUM ('Math', 'Science', 'Social Studies', 'English', 'Language other than English', 'Elementary General Ed', 'Special Education');
+
+  CREATE TABLE license (
+    userID           varchar(255) REFERENCES users (userID),
+    license          varchar(255),
+    licenseState     varchar(255)
+  );
+
+#+end_src
+
+** Organization Types
+
+#+begin_src sql
+  CREATE TYPE orgTypes AS ENUM ('Non-profit', 'For-profit', 'School', 'District', 'State Government Office', 'Foundation');
+  
+#+end_src
+
+** Subjects Taught
+
+#+begin_src sql
+  CREATE TYPE subjectsTaught AS ENUM ('AP', 'Algebra', 'Geometry', 'Biology' );
+
+#+end_src
+
+** Grades Taught
+
+#+begin_src sql
+
+  CREATE TABLE GradesTaught (
+    GradesID         varchar(255)
+  );
+  
+#+end_src
+
+** Event Formats
+
+#+begin_src sql
+  CREATE TYPE eventFormats AS ENUM ('Intensive', 'Distributed' );
+
+#+end_src
+
+** Event Types
+
+#+begin_src sql
+  CREATE TYPE eventTypes AS ENUM ('Full PD', 'Intro PD', 'Coaching', 'Academic Year Workshop' );
+
+#+end_src
+
+** Curricula
+
+#+begin_src sql
+  CREATE TYPE curricula AS ENUM ('Algebra', 'Data Science', 'Physics', 'Algebra 2', 'Early Math', 'Data Science (CODAP)' );
+  
+#+end_src
+
+
+* Entity Tables
+
 ** Contacts
 Anyone who has interacted with Bootstrap, who ever signed up for an
 event, even if they did not attend. Anyone who joined the mailing
 list through a web form, reached out directly to Bootstrap staff,
 messaged through social media, requested answer keys, or joined Discourse.
 
+#+begin_src sql
+  CREATE TABLE contacts (
+    ContactID         varchar(255),
+    NameFirst         varchar(255),
+    NameLast          varchar(255),
+    AltNameFirst      varchar(255),
+    AltNameLast       varchar(255),
+    emailPersonal     varchar(255),
+    emailProfessional varchar(255)
+  );
+  
+#+end_src
+
 ** Users
 All of the individual persons who make up the Bootstrap event
 facilitation ecosystem. Users are required to submit a full
 personal and professional questionaire.
 
+#+begin_src sql
+  CREATE TABLE users (
+    userID            varchar(255),
+    contactID         varchar(255) REFERENCES contacts (contactID),
+    lastName          varchar(255),
+    firstName         varchar(255),
+    userAddress       varchar(255),
+    userCity          varchar(255),
+    userState         varchar(255),
+    homePhone         varchar(15),
+    cellPhone         varchar(15),
+    workPhone         varchar(15),
+    gender            varchar(255) REFERENCES gender (genderID),
+    race              varchar(255) REFERENCES race (raceID)
+  );
+
+#+end_src
 ** Events
 Bootstrap facilitates events for professional educators. These
 events focus on the conceptual understanding and implementation of
 Bootstrap curriculum.
+
+#+begin_src sql
+  CREATE TABLE events (
+    eventID           varchar(255),
+    eventName         varchar(255),
+    eventDays         int CONSTRAINT positive_days CHECK (eventDays > 0), --length in days
+    eventType         varchar(255) REFERENCES eventTypes (typeID),
+    eventFormat       varchar(255) REFERENCES eventFormats (formatID),
+  );
+  
+#+end_src
 
 ** Organizations
 Bootstrap partners with external organizations to build contracts
@@ -35,18 +172,109 @@ individuals, or Bootstrap itself.
 - Main Email
 - Type
 
-* Relationship Table Concepts
+#+begin_src sql
+  --Main Tables Users, Organizations, Events
+  CREATE TABLE organizations (
+    orgID             varchar(255),
+    orgAddress        varchar(255),
+    orgCity           varchar(255),
+    orgState          varchar(255)
+  );
+
+#+end_src
+
+** Assessment Instruments
+
+#+begin_src sql
+  CREATE TABLE assessments (
+    assessmentID      varchar(255)
+  );
+  
+#+end_src
+
+** Textbooks
+
+#+begin_src sql
+  CREATE TABLE Textbooks (
+    textBookID        varchar(255),
+    textBookName      varchar(255),
+    textBookPublisher varchar(255)
+  );
+
+#+end_src
+
+
+* Relationship Tables
+
 ** Internal and external roles
+
 People have different relationships to our facilitated
 events. Current roles relative to events are Facilitator,
 Participant, Admin, and Master Teacher in Training.
-*** User-Event (Enrollments)
-*** User-Organization (Roles)
-*** User-Event-Attendance (Attendance)
-*** User-Facilitator-Evidence (Assessment)
 
+** User-Event Roles (Enrollments)
+#+begin_src sql
+
+  --Relationship Tables
+  CREATE TABLE Enrollments (
+    EnrollmentID      varchar(255),
+    UserID            varchar(255) REFERENCES Users (UserID)
+  );
+#+end_src
+
+** User-Organization Roles (UserOrganizationRoles)
+
+#+begin_src sql
+  CREATE TABLE UserOrganizationRoles (
+    UserID varchar(255) REFERENCES Users (UserID),
+    OrgID  varchar(255) REFERENCES Organizations (OrgID),
+    RoleID varchar(255) REFERNCES  Roles (RoleID)
+  );
+  
+#+end_src
+
+** Comments
+
+#+begin_src sql
+  CREATE TABLE Comments (
+    AuthorUserID      varchar(255),
+    RegardingUserID   varchar(255),
+    CommentDate       varchar(255),
+    TagUserID         varchar(255),
+    CommentType       varchar(255)
+  );
+  
+#+end_src
+
+** User-Event-Attendance (Attendance)
+
+#+begin_src sql
+  CREATE TABLE Attendance (
+    UserID            varchar(255),
+    EventID           varchar(255),
+    AttendanceDate    Date,
+    AttendancePeriod  varchar(255),
+    AttendanceValue   varchar(255)
+  );
+
+#+end_src
+
+** Contracts
+
+Organizations and individual create contracts with Bootsrap that lead
+to the create
+
+#+begin_src sql
+  CREATE TABLE Contracts (
+    ContractID varchar(255),
+    OrgID      varchar(255) REFERENCES Organizations (OrgID),
+    EventID    varchar(255) REFERENCES Events (EventID)
+  );
+  
+#+end_src
 
 ** Coaching
+
 Coaching is included in some contracts. The coaching table is a
 postive entry table. Users present in the coaching table are
 invited to coaching sessions throughout the year. Enrollment in
@@ -54,86 +282,22 @@ coaching is for one year and is specific to a curriculum. Usually
 you are assigned coaching for the curriculum in which you were
 trained in the same calendar year.
 
-** Attendance
-** Assessment
+#+begin_src sql
+  CREATE TABLE Coaching (
+    -- Coaching is a postive entry table. A user found in this table has
+    -- coaching included in their contract
+  );
+  
+#+end_src
 
-* Helper Table Concepts
-
-* Create Tables
-** Helper Tables
+** Assessment Instrument Data
 
 #+begin_src sql
-  --Helper Tables
-  CREATE TABLE Roles (
-  RoleID varchar(255) -- Facilitator, Participant, Admin, Master Teacher in Training
+  CREATE TABLE InstrumentData (
+    instrumentDataID  varchar(255),
+    userID            varchar(255) REFERENCES Users (userID),
+    submitted         varchar(255) timestamp with time zone,
+    instrumentData    text
   );
-
-  CREATE TABLE Race (
-  RaceID varchar(255)
-  );
-
-  CREATE TABLE Gender (
-  GenderID varchar(255)
-  );
-
-  CREATE TABLE License (
-  LicenseID varchar(255),
-  LicenseState varchar(255)
-  );
-
-  CREATE TABLE OrgTypes (
-  OrgID varchar(255),
-  OrgState varchar(255),
-  OrgEmail varchar(255),
-  OrgType varchar(255)
-  );
-
-	  CREATE TABLE Subjects (
-	  SubjectID varchar(255)
-	  );
-
-	  CREATE TABLE GradesTaught (
-	  GradesID varchar(255)
-	  );
-
-	  CREATE TABLE Textbooks (
-	  TextBookID varchar(255)
-	  );
-
-	  CREATE TABLE 
-
+  
 #+end_src
-** Entity Tables
-
-#+begin_src sql
-
-  --Main Tables Users, Organizations, Events
-
-  CREATE TABLE Users ( UserID varchar(255), LastName varchar(255),
-	 FirstName varchar(255), UserAddress varchar(255), UserCity
-	 varchar(255), UserState varchar(255), HomePhone int, CellPhone
-	 int, WorkPhone int, Gender varchar(255), Race varchar(255) );
-
-  CREATE TABLE Organizations ( OrgID varchar(255), OrgAddress
-	 varchar(255), OrgCity varchar(255), OrgState varchar(255) );
-
-  CREATE TABLE Events ( EventID varchar(255), );
-
-#+end_src
-** Relationship Tables
-  #+begin_src sql
-  --Relationship Tables CREATE TABLE Enrollments ( EnrollmentID
-  varchar(255), UserID );
-
-  CREATE TABLE Attendance ( UserID varchar(255), EventID varchar(255),
-	 AttendanceDate Date, AttendancePeriod varchar(255),
-	 AttendanceValue varchar(255) );
-
-  CREATE TABLE Comments ( AuthorUserID varchar(255), RegardingUserID
-	 varchar(255), CommentDate varchar(255), TagUserID );
-
-  --list
-
-  --assessments
-  #+end_src
-
