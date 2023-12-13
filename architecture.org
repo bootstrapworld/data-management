@@ -2,30 +2,176 @@
 #+PROPERTY: header-args :exports code
 #+PROPERTY: header-args :tangle yes
 
-* Overview
+* Introduction
 
+** This file
 This is the data definition and architecture expressed in POSTGRESQL
-for Bootstrap participants and partners. This is a literate file
-written in Orgmode and tangled using org-babel. 
+for Bootstrap facilitated training events and participant
+tracking. This is a literate file written in Orgmode and tangled using
+org-babel.
 
-We seek to capture the changing roles educators have to their external
-organizations and students and how that affects their relationship
+** Bootstrap
+
+Bootstrap develops curriculum and facilitates training for professional
+educators and the organizations that support. Bootstrap delivers
+pedagogical strategies to participant educators through in-person or
+virtual learning sessions. Bootstrap seeks to support teacher from
+novice learners until they can confidently implement Bootstrap
+curriculum in their classrooms.
+
+** Goals
+
+This data models primary goal is to track and analyze the efficacy
+of learning supports. Bootstrap hopes to continually improve the
+learning model for professional educators. Support for educators are
+successful if the educator feels confident to use Bootstrap curriculum
+with their students. Bootstrap further measures success through the
+achievement of students who received Bootstrap curriculum.
+
+Many factors affect
+
+Good reasons vs within our control
+
+Implementers vs non-implementers within teachers.
+
+Teachers have a role to their organization that places them in front
+of students for the majority of their day.
+
+Administrators have a role to their organization that places them
+supporting teachers for the majority of their day.
+
+These relationships to the outside organization are orthogonal to the
+relationships to Bootstrap trainings. However, the relationship to the
+outside organization affects how the 
+
+
+This data model seeks to capture the changing roles educators have to their external
+organizations and to their students.  and how that affects their relationship
 with us.
 
+Things to change about the curriculum.
 
-* Custom Types and Helper Tables
+Things to change about training.
 
-Some or all of these helper tables will probably be implemented as ENUM data types,
-not tables. I'm still working out, which helper collections are ENUM
+Things to change about on-going support.
+
+Quality assurance 
+
+
+** Reporting Needs
+
+*** Partners
+Reports for partners include
+- a teacher level attendance report
+- a teacher level proficiency report
+- cohort aggregations
+- implementation reports
+*** Internal analysis
+- Interventions over time
+- Teacher retention
+- Types of facilitation experience vs implementation
+- Teaching context vs implementation
+  
+
+* Grain
+
+The grain in our data model is the professional educator. We measure
+the efficacy of the training experience as it relates to various
+factors in the life of a professional educator. We collect reactions
+to our trainings and followup for a period of time as the teacher
+attempts to bring Bootstrap curriculum into the classroom. Pre and post test
+student data stops at the teacher level. We do not track students as
+entities or store any individual student  
+
+
+* The Teacher Journey
+
+Professional educators find themselves in a Bootsrap training from a
+variety of pathways. Bootstrap curriculum is freely available on the
+internet. Bootstrap has trained teachers across the country for many
+years and teachers generally love their experience, hence word of
+mouth brings teachers in. Partner organizations build training
+contracts for cohorts of teachers for a variety of reasons, which
+lead to participants with a range of motivation and contextual
+appropriateness.
+
+** The General Timeline
+How long does a teacher receive support and monitoring? Educators can
+attend multiple workshops. Does the clock reset? Do we track cohort
+contracts, which may have different time lengths for continued
+support? Do we continue to assess teaching confidence and strength of
+implementation and offer support as long as the teacher is using
+Bootstrap curricula? What is the average or typical journey? Are their
+logical subsets that may have different typical journeys?
+
+Analysis of our current implementers will help. We have responses to
+the implementation survey. We have attendance at coaching and we have
+on going contact.
+
+** Communication Plan
+*** First Contact
+First contact can be casual or formal. Casual contacts include
+requests for information through web forms, posting or emailing
+questions, and tags on social media. Formal contacts are typically
+enrolled in a workshop; the first they hear from us would be a formal
+welcome to a training event with logistic information.
+
+*** Contacts
+Contact data allows us to send a message with a general idea of who
+the person is. At minimum a first contact is an email address, a first
+and last name, a job title, and a what brings you here.
+
+*** Preworkshop Intake Data
+Information prior to enrolling in a full training scenario is used to
+ensure the training is appropriate for the participant, the
+training addresses participant needs, and . So, what do we want or need to know
+about our teachers?
+
+We want to know how to contact them. We want to know two email
+addresses for each person: their school or organization based address
+and a personal or persistent address that would not change if they
+left their current position. Teachers may change schools, but they
+remain Bootstrap teachers.
+
+We want to know about their training and prior
+experience. Professional educators typically hold certification and
+licensure. Their state has typically granted and certification and
+their municipallity has licensed them to teach in the district. A
+teacher could work at an independent school and have no certification
+or licensure. A teacher could be instructing classes within their
+licensed area or outside of it.
+
+We want to know about the classes they are currently teaching and the
+classes they plan to teach next year. We want to know the subject and
+grade level of those classes, which may be different for each
+class. Hence, we actually want a siimplified class program for each of
+our participants.
+
+
+** On-going Support and Monitoring
+** The Journey to Master Teacher
+
+
+* Custom Data Types
+
+I'm still working out which helper collections are ENUM
 types and which we add to a helper table. My intuition is that there
 are short sets that we know already and that aren't likely to change,
 such as race, and there are longer sets like the textbooks that might
 continue to grow.
 
-** Roles
+** Enrollment Roles
+These are the roles with respect to our enrollment relationship. They
+answer the question what are you doing as part of this event. This
+list could grow as the type and complexity of event planning
+changes.
+
+Some rules attached to these roles. For example, perhaps a participant
+cannot be enrolled to an event before a facilitator has first been
+enrolled.
 
 #+begin_src sql
-  CREATE TYPE roles AS ENUM ('facilitator', 'participant', 'admin', 'master teacher in training' );
+  CREATE TYPE "enrollment_roles" AS ENUM ('facilitator', 'participant', 'admin', 'master teacher in training' );
 
 #+end_src
 
@@ -76,16 +222,14 @@ continue to grow.
 
 #+begin_src sql
 
-  CREATE TABLE GradesTaught (
-    GradesID         varchar(255)
-  );
-  
+  CREATE TYPE "grades_taught" AS ENUM ('1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th');
+
 #+end_src
 
 ** Event Formats
 
 #+begin_src sql
-  CREATE TYPE eventFormats AS ENUM ('Intensive', 'Distributed' );
+  CREATE TYPE "event_formats" AS ENUM ('Intensive', 'Distributed', 'One-day', '2-hour' );
 
 #+end_src
 
@@ -104,7 +248,10 @@ continue to grow.
 #+end_src
 
 
-* Entity Tables
+* Core Entity (Primary Dimension) Tables
+These tables are descriptive data elements that make up the
+relationships in our system. They represent everything we know about
+the  people, organizations, and events in our facilitation ecosystem.
 
 ** Contacts
 Anyone who has interacted with Bootstrap, who ever signed up for an
@@ -192,6 +339,15 @@ individuals, or Bootstrap itself.
   
 #+end_src
 
+** Feedback Instruments
+
+
+* Attribute (Derived) Tables
+** Locations
+** Licenses
+** Schools
+** Districts
+** Roles
 ** Textbooks
 
 #+begin_src sql
@@ -202,6 +358,7 @@ individuals, or Bootstrap itself.
   );
 
 #+end_src
+
 
 
 * Relationship Tables
@@ -216,19 +373,19 @@ Participant, Admin, and Master Teacher in Training.
 #+begin_src sql
 
   --Relationship Tables
-  CREATE TABLE Enrollments (
-    EnrollmentID      varchar(255),
-    UserID            varchar(255) REFERENCES Users (UserID)
+  CREATE TABLE enrollments (
+    enrollmentID      varchar(255),
+    userID            varchar(255) REFERENCES Users (UserID)
   );
 #+end_src
 
-** User-Organization Roles (UserOrganizationRoles)
+** User-Organization Roles (OrgRoles)
 
 #+begin_src sql
-  CREATE TABLE UserOrganizationRoles (
-    UserID varchar(255) REFERENCES Users (UserID),
-    OrgID  varchar(255) REFERENCES Organizations (OrgID),
-    RoleID varchar(255) REFERNCES  Roles (RoleID)
+  CREATE TABLE orgRoles (
+    userID varchar(255) REFERENCES users (UserID),
+    orgID  varchar(255) REFERENCES organizations (OrgID),
+    roleID varchar(255) REFERENCES roles (RoleID)
   );
   
 #+end_src
@@ -236,12 +393,12 @@ Participant, Admin, and Master Teacher in Training.
 ** Comments
 
 #+begin_src sql
-  CREATE TABLE Comments (
-    AuthorUserID      varchar(255),
-    RegardingUserID   varchar(255),
-    CommentDate       varchar(255),
-    TagUserID         varchar(255),
-    CommentType       varchar(255)
+  CREATE TABLE comments (
+    authorUserID      varchar(255),
+    regardingUserID   varchar(255),
+    commentDate       varchar(255),
+    tagUserID         varchar(255),
+    commentType       varchar(255)
   );
   
 #+end_src
@@ -249,12 +406,12 @@ Participant, Admin, and Master Teacher in Training.
 ** User-Event-Attendance (Attendance)
 
 #+begin_src sql
-  CREATE TABLE Attendance (
-    UserID            varchar(255),
-    EventID           varchar(255),
-    AttendanceDate    Date,
-    AttendancePeriod  varchar(255),
-    AttendanceValue   varchar(255)
+  CREATE TABLE attendance (
+    serID            varchar(255),
+    eventID           varchar(255),
+    attendanceDate    Date,
+    attendancePeriod  varchar(255),
+    attendanceValue   varchar(255)
   );
 
 #+end_src
@@ -293,11 +450,11 @@ trained in the same calendar year.
 ** Assessment Instrument Data
 
 #+begin_src sql
-  CREATE TABLE InstrumentData (
+  CREATE TABLE instrumentData (
     instrumentDataID  varchar(255),
     userID            varchar(255) REFERENCES Users (userID),
     submitted         varchar(255) timestamp with time zone,
     instrumentData    text
   );
-  
+
 #+end_src
