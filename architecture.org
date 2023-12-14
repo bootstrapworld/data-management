@@ -155,10 +155,18 @@ our participants.
 * Custom Data Types
 
 I'm still working out which helper collections are ENUM
+
+
+* Custom Types and Helper Tables
+
+Some or all of these helper tables will probably be implemented as ENUM data types,
+not tables. I'm still working out, which helper collections are ENUM
+
 types and which we add to a helper table. My intuition is that there
 are short sets that we know already and that aren't likely to change,
 such as race, and there are longer sets like the textbooks that might
 continue to grow.
+
 
 ** Enrollment Roles
 These are the roles with respect to our enrollment relationship. They
@@ -229,6 +237,7 @@ enrolled.
 ** Event Formats
 
 #+begin_src sql
+
   CREATE TYPE "event_formats" AS ENUM ('Intensive', 'Distributed', 'One-day', '2-hour' );
 
 #+end_src
@@ -359,8 +368,6 @@ individuals, or Bootstrap itself.
 
 #+end_src
 
-
-
 * Relationship Tables
 
 ** Internal and external roles
@@ -373,12 +380,12 @@ Participant, Admin, and Master Teacher in Training.
 #+begin_src sql
 
   --Relationship Tables
+
   CREATE TABLE enrollments (
     enrollmentID      varchar(255),
     userID            varchar(255) REFERENCES Users (UserID)
   );
 #+end_src
-
 ** User-Organization Roles (OrgRoles)
 
 #+begin_src sql
@@ -386,6 +393,21 @@ Participant, Admin, and Master Teacher in Training.
     userID varchar(255) REFERENCES users (UserID),
     orgID  varchar(255) REFERENCES organizations (OrgID),
     roleID varchar(255) REFERENCES roles (RoleID)
+
+  CREATE TABLE Enrollments (
+    EnrollmentID      varchar(255),
+    UserID            varchar(255) REFERENCES Users (UserID)
+  );
+#+end_src
+
+** User-Organization Roles (UserOrganizationRoles)
+
+#+begin_src sql
+  CREATE TABLE UserOrganizationRoles (
+    UserID varchar(255) REFERENCES Users (UserID),
+    OrgID  varchar(255) REFERENCES Organizations (OrgID),
+    RoleID varchar(255) REFERNCES  Roles (RoleID)
+
   );
   
 #+end_src
@@ -393,12 +415,14 @@ Participant, Admin, and Master Teacher in Training.
 ** Comments
 
 #+begin_src sql
+
   CREATE TABLE comments (
     authorUserID      varchar(255),
     regardingUserID   varchar(255),
     commentDate       varchar(255),
     tagUserID         varchar(255),
     commentType       varchar(255)
+
   );
   
 #+end_src
@@ -406,12 +430,14 @@ Participant, Admin, and Master Teacher in Training.
 ** User-Event-Attendance (Attendance)
 
 #+begin_src sql
+
   CREATE TABLE attendance (
     serID            varchar(255),
     eventID           varchar(255),
     attendanceDate    Date,
     attendancePeriod  varchar(255),
     attendanceValue   varchar(255)
+
   );
 
 #+end_src
@@ -450,6 +476,7 @@ trained in the same calendar year.
 ** Assessment Instrument Data
 
 #+begin_src sql
+
   CREATE TABLE instrumentData (
     instrumentDataID  varchar(255),
     userID            varchar(255) REFERENCES Users (userID),
