@@ -1,7 +1,7 @@
 #+PROPERTY: header-args :engine postgresql
 #+PROPERTY: header-args :exports code
 #+PROPERTY: header-args :tangle yes
-
+TEST CHANGE
 * Introduction
 
 ** This file
@@ -44,7 +44,6 @@ These relationships to the outside organization are orthogonal to the
 relationships to Bootstrap trainings. However, the relationship to the
 outside organization affects how the 
 
-
 This data model seeks to capture the changing roles educators have to their external
 organizations and to their students.  and how that affects their relationship
 with us.
@@ -56,7 +55,6 @@ Things to change about training.
 Things to change about on-going support.
 
 Quality assurance 
-
 
 ** Reporting Needs
 
