@@ -91,7 +91,7 @@ contracts for cohorts of teachers for a variety of reasons, which
 lead to participants with a range of motivation and contextual
 appropriateness.
 
-** The General Timeline
+** The Timespan of a Teacher Journey
 How long does a teacher receive support and monitoring? Educators can
 attend multiple workshops. Does the clock reset? Do we track cohort
 contracts, which may have different time lengths for continued
@@ -102,7 +102,8 @@ logical subsets that may have different typical journeys?
 
 Analysis of our current implementers will help. We have responses to
 the implementation survey. We have attendance at coaching and we have
-on going contact.
+on-going contact. In the future we hope to have users log into a
+website where we can track lesson plan usage and custom pathways.
 
 ** Communication Plan
 *** First Contact
@@ -116,7 +117,12 @@ welcome to a training event with logistic information.
 Contact data allows us to send a message with a general idea of who
 the person is. At minimum a first contact is an email address, a first
 and last name, a job title, and a what brings you here.
-
+#+begin_src sql
+      CREATE TABLE IF NOT EXISTS "contacts" (
+	"id" SERIAL PRIMARY KEY,
+	
+  );
+#+end_src
 *** Preworkshop Intake Data
 Information prior to enrolling in a full training scenario is used to
 ensure the training is appropriate for the participant, the
@@ -143,26 +149,45 @@ grade level of those classes, which may be different for each
 class. Hence, we actually want a siimplified class program for each of
 our participants.
 
+*** Intake data
+**** Teacher program
+#+begin_src sql
+  -- a class in a teachers program tells us the subject and grade level where the teacher will be interacticng with students
+  CREATE TABLE IF NOT EXISTS "classes" (
+    "teacher_id"   ,
+    "class_id" PRIMARY KEY,
+    "class_name"   ,
+    "class_subject" SUBJECT,
+    "class_gradelevel"   GRADELEVEL,
+    "class_start_date"  DATE,
+    "class_end_date"    DATE,
+    CONSTRAINT "fk_teacher" FOREIGN KEY ("teacher_id") REFERENCES "users" ("user_id")
+  );
+#+end_src
 
+#+begin_src sql
+  CREATE TABLE IF NOT EXISTS "certification" (
+    -- tracks the certifications relative to state wide professional educators
+    "teacher_id" varchar(255),
+    "cert_id"    varchar(255),
+    "state_ab"   varchar(2),
+    "title"      varchar(255),
+    "subject"    varchar(255),
+    CONTSTRAINT "fk_teacher" FOREIGN KEY ("teacher_id") REFERENCES "users" ("user_id")
+  );
+
+#+end_src
 ** On-going Support and Monitoring
 ** The Journey to Master Teacher
 
-
 * Custom Data Types
 
-I'm still working out which helper collections are ENUM
-
-
-* Custom Types and Helper Tables
-
-Some or all of these helper tables will probably be implemented as ENUM data types,
-not tables. I'm still working out, which helper collections are ENUM
+I'm still working out which helper collections are ENUMs.
 
 types and which we add to a helper table. My intuition is that there
 are short sets that we know already and that aren't likely to change,
 such as race, and there are longer sets like the textbooks that might
 continue to grow.
-
 
 ** Enrollment Roles
 These are the roles with respect to our enrollment relationship. They
@@ -176,7 +201,6 @@ enrolled.
 
 #+begin_src sql
   CREATE TYPE "enrollment_roles" AS ENUM ('facilitator', 'participant', 'admin', 'master teacher in training' );
-
 #+end_src
 
 ** Race and Ethnicity
@@ -185,14 +209,12 @@ enrolled.
   CREATE TYPE race AS ENUM ('American Indian or Alaska Native', 'Asian', 'Black or African American', 'Native Hawaiian or Other Pacific Islander', 'White' );
 
   CREATE TYPE ethnicity AS ENUM ('Hispanic or Latino', 'Not Hispanic or Latino' );
-
 #+end_src
 
 ** Gender
 
 #+begin_src sql
   CREATE TYPE gender AS ENUM ('Male', 'Female', 'Transgender', 'None of these');
-
 #+end_src
 
 ** License
