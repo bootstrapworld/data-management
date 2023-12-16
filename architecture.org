@@ -1,7 +1,7 @@
 #+PROPERTY: header-args :engine postgresql
 #+PROPERTY: header-args :exports code
 #+PROPERTY: header-args :tangle yes
-TEST CHANGE
+
 * Introduction
 
 ** This file
@@ -72,6 +72,48 @@ Reports for partners include
   
 
 * Data Model
+** Definitions
+Business requirements and relationship between them: To train teachers (deliver the product) such that they use the product
+(the curriculum) with their students, their students are successful
+with the curriculum, the curriculm improve standard academic
+achievement, and the curriculum becomes better suited to
+student achievement over time.
+
+Teachers spend the majority of their professional time interacting
+with students. Professional educators are often teachers, but can also
+be administrators, paraprofessionals, learning coaches, department
+coordinators, etc. We wish to track the changing role our teachers
+have to their profession and employer. A teacher 
+
+Bootstraps primary aim is to support student learning in core academic
+skills, especially mathematical reasoning. Teachers are the
+professionals who deploy Bootstrap content. The quality of that
+deployment directly correlates to student achievement with Bootstrap.
+Whether Bootstrap curricula meets its aim to boost standardized
+achievement relies on the quality of teacher's deployment.
+
+Administrators oversee teachers. They are the point persons on the
+contracts the create training events and build cohorts. Administrators
+track teacher attendance at training events and may disperse stipends
+to teachers based on deliverables.
+
+Implementation describes a teacher using Bootstrap curriculum with
+their students. Bootstrap curriculum is designed to fit in as a module
+into existing classes with established goals. Teachers using Bootstrap
+in their classes have identified a learning goal or series of goals
+that Bootstrap curriculum covers. Depending on the course objectives
+and grade band of students different swaths of curriculum are
+available. Implementation is a description of the context in which a
+teacher is using Boostrap, to what depth and what breadth.
+
+Student achievement measures show gains through pre and post
+diagnostics of skills covered by the Bootstrap curriculum. These
+skills overlap between Bootstrap curriculum, but have different
+contexts that they support. Student learning requires both high
+quality curriculum and high quality deployment by the teacher.
+
+Teacher learning ...
+
 ** Grain
 
 The grain in our data model is the professional educator. We measure
@@ -82,13 +124,42 @@ attempts to bring Bootstrap curriculum into the classroom. Pre and post test
 student data stops at the teacher level. We do not track students as
 entities or store any individual student data.
 ** Dimensions
-- Admin
-- Teacher
+*** Dimension Hierarchy
+- Contact
+  - User #subset, rather than child
+    - Enrollment
+- Curriculum
+  - Skills
+- Partner
+  - Contract
+- Cohort
+  - Participant
+- Event
+  - User
+  - Enrollments
+    - Role
+      - Facilitator
+      - Participant
+      - Admin
+      - Master teacher in training
+- States
+  - Districts
+    - Schools
+      - Classes
+	- Teachers
+
+*** Dimension Tables and Attributes
+- Contact
   - id
-  - Name
-  - Email
-  - Phone
-- Partner Org
+  - name
+  - email
+  - phone
+  - where from?
+  - opt in list #how/where to track email opt-in?
+- User
+  - contact_id
+  - date_added
+- Partner Org #could this be a district?
   - id
   - Name
   - Type ('non-profit', 'government', 'private')
@@ -106,11 +177,13 @@ entities or store any individual student data.
   - State
   - 
 - Facilitator
+- Contract
 - Event
 - Year
 - Curriculum (Data Science, Data Science CODAP, Early Math, Algebra, Algebra 2)
 - Learning Model #what is a learning model
-*** Attributes
+- Skill #breaking down Bootstrap curriculum to the skill level. this
+  is our product.
 - Location
   - Street Address
   - City
@@ -120,15 +193,83 @@ entities or store any individual student data.
 - Demographic
   - race ('American Indian or Alaska Native', 'Asian', 'Black or African American', 'Native Hawaiian or Other Pacific Islander', 'White' )
   - ethnicity ('Hispanic or Latino', 'Not Hispanic or Latino')
-- Types
-- 
+  - grade_band
+  - setting ('urban', 'rural', 'suburban')
+  - socio-economic status
+- Type
+- Certification
+  - teacher_id
+  - state
+  - subject
+  - grade_band
+  - type #what is this?
+- Class
+  - teacher_id
+  - subject
+  - student_demographics #what is this?
+  - start_date
+  - end_date
+- Role
+  - teacher_id
+  - school_id
+  - role ('teacher', 'paraprofessional', 'supervisor', 'coach',
+    'coordinator')
+  - start date
+  - end date
+- Coaching
+*** Explanation
+All (most) schools have districts or other support organizations.
+Partner organizations build contracts with Bootstrap to train cohorts
+of educators. A partner organization could also be a district and
+referenced with a foreign key.
+
 ** Measures
-- Feedback
-- Contract
-- Event Cohort
-- Year Cohort
+- Implementation
 - Attendance
+- Interaction
+- Workbooks
 - Assessment
+- Pathway
+** Facts
+- Implementation
+  - State
+  - District
+  - School
+  - Teacher
+  - Student
+- Feedbacks
+  - Confidence
+  - Appropriateness
+- Event Cohorts
+  - event_id
+  - teacher_id
+- Year Cohorts
+- Comments
+  - teacher_id
+  - commenter_id
+  - comment
+  - date
+  - time
+  - tags
+  - refer_to
+- Attendances
+  - teacher_id
+  - event_id
+  - attendance_value
+  - attenadance_date
+  - attendance_period
+- Assessments
+  - teacher_id
+  - title
+  - context
+  - cohort_id
+  - skill
+  - evidence
+  - rating
+  - rater
+  - date
+
+
 * The Teacher Journey
 
 Professional educators find themselves in a Bootsrap training from a
