@@ -70,7 +70,9 @@ Reports for partners include
 - Types of facilitation experience vs implementation
 - Teaching context vs implementation
   
-* Grain
+
+* Data Model
+** Grain
 
 The grain in our data model is the professional educator. We measure
 the efficacy of the training experience as it relates to various
@@ -78,8 +80,55 @@ factors in the life of a professional educator. We collect reactions
 to our trainings and followup for a period of time as the teacher
 attempts to bring Bootstrap curriculum into the classroom. Pre and post test
 student data stops at the teacher level. We do not track students as
-entities or store any individual student  
-
+entities or store any individual student data.
+** Dimensions
+- Admin
+- Teacher
+  - id
+  - Name
+  - Email
+  - Phone
+- Partner Org
+  - id
+  - Name
+  - Type ('non-profit', 'government', 'private')
+  - Admins
+- School
+  - school_id
+  - Name
+  - Location #what is location?
+  - Grade band (e.g. '9-12')
+  - Demographic #what is demographic?
+  - District REFERENCES ("District") "district_id"
+  - Address #what is an address 
+- District #this is a school umbrella or support organization
+  - district_id
+  - State
+  - 
+- Facilitator
+- Event
+- Year
+- Curriculum (Data Science, Data Science CODAP, Early Math, Algebra, Algebra 2)
+- Learning Model #what is a learning model
+*** Attributes
+- Location
+  - Street Address
+  - City
+  - State
+  - Zipcode
+  - Country
+- Demographic
+  - race ('American Indian or Alaska Native', 'Asian', 'Black or African American', 'Native Hawaiian or Other Pacific Islander', 'White' )
+  - ethnicity ('Hispanic or Latino', 'Not Hispanic or Latino')
+- Types
+- 
+** Measures
+- Feedback
+- Contract
+- Event Cohort
+- Year Cohort
+- Attendance
+- Assessment
 * The Teacher Journey
 
 Professional educators find themselves in a Bootsrap training from a
