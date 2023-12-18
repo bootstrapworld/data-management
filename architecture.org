@@ -1,9 +1,11 @@
 #+PROPERTY: header-args :engine postgresql
 #+PROPERTY: header-args :exports code
 #+PROPERTY: header-args :tangle yes
-
+#+STARTUP: content
 * Introduction
-
+:PROPERTIES:
+:VISIBILITY: folded
+:END:
 ** This file
 This is the data definition and architecture expressed in POSTGRESQL
 for Bootstrap facilitated training events and participant
@@ -73,17 +75,40 @@ Reports for partners include
 
 * Data Model
 ** Definitions
-Business requirements and relationship between them: To train teachers (deliver the product) such that they use the product
+*** Business requirements and relationship between them:
+To train teachers (deliver the product) such that they use the product
 (the curriculum) with their students, their students are successful
 with the curriculum, the curriculm improve standard academic
-achievement, and the curriculum becomes better suited to
-student achievement over time.
+achievement, and the curriculum becomes better suited to student
+achievement over time. To track usage of the curriculum and its
+efficacy toward students.
 
-Teachers spend the majority of their professional time interacting
-with students. Professional educators are often teachers, but can also
-be administrators, paraprofessionals, learning coaches, department
-coordinators, etc. We wish to track the changing role our teachers
-have to their profession and employer. A teacher 
+Bootstrap end users are teachers. Teachers spend the majority of their
+professional time interacting with students.
+
+Bootstrap interacts with partners who develop or support teacher
+excellence through continued education or "professional development"
+for teachers. Partners include districts, non-profit, private
+foundations, corporations, states, and schools. Individual teachers
+also join open enrollment events and may be paying out of pocket.
+
+Teachers often receive some form of compensation from their school,
+district, or supporting organization.
+
+Partners often request reports, especially attendance, which they use
+to track participant participation and to validate stipends. The
+partner may or may not have requirements for the form of the
+report.
+
+Professional educators are often teachers or have had experience in
+the classroom, but can also be administrators, paraprofessionals,
+learning coaches, or department coordinators. We wish to track the
+changing role our teachers have to their profession and employer. We
+wish to know a teachers current schedule and where in that schedule
+they have been able to utilize Bootstrap curricula or pedagogy.
+
+Teachers have the largest and most direct role in affecting student
+outcomes and the quality of the Bootstrap implementation. 
 
 Bootstraps primary aim is to support student learning in core academic
 skills, especially mathematical reasoning. Teachers are the
@@ -217,6 +242,11 @@ entities or store any individual student data.
   - start date
   - end date
 - Coaching
+- Stipend
+- Partner report request
+- Admin support #capture the relationship between this teacher and the
+  surrounding professional environment
+
 *** Explanation
 All (most) schools have districts or other support organizations.
 Partner organizations build contracts with Bootstrap to train cohorts
@@ -558,6 +588,7 @@ individuals, or Bootstrap itself.
 
 ** Feedback Instruments
 
+** Intake Instruments
 
 * Attribute (Derived) Tables
 ** Locations
@@ -634,6 +665,10 @@ Participant, Admin, and Master Teacher in Training.
   );
   
 #+end_src
+
+
+
+
 
 ** User-Event-Attendance (Attendance)
 
