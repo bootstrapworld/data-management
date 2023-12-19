@@ -74,20 +74,39 @@ Reports for partners include
   
 
 * Data Model
-** Business requirements and relationship between them:
+** Business requirements and relationships between them:
 *** Products and Services
-Bootstrap develops curriculum for k-12 classrooms
-and trains teachers to use it with their students.
+Bootstrap develops curriculum for k-12 classrooms and trains teachers
+to use it with their students. Bootstrap trainings prepare teachers to
+deliver the curriculum such that their students can demonstrate
+certain skills.
 
-Teachers deliver the product such that their
-students can demonstrate skills supported by the
-curriculum
+Bootstrap has some activities that can be accessed by the student
+directly. However, the primary market for Bootstrap products and
+services is the teacher student classroom where one teacher will
+typically work with a groups of fifteen to thirty students.
+
+Classrooms vary widely across the United States, and if we consider
+international usage, there are many possibilities for the classroom
+conditions in which Bootstrap curriculum may be deployed. To capture
+some of this variety we look at classroom size, location, subject,
+grade level, school schedule model (annual, semeseter, trimester,
+block, etc.), student socioeconomic and race/ethnicity demographics,
+teacher license and background, admin support, mandate vs teacher
+choice, stipend received?, pre post student, pre post teacher,
+deployment model (asynchronous, cherry picked, end-to-end, etc.).
+
+Training participants are most often teachers, but are also teacher
+assistants and para professional on the one hand and teacher
+supervisors, administrators, and coaches on the other. We also note
+the attendance of participants and observers who do not interact with
+classrooms in their daily work, but are otherwise connect to Bootstrap.
 
 The Bootstrap data model collects data for improving the curriculum, track
 student academic achievement, and analyzing the relationship between changes to
 curriculum, training, and on-going teacher supports. Over time the trainings and
 curriculum becomes better suited to the needs of teachers and student
-achievement. To track usage of the curriculum and its efficacy toward students.
+achievement. 
 
 *** Reporting
 Bootstrap partners are in the business of supporting student
@@ -211,7 +230,6 @@ deployment by the teacher.
 Teacher learning ...
 
 ** Grain
-
 The grain in our data model is the professional educator. We measure the
 efficacy of the training experience as it relates to various factors in the life
 of a professional educator. We collect reactions to our trainings and followup
