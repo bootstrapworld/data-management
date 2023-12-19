@@ -154,7 +154,7 @@ Sometimes the person in the chair works alongside teachers and will take the
 learning from Bootstrap back to their teachers in their own professional
 enrichment setting.
 
-*** Teachers
+*** Teacher and Student
 Teachers spend the majority of their professional
 time interacting with students.
 
@@ -229,6 +229,35 @@ deployment by the teacher.
 
 Teacher learning ...
 
+*** Admin
+Within a Bootstrap contract the point persons for the partner
+organization are the admins of the contracted event. Admins receive
+reporting and communication about their cohort.
+*** Cohort
+A cohort is a group of teachers supported by a particular
+contract. Cohorts begin with a training event and a certain date. 
+*** Facilitator, Master Teacher, and Master Teacher in Training
+Training events are facilitated by Bootstrap Master Teachers. A
+facilitator is the primary point person for training participants
+during and immediately after the training event.
+*** Coach
+A coach is a Bootstrap Master teacher supporting groups of teachers
+through short regular sessions. These sessions are largely driven by
+the questions and needs of teachers in the process of using Bootstrap
+curriculum in their classrooms.
+*** Professional Development
+A training event that covers an entire curriculum is considered
+professional development. Participants in professional development
+events are trained as both student and teacher. They must understand
+the curriculum and the pedagogy behind key point in the curriculum.
+*** Participant Life Cycle
+- Intake
+- Onboarding
+- Training
+- Implementation with Support
+- Solo Implementation
+- Master Teacher in Training
+- Master Teacher
 ** Grain
 The grain in our data model is the professional educator. We measure the
 efficacy of the training experience as it relates to various factors in the life
