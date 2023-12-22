@@ -72,7 +72,6 @@ Reports for partners include
 - Types of facilitation experience vs implementation
 - Teaching context vs implementation
   
-
 * Data Model
 ** Business requirements and relationships between them:
 *** Products and Services
@@ -284,11 +283,13 @@ not track students as entities or store any individual student data.
       - Participant
       - Admin
       - Master teacher in training
+      - Ambassador #not really an enrollment role
 - States
   - Districts
     - Schools
       - Classes
 	- Teachers
+	  - Implementations
 
 *** Dimension Tables and Attributes
 - Contact
@@ -418,7 +419,6 @@ partner organization could also be a district and referenced with a foreign key.
   - rating
   - rater
   - date
-
 
 * The Teacher Journey
 
@@ -612,12 +612,11 @@ enrolled to an event before a facilitator has first been enrolled.
 
 #+end_src
 
-
 * Core Entity (Primary Dimension) Tables
+** Introduction
 These tables are descriptive data elements that make up the relationships in our
 system. They represent everything we know about the people, organizations, and
 events in our facilitation ecosystem.
-
 ** Contacts
 Anyone who has interacted with Bootstrap, who ever
 signed up for an event, even if they did not
@@ -687,9 +686,7 @@ individuals, or Bootstrap itself.
 #+end_src
 
 ** Feedback Instruments
-
 ** Intake Instruments
-
 * Attribute (Derived) Tables
 ** Locations
 ** Licenses
@@ -753,7 +750,6 @@ Training.
   );
 
 #+end_src
-
 
 
 
