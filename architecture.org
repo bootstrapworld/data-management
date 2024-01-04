@@ -138,11 +138,12 @@ core subjects such as Algebra.
 - Facilitator or Event vs Confidence
 
 ** Definitions
-*** Curriculum End User
+*** End Users
+**** Curriculum End User
 The end users of Bootstrap curriculum are students, who will be using tools like
 the Pyret or CODAP to build projects.
 
-*** Training End User
+**** Training End User
 The end users of Bootsrap trainings are
 teachers. In most cases the person in the chair is
 a teacher, who will bring the training, pedagogy,
@@ -564,6 +565,8 @@ enrolled to an event before a facilitator has first been enrolled.
 
 ** Organization Types
 
+*** TODO What are the organization types we interact with?
+Is this redundant from Insightly?
 #+begin_src sql
   CREATE TYPE orgTypes AS ENUM ('Non-profit', 'For-profit', 'School',
   'District', 'State Government Office', 'Foundation');
