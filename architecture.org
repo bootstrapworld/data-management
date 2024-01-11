@@ -136,7 +136,9 @@ core subjects such as Algebra.
 - Curriculum Change vs Teacher Confidence
 - Training Change vs Confidence
 - Facilitator or Event vs Confidence
-
+**** Factors toward implementation
+**** Cohort attendance reports
+**** 
 ** Definitions
 *** End Users
 **** Curriculum End User
@@ -422,16 +424,21 @@ partner organization could also be a district and referenced with a foreign key.
   - date
 
 * The Teacher Journey
+** The Bootstrap Participant Landscape
+Professional educators find themselves in a Bootsrap training from a
+variety of pathways. Typically, partner organizations build training
+contracts for cohorts of teachers, which leads to participants with a
+range of motivations and prior knowledge.
 
-Professional educators find themselves in a Bootsrap training from a variety of
-pathways. Bootstrap curriculum is freely available on the internet. Bootstrap
-has trained teachers across the country for many years and teachers generally
-love their experience, hence word of mouth brings teachers in. Partner
-organizations build training contracts for cohorts of teachers for a variety of
-reasons, which lead to participants with a range of motivation and contextual
-appropriateness.
+Bootstrap curriculum is freely available on the internet. Teachers
+attend trainings (and have done so for many years), and those who have
+been trained contiue to expose others. Teachers who attend Bootstrap
+trainings generally love their experience, hence word of mouth brings
+teachers in.
+
 
 ** The Timespan of a Teacher Journey
+
 How long does a teacher receive support and monitoring? Educators can
 attend multiple workshops. Does the clock reset? Do we track cohort
 contracts, which may have different time lengths for continued
@@ -445,6 +452,10 @@ implementation survey. We have attendance at coaching and we have on-going
 contact. In the future we hope to have users log into a website where we can
 track lesson plan usage and custom pathways.
 
+** Milestones
+*** Year 1
+*** Year 2
+*** Year 3
 ** Communication Plan
 *** First Contact
 First contact can be casual or formal. Casual contacts include requests for
