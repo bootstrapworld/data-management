@@ -1,89 +1,95 @@
 
 # Table of Contents
 
-1.  [Introduction](#orgc259242)
-    1.  [This file](#org0a72aec)
-    2.  [Bootstrap](#orgda6924e)
-    3.  [Goals](#orgdfefe1f)
-    4.  [Reporting Needs](#orgb6d6c46)
-        1.  [Partners](#org7c54ad8)
-        2.  [Internal analysis](#org16b291d)
-2.  [Data Model](#org3d62e25)
-    1.  [Business requirements and relationships between them:](#orgb6e4d5f)
-        1.  [Products and Services](#org5d73f2f)
-        2.  [Reporting](#orgeaeb95c)
-        3.  [Analysis](#org5b17a63)
-    2.  [Definitions](#orgf0797cd)
-        1.  [Curriculum End User](#org66dbd5f)
-        2.  [Training End User](#orgdbb0830)
-        3.  [Teacher and Student](#orgb9a3a0b)
-        4.  [Admin](#org5a3da8c)
-        5.  [Cohort](#org0ebdfa6)
-        6.  [Facilitator, Master Teacher, and Master Teacher in Training](#org71bbe60)
-        7.  [Coach](#org7f81d6f)
-        8.  [Professional Development](#org4770178)
-        9.  [Participant Life Cycle](#org3eafd89)
-    3.  [Grain](#org72392b3)
-    4.  [Dimensions](#orgbd88b42)
-        1.  [Dimension Hierarchy](#org35b2136)
-        2.  [Dimension Tables and Attributes](#org3834cf2)
-        3.  [Explanation](#org0327325)
-    5.  [Measures](#orgae7e635)
-    6.  [Facts](#orgb328ac6)
-3.  [The Teacher Journey](#org67f7017)
-    1.  [The Timespan of a Teacher Journey](#org937deec)
-    2.  [Communication Plan](#org04a4bfe)
-        1.  [First Contact](#org0fad234)
-        2.  [Contacts](#org8698df8)
-        3.  [Preworkshop Intake Data](#org1c6f9e2)
-        4.  [Intake data](#orgdc81c2c)
-    3.  [On-going Support and Monitoring](#orgb498754)
-    4.  [The Journey to Master Teacher](#org82e2d14)
-4.  [Custom Data Types](#org903a2ac)
-    1.  [Enrollment Roles](#orge39f170)
-    2.  [Race and Ethnicity](#org0360a14)
-    3.  [Gender](#org342f59e)
-    4.  [License](#orgf2676a3)
-    5.  [Organization Types](#org11a9dec)
-    6.  [Subjects Taught](#org38f91c8)
-    7.  [Grades Taught](#org3f13575)
-    8.  [Event Formats](#orgbc9d329)
-    9.  [Event Types](#org6c38b9f)
-    10. [Curricula](#orga7a4f7a)
-5.  [Core Entity (Primary Dimension) Tables](#org1b1b73e)
-    1.  [Contacts](#org2066ef8)
-    2.  [Users](#org2016988)
-    3.  [Events](#org09cd825)
-    4.  [Organizations](#orgcb6cb15)
-    5.  [Assessment Instruments](#org73ce3d7)
-    6.  [Feedback Instruments](#orgb9b6df7)
-    7.  [Intake Instruments](#org0706c13)
-6.  [Attribute (Derived) Tables](#org59573d1)
-    1.  [Locations](#orga6d5de2)
-    2.  [Licenses](#orgd3d0939)
-    3.  [Schools](#orgf2aa406)
-    4.  [Districts](#org2b5a4ec)
-    5.  [Roles](#org39cfeeb)
-    6.  [Textbooks](#orgaa3f0fb)
-7.  [Relationship Tables](#org44ba1a9)
-    1.  [Internal and external roles](#org0dbbc31)
-    2.  [User-Event Roles (Enrollments)](#org4f63257)
-    3.  [User-Organization Roles (OrgRoles)](#org850456c)
-    4.  [User-Organization Roles (UserOrganizationRoles)](#orgc549c2c)
-    5.  [Comments](#org9387784)
-    6.  [User-Event-Attendance (Attendance)](#org72c4eee)
-    7.  [Contracts](#orgecb6dc7)
-    8.  [Coaching](#org14c5a2c)
-    9.  [Assessment Instrument Data](#orga653c9c)
+1.  [Introduction](#org547b21a)
+    1.  [This file](#org8f8715a)
+    2.  [Bootstrap](#orgd7916c7)
+    3.  [Goals](#orgad88a8f)
+    4.  [Reporting Needs](#org6635b64)
+        1.  [Partners](#org20ed22b)
+        2.  [Internal analysis](#orgc6ca9b9)
+2.  [Data Model](#org6f49488)
+    1.  [Business requirements and relationships between them:](#org78be73b)
+        1.  [Products and Services](#org681ecd2)
+        2.  [Reporting](#orgcfe4607)
+        3.  [Analysis](#orgb607c29)
+    2.  [Definitions](#orgedd6d1c)
+        1.  [End Users](#org1930651)
+        2.  [Teacher and Student](#org7e914f7)
+        3.  [Admin](#org02bbe77)
+        4.  [Cohort](#org5a954f1)
+        5.  [Facilitator, Master Teacher, and Master Teacher in Training](#org2976289)
+        6.  [Coach](#org04f4bfd)
+        7.  [Professional Development](#orged1b466)
+        8.  [Participant Life Cycle](#org551ea47)
+    3.  [Grain](#org40d992e)
+    4.  [Dimensions](#org107b56b)
+        1.  [Dimension Hierarchy](#org72bf8b2)
+        2.  [Dimension Tables and Attributes](#orgf30c6fb)
+        3.  [Explanation](#org83221be)
+    5.  [Measures](#org833bae3)
+    6.  [Facts](#org805658f)
+3.  [The Teacher Journey](#orgd612c42)
+    1.  [The Bootstrap Participant Landscape](#orgc30c49a)
+    2.  [The Timespan of a Teacher Journey](#org255d1c5)
+    3.  [Milestones](#org34d7a4d)
+        1.  [Year 1](#orgb870793)
+        2.  [Year 2](#org9f64c21)
+        3.  [Year 3](#org1ab2ff8)
+    4.  [Communication Plan](#org35015fe)
+        1.  [First Contact](#org4f229de)
+        2.  [Contacts](#orgd2f49aa)
+        3.  [Preworkshop Intake Data](#org460fb89)
+        4.  [Intake data](#org186a9a9)
+    5.  [On-going Support and Monitoring](#org5289fcb)
+    6.  [The Journey to Master Teacher](#org7ca69a9)
+4.  [Custom Data Types](#org1ca4072)
+    1.  [Enrollment Roles](#org42a9fc6)
+    2.  [Race and Ethnicity](#orgffa350e)
+    3.  [Gender](#org033b19c)
+    4.  [License](#orgab45902)
+    5.  [Organization Types](#orgd08c2c7)
+        1.  [What are the organization types we interact with?](#org5ee3b29)
+    6.  [Subjects Taught](#orge6913fd)
+    7.  [Grades Taught](#org1400782)
+    8.  [Event Formats](#org7ce30da)
+    9.  [Event Types](#orgd9bb206)
+    10. [Curricula](#org2755c40)
+5.  [Core Entity (Primary Dimension) Tables](#org7069355)
+    1.  [Introduction](#org29422e0)
+    2.  [Contacts](#org2c851fd)
+    3.  [Users](#org228c5cf)
+    4.  [Events](#org5748d77)
+    5.  [Organizations](#org86255a3)
+    6.  [Assessment Instruments](#orge2ca0da)
+    7.  [Feedback Instruments](#org4322ead)
+    8.  [Intake Instruments](#org2cad11e)
+6.  [Attribute (Derived) Tables](#orgd6a6bcc)
+    1.  [Locations](#orgb4a8650)
+    2.  [Licenses](#org30fc442)
+    3.  [Schools](#orge8390c2)
+    4.  [Districts](#org225c6fd)
+    5.  [Roles](#orgddbabb8)
+    6.  [Textbooks](#orga50dcd5)
+7.  [Relationship Tables](#org5d7ff2a)
+    1.  [Internal and external roles](#org64fa174)
+    2.  [User-Event Roles (Enrollments)](#org63e323d)
+    3.  [User-Organization Roles (OrgRoles)](#orge6973bb)
+    4.  [User-Organization Roles (UserOrganizationRoles)](#org2d3f1bf)
+    5.  [Comments](#org2551942)
+    6.  [User-Event-Attendance (Attendance)](#orgfc1eaae)
+    7.  [Contracts](#org46e8dd0)
+    8.  [Coaching](#orgebd7fee)
+    9.  [Assessment Instrument Data](#orgb748af4)
 
 
 
-<a id="orgc259242"></a>
+<a id="org547b21a"></a>
 
 # Introduction
 
 
-<a id="org0a72aec"></a>
+<a id="org8f8715a"></a>
 
 ## This file
 
@@ -93,7 +99,7 @@ tracking. This is a literate file written in Orgmode and tangled using
 org-babel.
 
 
-<a id="orgda6924e"></a>
+<a id="orgd7916c7"></a>
 
 ## Bootstrap
 
@@ -105,7 +111,7 @@ novice learners until they can confidently implement Bootstrap
 curriculum in their classrooms.
 
 
-<a id="orgdfefe1f"></a>
+<a id="orgad88a8f"></a>
 
 ## Goals
 
@@ -145,12 +151,12 @@ Things to change about on-going support.
 Quality assurance 
 
 
-<a id="orgb6d6c46"></a>
+<a id="org6635b64"></a>
 
 ## Reporting Needs
 
 
-<a id="org7c54ad8"></a>
+<a id="org20ed22b"></a>
 
 ### Partners
 
@@ -162,7 +168,7 @@ Reports for partners include
 -   implementation reports
 
 
-<a id="org16b291d"></a>
+<a id="orgc6ca9b9"></a>
 
 ### Internal analysis
 
@@ -172,17 +178,17 @@ Reports for partners include
 -   Teaching context vs implementation
 
 
-<a id="org3d62e25"></a>
+<a id="org6f49488"></a>
 
 # Data Model
 
 
-<a id="orgb6e4d5f"></a>
+<a id="org78be73b"></a>
 
 ## Business requirements and relationships between them:
 
 
-<a id="org5d73f2f"></a>
+<a id="org681ecd2"></a>
 
 ### Products and Services
 
@@ -219,7 +225,7 @@ curriculum becomes better suited to the needs of teachers and student
 achievement. 
 
 
-<a id="orgeaeb95c"></a>
+<a id="orgcfe4607"></a>
 
 ### Reporting
 
@@ -244,7 +250,7 @@ core subjects such as Algebra.
 4.  Standardized Achievement Reports
 
 
-<a id="org5b17a63"></a>
+<a id="orgb607c29"></a>
 
 ### Analysis
 
@@ -256,36 +262,41 @@ core subjects such as Algebra.
     -   Training Change vs Confidence
     -   Facilitator or Event vs Confidence
 
+3.  Factors toward implementation
 
-<a id="orgf0797cd"></a>
+4.  Cohort attendance reports
+
+5.  
+
+
+<a id="orgedd6d1c"></a>
 
 ## Definitions
 
 
-<a id="org66dbd5f"></a>
+<a id="org1930651"></a>
 
-### Curriculum End User
+### End Users
 
-The end users of Bootstrap curriculum are students, who will be using tools like
-the Pyret or CODAP to build projects.
+1.  Curriculum End User
+
+    The end users of Bootstrap curriculum are students, who will be using tools like
+    the Pyret or CODAP to build projects.
+
+2.  Training End User
+
+    The end users of Bootsrap trainings are
+    teachers. In most cases the person in the chair is
+    a teacher, who will bring the training, pedagogy,
+    and curriculum back to students in their
+    classroom.
+    
+    Sometimes the person in the chair works alongside teachers and will take the
+    learning from Bootstrap back to their teachers in their own professional
+    enrichment setting.
 
 
-<a id="orgdbb0830"></a>
-
-### Training End User
-
-The end users of Bootsrap trainings are
-teachers. In most cases the person in the chair is
-a teacher, who will bring the training, pedagogy,
-and curriculum back to students in their
-classroom.
-
-Sometimes the person in the chair works alongside teachers and will take the
-learning from Bootstrap back to their teachers in their own professional
-enrichment setting.
-
-
-<a id="orgb9a3a0b"></a>
+<a id="org7e914f7"></a>
 
 ### Teacher and Student
 
@@ -364,7 +375,7 @@ deployment by the teacher.
 Teacher learning &#x2026;
 
 
-<a id="org5a3da8c"></a>
+<a id="org02bbe77"></a>
 
 ### Admin
 
@@ -373,7 +384,7 @@ organization are the admins of the contracted event. Admins receive
 reporting and communication about their cohort.
 
 
-<a id="org0ebdfa6"></a>
+<a id="org5a954f1"></a>
 
 ### Cohort
 
@@ -381,7 +392,7 @@ A cohort is a group of teachers supported by a particular
 contract. Cohorts begin with a training event and a certain date. 
 
 
-<a id="org71bbe60"></a>
+<a id="org2976289"></a>
 
 ### Facilitator, Master Teacher, and Master Teacher in Training
 
@@ -390,7 +401,7 @@ facilitator is the primary point person for training participants
 during and immediately after the training event.
 
 
-<a id="org7f81d6f"></a>
+<a id="org04f4bfd"></a>
 
 ### Coach
 
@@ -400,7 +411,7 @@ the questions and needs of teachers in the process of using Bootstrap
 curriculum in their classrooms.
 
 
-<a id="org4770178"></a>
+<a id="orged1b466"></a>
 
 ### Professional Development
 
@@ -410,7 +421,7 @@ events are trained as both student and teacher. They must understand
 the curriculum and the pedagogy behind key point in the curriculum.
 
 
-<a id="org3eafd89"></a>
+<a id="org551ea47"></a>
 
 ### Participant Life Cycle
 
@@ -423,7 +434,7 @@ the curriculum and the pedagogy behind key point in the curriculum.
 -   Master Teacher
 
 
-<a id="org72392b3"></a>
+<a id="org40d992e"></a>
 
 ## Grain
 
@@ -435,12 +446,12 @@ the classroom. Pre and post test student data stops at the teacher level. We do
 not track students as entities or store any individual student data.
 
 
-<a id="orgbd88b42"></a>
+<a id="org107b56b"></a>
 
 ## Dimensions
 
 
-<a id="org35b2136"></a>
+<a id="org72bf8b2"></a>
 
 ### Dimension Hierarchy
 
@@ -461,14 +472,16 @@ not track students as entities or store any individual student data.
             -   Participant
             -   Admin
             -   Master teacher in training
+            -   Ambassador #not really an enrollment role
 -   States
     -   Districts
         -   Schools
             -   Classes
                 -   Teachers
+                    -   Implementations
 
 
-<a id="org3834cf2"></a>
+<a id="orgf30c6fb"></a>
 
 ### Dimension Tables and Attributes
 
@@ -550,7 +563,7 @@ not track students as entities or store any individual student data.
 -   Standard
 
 
-<a id="org0327325"></a>
+<a id="org83221be"></a>
 
 ### Explanation
 
@@ -559,7 +572,7 @@ organizations build contracts with Bootstrap to train cohorts of educators. A
 partner organization could also be a district and referenced with a foreign key.
 
 
-<a id="orgae7e635"></a>
+<a id="org833bae3"></a>
 
 ## Measures
 
@@ -571,7 +584,7 @@ partner organization could also be a district and referenced with a foreign key.
 -   Pathway
 
 
-<a id="orgb328ac6"></a>
+<a id="org805658f"></a>
 
 ## Facts
 
@@ -614,20 +627,28 @@ partner organization could also be a district and referenced with a foreign key.
     -   date
 
 
-<a id="org67f7017"></a>
+<a id="orgd612c42"></a>
 
 # The Teacher Journey
 
-Professional educators find themselves in a Bootsrap training from a variety of
-pathways. Bootstrap curriculum is freely available on the internet. Bootstrap
-has trained teachers across the country for many years and teachers generally
-love their experience, hence word of mouth brings teachers in. Partner
-organizations build training contracts for cohorts of teachers for a variety of
-reasons, which lead to participants with a range of motivation and contextual
-appropriateness.
+
+<a id="orgc30c49a"></a>
+
+## The Bootstrap Participant Landscape
+
+Professional educators find themselves in a Bootsrap training from a
+variety of pathways. Typically, partner organizations build training
+contracts for cohorts of teachers, which leads to participants with a
+range of motivations and prior knowledge.
+
+Bootstrap curriculum is freely available on the internet. Teachers
+attend trainings (and have done so for many years), and those who have
+been trained contiue to expose others. Teachers who attend Bootstrap
+trainings generally love their experience, hence word of mouth brings
+teachers in.
 
 
-<a id="org937deec"></a>
+<a id="org255d1c5"></a>
 
 ## The Timespan of a Teacher Journey
 
@@ -645,12 +666,32 @@ contact. In the future we hope to have users log into a website where we can
 track lesson plan usage and custom pathways.
 
 
-<a id="org04a4bfe"></a>
+<a id="org34d7a4d"></a>
+
+## Milestones
+
+
+<a id="orgb870793"></a>
+
+### Year 1
+
+
+<a id="org9f64c21"></a>
+
+### Year 2
+
+
+<a id="org1ab2ff8"></a>
+
+### Year 3
+
+
+<a id="org35015fe"></a>
 
 ## Communication Plan
 
 
-<a id="org0fad234"></a>
+<a id="org4f229de"></a>
 
 ### First Contact
 
@@ -660,7 +701,7 @@ media. Formal contacts are typically enrolled in a workshop; the first they hear
 from us would be a formal welcome to a training event with logistic information.
 
 
-<a id="org8698df8"></a>
+<a id="orgd2f49aa"></a>
 
 ### Contacts
 
@@ -675,7 +716,7 @@ here.
     );
 
 
-<a id="org1c6f9e2"></a>
+<a id="org460fb89"></a>
 
 ### Preworkshop Intake Data
 
@@ -704,7 +745,7 @@ those classes, which may be different for each class. Hence, we actually want a
 siimplified class program for each of our participants.
 
 
-<a id="orgdc81c2c"></a>
+<a id="org186a9a9"></a>
 
 ### Intake data
 
@@ -726,17 +767,17 @@ siimplified class program for each of our participants.
         );
 
 
-<a id="orgb498754"></a>
+<a id="org5289fcb"></a>
 
 ## On-going Support and Monitoring
 
 
-<a id="org82e2d14"></a>
+<a id="org7ca69a9"></a>
 
 ## The Journey to Master Teacher
 
 
-<a id="org903a2ac"></a>
+<a id="org1ca4072"></a>
 
 # Custom Data Types
 
@@ -747,7 +788,7 @@ sets that we know already and that aren't likely to change, such as race, and
 there are longer sets like the textbooks that might continue to grow.
 
 
-<a id="orge39f170"></a>
+<a id="org42a9fc6"></a>
 
 ## Enrollment Roles
 
@@ -762,7 +803,7 @@ enrolled to an event before a facilitator has first been enrolled.
     'admin', 'master teacher in training' );
 
 
-<a id="org0360a14"></a>
+<a id="orgffa350e"></a>
 
 ## Race and Ethnicity
 
@@ -774,7 +815,7 @@ enrolled to an event before a facilitator has first been enrolled.
     Latino' );
 
 
-<a id="org342f59e"></a>
+<a id="org033b19c"></a>
 
 ## Gender
 
@@ -782,7 +823,7 @@ enrolled to an event before a facilitator has first been enrolled.
     these');
 
 
-<a id="orgf2676a3"></a>
+<a id="orgab45902"></a>
 
 ## License
 
@@ -794,15 +835,22 @@ enrolled to an event before a facilitator has first been enrolled.
       license varchar(255), licenseState varchar(255) );
 
 
-<a id="org11a9dec"></a>
+<a id="orgd08c2c7"></a>
 
 ## Organization Types
+
+
+<a id="org5ee3b29"></a>
+
+### TODO What are the organization types we interact with?
+
+Is this redundant from Insightly?
 
     CREATE TYPE orgTypes AS ENUM ('Non-profit', 'For-profit', 'School',
     'District', 'State Government Office', 'Foundation');
 
 
-<a id="org38f91c8"></a>
+<a id="orge6913fd"></a>
 
 ## Subjects Taught
 
@@ -810,7 +858,7 @@ enrolled to an event before a facilitator has first been enrolled.
     'Biology' );
 
 
-<a id="org3f13575"></a>
+<a id="org1400782"></a>
 
 ## Grades Taught
 
@@ -819,7 +867,7 @@ enrolled to an event before a facilitator has first been enrolled.
     '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th');
 
 
-<a id="orgbc9d329"></a>
+<a id="org7ce30da"></a>
 
 ## Event Formats
 
@@ -828,7 +876,7 @@ enrolled to an event before a facilitator has first been enrolled.
     'One-day', '2-hour' );
 
 
-<a id="org6c38b9f"></a>
+<a id="orgd9bb206"></a>
 
 ## Event Types
 
@@ -836,7 +884,7 @@ enrolled to an event before a facilitator has first been enrolled.
     'Academic Year Workshop' );
 
 
-<a id="orga7a4f7a"></a>
+<a id="org2755c40"></a>
 
 ## Curricula
 
@@ -844,16 +892,21 @@ enrolled to an event before a facilitator has first been enrolled.
     'Algebra 2', 'Early Math', 'Data Science (CODAP)' );
 
 
-<a id="org1b1b73e"></a>
+<a id="org7069355"></a>
 
 # Core Entity (Primary Dimension) Tables
+
+
+<a id="org29422e0"></a>
+
+## Introduction
 
 These tables are descriptive data elements that make up the relationships in our
 system. They represent everything we know about the people, organizations, and
 events in our facilitation ecosystem.
 
 
-<a id="org2066ef8"></a>
+<a id="org2c851fd"></a>
 
 ## Contacts
 
@@ -870,7 +923,7 @@ answer keys, or joined Discourse.
       emailProfessional varchar(255) );
 
 
-<a id="org2016988"></a>
+<a id="org228c5cf"></a>
 
 ## Users
 
@@ -887,7 +940,7 @@ professional questionaire.
       gender (genderID), race varchar(255) REFERENCES race (raceID) );
 
 
-<a id="org09cd825"></a>
+<a id="org5748d77"></a>
 
 ## Events
 
@@ -902,7 +955,7 @@ the conceptual understanding and implementation of Bootstrap curriculum.
       (formatID), );
 
 
-<a id="orgcb6cb15"></a>
+<a id="org86255a3"></a>
 
 ## Organizations
 
@@ -920,54 +973,54 @@ individuals, or Bootstrap itself.
     orgState varchar(255) );
 
 
-<a id="org73ce3d7"></a>
+<a id="orge2ca0da"></a>
 
 ## Assessment Instruments
 
     CREATE TABLE assessments ( assessmentID varchar(255) );
 
 
-<a id="orgb9b6df7"></a>
+<a id="org4322ead"></a>
 
 ## Feedback Instruments
 
 
-<a id="org0706c13"></a>
+<a id="org2cad11e"></a>
 
 ## Intake Instruments
 
 
-<a id="org59573d1"></a>
+<a id="orgd6a6bcc"></a>
 
 # Attribute (Derived) Tables
 
 
-<a id="orga6d5de2"></a>
+<a id="orgb4a8650"></a>
 
 ## Locations
 
 
-<a id="orgd3d0939"></a>
+<a id="org30fc442"></a>
 
 ## Licenses
 
 
-<a id="orgf2aa406"></a>
+<a id="orge8390c2"></a>
 
 ## Schools
 
 
-<a id="org2b5a4ec"></a>
+<a id="org225c6fd"></a>
 
 ## Districts
 
 
-<a id="org39cfeeb"></a>
+<a id="orgddbabb8"></a>
 
 ## Roles
 
 
-<a id="orgaa3f0fb"></a>
+<a id="orga50dcd5"></a>
 
 ## Textbooks
 
@@ -975,12 +1028,12 @@ individuals, or Bootstrap itself.
       varchar(255), textBookPublisher varchar(255) );
 
 
-<a id="org44ba1a9"></a>
+<a id="org5d7ff2a"></a>
 
 # Relationship Tables
 
 
-<a id="org0dbbc31"></a>
+<a id="org64fa174"></a>
 
 ## Internal and external roles
 
@@ -989,7 +1042,7 @@ relative to events are Facilitator, Participant, Admin, and Master Teacher in
 Training.
 
 
-<a id="org4f63257"></a>
+<a id="org63e323d"></a>
 
 ## User-Event Roles (Enrollments)
 
@@ -1000,7 +1053,7 @@ Training.
       varchar(255) REFERENCES Users (UserID) );
 
 
-<a id="org850456c"></a>
+<a id="orge6973bb"></a>
 
 ## User-Organization Roles (OrgRoles)
 
@@ -1012,7 +1065,7 @@ Training.
       varchar(255) REFERENCES Users (UserID) );
 
 
-<a id="orgc549c2c"></a>
+<a id="org2d3f1bf"></a>
 
 ## User-Organization Roles (UserOrganizationRoles)
 
@@ -1023,7 +1076,7 @@ Training.
     );
 
 
-<a id="org9387784"></a>
+<a id="org2551942"></a>
 
 ## Comments
 
@@ -1035,7 +1088,7 @@ Training.
     );
 
 
-<a id="org72c4eee"></a>
+<a id="orgfc1eaae"></a>
 
 ## User-Event-Attendance (Attendance)
 
@@ -1047,7 +1100,7 @@ Training.
     );
 
 
-<a id="orgecb6dc7"></a>
+<a id="org46e8dd0"></a>
 
 ## Contracts
 
@@ -1059,7 +1112,7 @@ Bootsrap that lead to the create
       Events (EventID) );
 
 
-<a id="org14c5a2c"></a>
+<a id="orgebd7fee"></a>
 
 ## Coaching
 
@@ -1076,7 +1129,7 @@ same calendar year.
     found in this table has -- coaching included in their contract );
 
 
-<a id="orga653c9c"></a>
+<a id="orgb748af4"></a>
 
 ## Assessment Instrument Data
 
