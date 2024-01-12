@@ -423,107 +423,199 @@ partner organization could also be a district and referenced with a foreign key.
   - rater
   - date
 
-* The Teacher Journey
-** The Bootstrap Participant Landscape
-Professional educators find themselves in a Bootsrap training from a
-variety of pathways. Typically, partner organizations build training
-contracts for cohorts of teachers, which leads to participants with a
-range of motivations and prior knowledge.
-
-Bootstrap curriculum is freely available on the internet. Teachers
-attend trainings (and have done so for many years), and those who have
-been trained contiue to expose others. Teachers who attend Bootstrap
-trainings generally love their experience, hence word of mouth brings
-teachers in.
-
-
-** The Timespan of a Teacher Journey
-
-How long does a teacher receive support and monitoring? Educators can
-attend multiple workshops. Does the clock reset? Do we track cohort
-contracts, which may have different time lengths for continued
-support? Do we continue to assess teaching confidence and strength of
-implementation and offer support as long as the teacher is using
-Bootstrap curricula? What is the average or typical journey? Are their
-logical subsets that may have different typical journeys?
-
-Analysis of our current implementers will help. We have responses to the
-implementation survey. We have attendance at coaching and we have on-going
-contact. In the future we hope to have users log into a website where we can
-track lesson plan usage and custom pathways.
-
-** Milestones
-*** Year 1
-*** Year 2
-*** Year 3
-** Communication Plan
-*** First Contact
-First contact can be casual or formal. Casual contacts include requests for
-information through web forms, posting or emailing questions, and tags on social
-media. Formal contacts are typically enrolled in a workshop; the first they hear
-from us would be a formal welcome to a training event with logistic information.
-
-*** Contacts
-Contact data allows us to send a message with a
-general idea of who the person is. At minimum a
-first contact is an email address, a first and
-last name, a job title, and a what brings you
-here.
-#+begin_src sql
-      CREATE TABLE IF NOT EXISTS "contacts" ( "id" SERIAL PRIMARY KEY,
-
-  );
-#+end_src
-*** Preworkshop Intake Data
-Information prior to enrolling in a full training scenario is used to
-ensure the training is appropriate for the participant, the
-training addresses participant needs, and . So, what do we want or need to know
-about our teachers?
-
-We want to know how to contact them. We want to know two email
-addresses for each person: their school or organization based address
-and a personal or persistent address that would not change if they
-left their current position. Teachers may change schools, but they
-remain Bootstrap teachers.
-
-We want to know about their training and prior
-experience. Professional educators typically hold certification and
-licensure. Their state has typically granted and certification and
-their municipallity has licensed them to teach in the district. A
-teacher could work at an independent school and have no certification
-or licensure. A teacher could be instructing classes within their
-licensed area or outside of it.
-
-We want to know about the classes they are currently teaching and the classes
-they plan to teach next year. We want to know the subject and grade level of
-those classes, which may be different for each class. Hence, we actually want a
-siimplified class program for each of our participants.
-
-*** Intake data
-**** Teacher program
-#+begin_src sql
-  -- a class in a teachers program tells us the subject and grade level
-  where the teacher will be interacticng with students CREATE TABLE IF
-  NOT EXISTS "classes" ( "teacher_id" , "class_id" PRIMARY KEY,
-  "class_name" , "class_subject" SUBJECT, "class_gradelevel" GRADELEVEL,
-  "class_start_date" DATE, "class_end_date" DATE, CONSTRAINT
-  "fk_teacher" FOREIGN KEY ("teacher_id") REFERENCES "users" ("user_id")
-  );
-#+end_src
+** Core Entity (Primary Dimension) Tables
+** Introduction
+These tables are descriptive data elements that make up the relationships in our
+system. They represent everything we know about the people, organizations, and
+events in our facilitation ecosystem.
+** Contacts
+Anyone who has interacted with Bootstrap, who ever
+signed up for an event, even if they did not
+attend. Anyone who joined the mailing list through
+a web form, reached out directly to Bootstrap
+staff, messaged through social media, requested
+answer keys, or joined Discourse.
 
 #+begin_src sql
-  CREATE TABLE IF NOT EXISTS "certification" ( -- tracks the
-  certifications relative to state wide professional educators
-  "teacher_id" varchar(255), "cert_id" varchar(255), "state_ab"
-  varchar(2), "title" varchar(255), "subject" varchar(255), CONTSTRAINT
-  "fk_teacher" FOREIGN KEY ("teacher_id") REFERENCES "users" ("user_id")
+  CREATE TABLE contacts ( ContactID varchar(255), NameFirst
+    varchar(255), NameLast varchar(255), AltNameFirst varchar(255),
+    AltNameLast varchar(255), emailPersonal varchar(255),
+    emailProfessional varchar(255) );
+
+#+end_src
+
+** Users
+All of the individual persons who make up the
+Bootstrap event facilitation ecosystem. Users are
+required to submit a full personal and
+professional questionaire.
+
+#+begin_src sql
+  CREATE TABLE users ( userID varchar(255), contactID varchar(255)
+    REFERENCES contacts (contactID), lastName varchar(255), firstName
+    varchar(255), userAddress varchar(255), userCity varchar(255),
+    userState varchar(255), homePhone varchar(15), cellPhone
+    varchar(15), workPhone varchar(15), gender varchar(255) REFERENCES
+    gender (genderID), race varchar(255) REFERENCES race (raceID) );
+
+#+end_src
+** Events
+Bootstrap facilitates events for professional educators. These events focus on
+the conceptual understanding and implementation of Bootstrap curriculum.
+
+#+begin_src sql
+  CREATE TABLE "events" ( "event_id" varchar(255), eventName
+    varchar(255), eventDays int CONSTRAINT positive_days CHECK
+    (eventDays > 0),
+    --length in days eventType varchar(255) REFERENCES eventTypes
+    (typeID), eventFormat varchar(255) REFERENCES eventFormats
+    (formatID), );
+
+#+end_src
+
+** Organizations
+Bootstrap partners with external organizations to build contracts
+for facilitated events. Organizations can be municipal or state
+level education districts, non-profits, individual schools, private
+individuals, or Bootstrap itself.
+- State
+- Main Email
+- Type
+
+#+begin_src sql
+  --Main Tables Users, Organizations, Events CREATE TABLE organizations
+  ( orgID varchar(255), orgAddress varchar(255), orgCity varchar(255),
+  orgState varchar(255) );
+
+#+end_src
+
+** Assessment Instruments
+
+#+begin_src sql
+  CREATE TABLE assessments ( assessmentID varchar(255) );
+
+#+end_src
+
+** Feedback Instruments
+** Intake Instruments
+** Attribute (Derived) Tables
+** Locations
+** Licenses
+** Schools
+** Districts
+** Roles
+** Textbooks
+
+#+begin_src sql
+  CREATE TABLE Textbooks ( textBookID varchar(255), textBookName
+    varchar(255), textBookPublisher varchar(255) );
+
+#+end_src
+
+** TODO Communication Preferences (Opt In/Out)
+** Relationship Tables
+
+** Internal and external roles
+
+People have different relationships to our facilitated events. Current roles
+relative to events are Facilitator, Participant, Admin, and Master Teacher in
+Training.
+
+** User-Event Roles (Enrollments)
+#+begin_src sql
+
+  --Relationship Tables
+
+  CREATE TABLE enrollments ( enrollmentID varchar(255), userID
+    varchar(255) REFERENCES Users (UserID) );
+#+end_src
+** User-Organization Roles (OrgRoles)
+
+#+begin_src sql
+  CREATE TABLE orgRoles ( userID varchar(255) REFERENCES users (UserID),
+    orgID varchar(255) REFERENCES organizations (OrgID), roleID
+    varchar(255) REFERENCES roles (RoleID)
+
+  CREATE TABLE Enrollments ( EnrollmentID varchar(255), UserID
+    varchar(255) REFERENCES Users (UserID) );
+#+end_src
+
+** User-Organization Roles (UserOrganizationRoles)
+
+#+begin_src sql
+  CREATE TABLE UserOrganizationRoles ( UserID varchar(255) REFERENCES
+    Users (UserID), OrgID varchar(255) REFERENCES Organizations (OrgID),
+    RoleID varchar(255) REFERNCES Roles (RoleID)
+
   );
 
 #+end_src
-** On-going Support and Monitoring
-** The Journey to Master Teacher
 
-* Custom Data Types
+** Comments
+
+#+begin_src sql
+
+  CREATE TABLE comments ( authorUserID varchar(255), regardingUserID
+    varchar(255), commentDate varchar(255), tagUserID varchar(255),
+    commentType varchar(255)
+
+  );
+
+#+end_src
+
+
+
+** User-Event-Attendance (Attendance)
+
+#+begin_src sql
+
+  CREATE TABLE attendance ( serID varchar(255), eventID varchar(255),
+    attendanceDate Date, attendancePeriod varchar(255), attendanceValue
+    varchar(255)
+
+  );
+
+#+end_src
+
+** Contracts
+
+Organizations and individual create contracts with
+Bootsrap that lead to the create
+
+#+begin_src sql
+  CREATE TABLE Contracts ( ContractID varchar(255), OrgID varchar(255)
+    REFERENCES Organizations (OrgID), EventID varchar(255) REFERENCES
+    Events (EventID) );
+
+#+end_src
+
+** Coaching
+
+Coaching is included in some contracts. The
+coaching table is a postive entry table. Users
+present in the coaching table are invited to
+coaching sessions throughout the year. Enrollment
+in coaching is for one year and is specific to a
+curriculum. Usually you are assigned coaching for
+the curriculum in which you were trained in the
+same calendar year.
+
+#+begin_src sql
+  CREATE TABLE Coaching ( -- Coaching is a postive entry table. A user
+  found in this table has -- coaching included in their contract );
+
+#+end_src
+
+** Assessment Instrument Data
+
+#+begin_src sql
+
+  CREATE TABLE instrumentData ( instrumentDataID varchar(255), userID
+    varchar(255) REFERENCES Users (userID), submitted varchar(255)
+    timestamp with time zone, instrumentData text );
+
+#+end_src
+** Custom Data Types
 
 I'm still working out which helper collections are ENUMs.
 
@@ -626,195 +718,104 @@ Is this redundant from Insightly?
 
 #+end_src
 
-* Core Entity (Primary Dimension) Tables
-** Introduction
-These tables are descriptive data elements that make up the relationships in our
-system. They represent everything we know about the people, organizations, and
-events in our facilitation ecosystem.
-** Contacts
-Anyone who has interacted with Bootstrap, who ever
-signed up for an event, even if they did not
-attend. Anyone who joined the mailing list through
-a web form, reached out directly to Bootstrap
-staff, messaged through social media, requested
-answer keys, or joined Discourse.
+* The Teacher Journey
+** The Bootstrap Participant Landscape
+Professional educators find themselves in a Bootsrap training from a
+variety of pathways. Typically, partner organizations build training
+contracts for cohorts of teachers, which leads to participants with a
+range of motivations and prior knowledge.
 
+Bootstrap curriculum is freely available on the internet. Teachers
+attend trainings (and have done so for many years), and those who have
+been trained contiue to expose others. Teachers who attend Bootstrap
+trainings generally love their experience, hence word of mouth brings
+teachers in.
+**** TODO Add data table for how you connect to bootstrap
+This is to distinguish from the teacher added by an administrator without intrinsic interest
+
+** The Timespan of a Teacher Journey
+
+How long does a teacher receive support and monitoring? Educators can
+attend multiple workshops. Does the clock reset? Do we track cohort
+contracts, which may have different time lengths for continued
+support? Do we continue to assess teaching confidence and strength of
+implementation and offer support as long as the teacher is using
+Bootstrap curricula? What is the average or typical journey? Are their
+logical subsets that may have different typical journeys?
+
+Analysis of our current implementers will help. We have responses to the
+implementation survey. We have attendance at coaching and we have on-going
+contact. In the future we hope to have users log into a website where we can
+track lesson plan usage and custom pathways.
+
+** Milestones
+*** Year 1
+*** Year 2
+*** Year 3
+** Communication Plan
+*** First Contact
+First contact can be casual or formal. Casual contacts include requests for
+information through web forms, posting or emailing questions, and tags on social
+media. Formal contacts are typically enrolled in a workshop; the first they hear
+from us would be a formal welcome to a training event with logistic information.
+
+*** Contacts
+Contact data allows us to send a message with a
+general idea of who the person is. At minimum a
+first contact is an email address, a first and
+last name, a job title, and a what brings you
+here.
 #+begin_src sql
-  CREATE TABLE contacts ( ContactID varchar(255), NameFirst
-    varchar(255), NameLast varchar(255), AltNameFirst varchar(255),
-    AltNameLast varchar(255), emailPersonal varchar(255),
-    emailProfessional varchar(255) );
+      CREATE TABLE IF NOT EXISTS "contacts" ( "id" SERIAL PRIMARY KEY,
 
+  );
+#+end_src
+*** Preworkshop Intake Data
+Information prior to enrolling in a full training scenario is used to
+ensure the training is appropriate for the participant, the
+training addresses participant needs, and . So, what do we want or need to know
+about our teachers?
+
+We want to know how to contact them. We want to know two email
+addresses for each person: their school or organization based address
+and a personal or persistent address that would not change if they
+left their current position. Teachers may change schools, but they
+remain Bootstrap teachers.
+
+We want to know about their training and prior
+experience. Professional educators typically hold certification and
+licensure. Their state has typically granted and certification and
+their municipallity has licensed them to teach in the district. A
+teacher could work at an independent school and have no certification
+or licensure. A teacher could be instructing classes within their
+licensed area or outside of it.
+
+We want to know about the classes they are currently teaching and the classes
+they plan to teach next year. We want to know the subject and grade level of
+those classes, which may be different for each class. Hence, we actually want a
+siimplified class program for each of our participants.
+
+*** Intake data
+**** Teacher program
+#+begin_src sql
+  -- a class in a teachers program tells us the subject and grade level
+  where the teacher will be interacticng with students CREATE TABLE IF
+  NOT EXISTS "classes" ( "teacher_id" , "class_id" PRIMARY KEY,
+  "class_name" , "class_subject" SUBJECT, "class_gradelevel" GRADELEVEL,
+  "class_start_date" DATE, "class_end_date" DATE, CONSTRAINT
+  "fk_teacher" FOREIGN KEY ("teacher_id") REFERENCES "users" ("user_id")
+  );
 #+end_src
 
-** Users
-All of the individual persons who make up the
-Bootstrap event facilitation ecosystem. Users are
-required to submit a full personal and
-professional questionaire.
-
 #+begin_src sql
-  CREATE TABLE users ( userID varchar(255), contactID varchar(255)
-    REFERENCES contacts (contactID), lastName varchar(255), firstName
-    varchar(255), userAddress varchar(255), userCity varchar(255),
-    userState varchar(255), homePhone varchar(15), cellPhone
-    varchar(15), workPhone varchar(15), gender varchar(255) REFERENCES
-    gender (genderID), race varchar(255) REFERENCES race (raceID) );
-
-#+end_src
-** Events
-Bootstrap facilitates events for professional educators. These events focus on
-the conceptual understanding and implementation of Bootstrap curriculum.
-
-#+begin_src sql
-  CREATE TABLE "events" ( "event_id" varchar(255), eventName
-    varchar(255), eventDays int CONSTRAINT positive_days CHECK
-    (eventDays > 0),
-    --length in days eventType varchar(255) REFERENCES eventTypes
-    (typeID), eventFormat varchar(255) REFERENCES eventFormats
-    (formatID), );
-
-#+end_src
-
-** Organizations
-Bootstrap partners with external organizations to build contracts
-for facilitated events. Organizations can be municipal or state
-level education districts, non-profits, individual schools, private
-individuals, or Bootstrap itself.
-- State
-- Main Email
-- Type
-
-#+begin_src sql
-  --Main Tables Users, Organizations, Events CREATE TABLE organizations
-  ( orgID varchar(255), orgAddress varchar(255), orgCity varchar(255),
-  orgState varchar(255) );
-
-#+end_src
-
-** Assessment Instruments
-
-#+begin_src sql
-  CREATE TABLE assessments ( assessmentID varchar(255) );
-
-#+end_src
-
-** Feedback Instruments
-** Intake Instruments
-* Attribute (Derived) Tables
-** Locations
-** Licenses
-** Schools
-** Districts
-** Roles
-** Textbooks
-
-#+begin_src sql
-  CREATE TABLE Textbooks ( textBookID varchar(255), textBookName
-    varchar(255), textBookPublisher varchar(255) );
-
-#+end_src
-
-* Relationship Tables
-
-** Internal and external roles
-
-People have different relationships to our facilitated events. Current roles
-relative to events are Facilitator, Participant, Admin, and Master Teacher in
-Training.
-
-** User-Event Roles (Enrollments)
-#+begin_src sql
-
-  --Relationship Tables
-
-  CREATE TABLE enrollments ( enrollmentID varchar(255), userID
-    varchar(255) REFERENCES Users (UserID) );
-#+end_src
-** User-Organization Roles (OrgRoles)
-
-#+begin_src sql
-  CREATE TABLE orgRoles ( userID varchar(255) REFERENCES users (UserID),
-    orgID varchar(255) REFERENCES organizations (OrgID), roleID
-    varchar(255) REFERENCES roles (RoleID)
-
-  CREATE TABLE Enrollments ( EnrollmentID varchar(255), UserID
-    varchar(255) REFERENCES Users (UserID) );
-#+end_src
-
-** User-Organization Roles (UserOrganizationRoles)
-
-#+begin_src sql
-  CREATE TABLE UserOrganizationRoles ( UserID varchar(255) REFERENCES
-    Users (UserID), OrgID varchar(255) REFERENCES Organizations (OrgID),
-    RoleID varchar(255) REFERNCES Roles (RoleID)
-
+  CREATE TABLE IF NOT EXISTS "certification" ( -- tracks the
+  certifications relative to state wide professional educators
+  "teacher_id" varchar(255), "cert_id" varchar(255), "state_ab"
+  varchar(2), "title" varchar(255), "subject" varchar(255), CONTSTRAINT
+  "fk_teacher" FOREIGN KEY ("teacher_id") REFERENCES "users" ("user_id")
   );
 
 #+end_src
+** On-going Support and Monitoring
+** The Journey to Master Teacher
 
-** Comments
-
-#+begin_src sql
-
-  CREATE TABLE comments ( authorUserID varchar(255), regardingUserID
-    varchar(255), commentDate varchar(255), tagUserID varchar(255),
-    commentType varchar(255)
-
-  );
-
-#+end_src
-
-
-
-
-** User-Event-Attendance (Attendance)
-
-#+begin_src sql
-
-  CREATE TABLE attendance ( serID varchar(255), eventID varchar(255),
-    attendanceDate Date, attendancePeriod varchar(255), attendanceValue
-    varchar(255)
-
-  );
-
-#+end_src
-
-** Contracts
-
-Organizations and individual create contracts with
-Bootsrap that lead to the create
-
-#+begin_src sql
-  CREATE TABLE Contracts ( ContractID varchar(255), OrgID varchar(255)
-    REFERENCES Organizations (OrgID), EventID varchar(255) REFERENCES
-    Events (EventID) );
-
-#+end_src
-
-** Coaching
-
-Coaching is included in some contracts. The
-coaching table is a postive entry table. Users
-present in the coaching table are invited to
-coaching sessions throughout the year. Enrollment
-in coaching is for one year and is specific to a
-curriculum. Usually you are assigned coaching for
-the curriculum in which you were trained in the
-same calendar year.
-
-#+begin_src sql
-  CREATE TABLE Coaching ( -- Coaching is a postive entry table. A user
-  found in this table has -- coaching included in their contract );
-
-#+end_src
-
-** Assessment Instrument Data
-
-#+begin_src sql
-
-  CREATE TABLE instrumentData ( instrumentDataID varchar(255), userID
-    varchar(255) REFERENCES Users (userID), submitted varchar(255)
-    timestamp with time zone, instrumentData text );
-
-#+end_src
