@@ -11,7 +11,7 @@ This is the data definition and architecture expressed in POSTGRESQL
 for Bootstrap facilitated training events and participant
 tracking. This is a literate file written in Orgmode and tangled using
 org-babel.
-
+*** What am I doing?
 ** Bootstrap
 
 Bootstrap develops curriculum and facilitates training for professional
@@ -21,60 +21,7 @@ virtual learning sessions. Bootstrap seeks to support teacher from
 novice learners until they can confidently implement Bootstrap
 curriculum in their classrooms.
 
-** Goals
-
-This data models primary goal is to track and analyze the efficacy
-of learning supports. Bootstrap hopes to continually improve the
-learning model for professional educators. Support for educators are
-successful if the educator feels confident to use Bootstrap curriculum
-with their students. Bootstrap further measures success through the
-achievement of students who received Bootstrap curriculum.
-
-Many factors affect
-
-Good reasons vs within our control
-
-Implementers vs non-implementers within teachers.
-
-Teachers have a role to their organization that places them in front
-of students for the majority of their day.
-
-Administrators have a role to their organization that places them
-supporting teachers for the majority of their day.
-
-These relationships to the outside organization are orthogonal to the
-relationships to Bootstrap trainings. However, the relationship to the
-outside organization affects how the 
-
-This data model seeks to capture the changing roles educators have to their external
-organizations and to their students.  and how that affects their relationship
-with us.
-
-Things to change about the curriculum.
-
-Things to change about training.
-
-Things to change about on-going support.
-
-Quality assurance 
-
-** Reporting Needs
-
-*** Partners
-Reports for partners include
-- a teacher level attendance report
-- a teacher level proficiency report
-- cohort aggregations
-- implementation reports
-*** Internal analysis
-- Interventions over time
-- Teacher retention
-- Types of facilitation experience vs implementation
-- Teaching context vs implementation
-  
-* Data Model
-** Business requirements and relationships between them:
-*** Products and Services
+** Products and Services
 Bootstrap develops curriculum for k-12 classrooms and trains teachers
 to use it with their students. Bootstrap trainings prepare teachers to
 deliver the curriculum such that their students can demonstrate
@@ -107,7 +54,80 @@ curriculum, training, and on-going teacher supports. Over time the trainings and
 curriculum becomes better suited to the needs of teachers and student
 achievement. 
 
-*** Reporting
+** Goals
+
+This data models primary goal is to track and analyze the efficacy of
+learning supports created by Bootstrap: curriculum materials and
+facilitated trainings events.  Bootstrap hopes to continually improve
+the learning model for professional educators. Support for educators
+are successful if the educator feels confident enough to actually
+bring a set of Bootstrap lessons into their classrooms. Bootstrap
+further measures success through the achievement of students who
+received Bootstrap curriculum.
+
+** Non-goals
+
+** Reporting Needs
+
+** Analysis
+*** Appropriateness (Fitness) of Training to Participant
+- Participant computing background vs implementation
+- Participant subject/license vs implementation
+- Which facilitation techniques are most effective?
+- Which training formats are most appropriate for which participants?
+- How do we track the impact of non-teacher participants? Coaches who may be training others, should we attempt to get those names?
+- How does years of teaching experience affect implementation after training?
+- Which interventions have led to training more teachers to reach more students?
+- Which curriculum is most effective at training teachers to implement? 
+*** Confidence, Implementation, Growth
+*** Students
+- How many students are we reaching?
+  - How accurate can we get this number?
+  - How can we define a range of students reached?
+  - Can we define an error within which we know a student is reached?
+  - How many students are we reaching per lesson?
+*** Correlation Questions
+**** Curriculum Change vs Teacher Confidence
+Curriculum changes aim to increase efficacy of lesson materials. More teachers would be able to navigate more quickly and more lessons would be delivered to more students.
+- Has a given curriculum change increased the efficacy of the lesson materials in a measurable way?
+- Training Change vs Confidence
+- Facilitator or Event vs Confidence
+*** Factors toward implementation
+In the United States teachers are the primary driver of what lessons
+get taught in their classrooms. However, a wide range of mandates of a
+variety of strengths and types are placed upon teachers as they make
+curricular decisions.  Teachers using Bootstrap curriculum in their
+classroom are influenced by many factors. In some cases teachers are
+required to teach certain lessons. In other cases teachers are
+choosing to use Bootstrap lessons, who otherwise are not required.
+Using Bootstrap can be seen on a teacher-choice spectrum. We seek to
+know as much about the motivations behind teachers bringing Bootstrap
+into their classrooms as possible.  Other factors affecting teachers
+bringing Bootstrap into the classroom include:
+- influence of colleagues
+- desire to learn or grow themselves
+- desire to increase student motivation
+- 
+**** Compelled Implementation
+Teachers may have mandates that compell them to use a certain
+curriculum. Mandates placed on teachers vary in strength, how much of
+the teacher's work is prescribed and type, which aspects of the
+teacher's work are constrained. These mandates include:
+- textbook requirements
+- online learning platform and gradebook requirements
+- technology or computer science requirements (these may include a number of hours or certain standards)
+- or, full curriculum mandates
+**** Free choice implementation
+Some teachers have a great deal of freedom in what or how they teach,
+while others have only some freedom of choice.  Certain subject areas
+are more prescribed than others.  Standardized testing has a large
+impact on teacher freedom even when the teacher is not under a direct
+mandate. The phrase "teaching to the test" describes the common
+phenomenon of modeling curriculum based on the end of the year
+examinations. Curriculum that does not look like the exam is less
+likely to be used. This phenomenon is more likely to be found where
+student achievement on the exam is not as predictably guaranteed.
+** Reporting
 Bootstrap partners are in the business of supporting student
 learning. Additionally partners may have special interest in a particular
 student grouping.
@@ -120,25 +140,17 @@ Partners are interested in how well the curriculum supports student
 achievement. Bootstrap's niche is supporting student learning in traditional
 core subjects such as Algebra.
 
-**** Attendance Reports
-
-**** Pre Post Diagnostic Results
-
-**** Implementation Reports
-
-**** Standardized Achievement Reports
-
-*** Analysis
-
-**** Confidence, Implementation, Growth
-
-**** Correlation Questions
-- Curriculum Change vs Teacher Confidence
-- Training Change vs Confidence
-- Facilitator or Event vs Confidence
-**** Factors toward implementation
-**** Cohort attendance reports
-**** 
+*** Attendance Reports
+- Cohort attendance, sent to cohort admins (unified by contract)
+- 
+*** Pre Post Diagnostic Results Analysis
+- teacher/participant pre/post from trainings
+- aggregated classroom pre/post on Bootstrap diagnostics
+- pre/post diagnostics from classroom final exam
+*** Implementation Reports
+*** Standardized Achievement
+Are students achieving higher outcomes on standardized exams that they would already be required to take?
+Some teachers administer their own diagnostics, and this practice is increasingly more common in administrative mandates.
 ** Definitions
 *** End Users
 **** Curriculum End User
@@ -260,6 +272,41 @@ the curriculum and the pedagogy behind key point in the curriculum.
 - Solo Implementation
 - Master Teacher in Training
 - Master Teacher
+
+*** Teacher
+has a role within their organization that places them in front
+of students for the majority of their day.
+
+Administrators have a role to their organization that places them
+supporting teachers for the majority of their day.
+
+These relationships to the outside organization are orthogonal to the
+relationships to Bootstrap trainings. However, the relationship to the
+outside organization affects how the 
+
+This data model seeks to capture the changing roles educators have to their external
+organizations and to their students.  and how that affects their relationship
+with us.
+
+Things to change about the curriculum.
+
+Things to change about training.
+
+Things to change about on-going support.
+
+Quality assurance 
+*** Partners
+Reports for partners include
+- a teacher level attendance report
+- a teacher level proficiency report
+- cohort aggregations
+- implementation reports
+*** Internal analysis
+- Interventions over time
+- Teacher retention
+- Types of facilitation experience vs implementation
+- Teaching context vs implementation
+  
 ** Grain
 The grain in our data model is the professional educator. We measure the
 efficacy of the training experience as it relates to various factors in the life
@@ -386,11 +433,35 @@ partner organization could also be a district and referenced with a foreign key.
 - Pathway
 ** Facts
 - Implementation
-  - State
-  - District
+  - Start Data
+  - End Data
+  - Class
+- Class
   - School
-  - Teacher
-  - Student
+  - # Students
+  - Demographics
+  - Grade Level
+  - Course Name
+  - Subject
+  - Level
+- School
+  - Name
+  - District/Org
+  - Student Age or Grade Range
+  - City
+  - State
+  - Address
+  - Principal
+  - Website
+  - Gradebook/LMS Software
+  - Tech Affiliation, Google, MSFT, etc.
+  - CS Affiliation, Code.org, PLTW, etc.
+- District
+  - Name
+  - State
+  - Serving Zip Codes
+  - Website
+    
 - Feedbacks
   - Confidence
   - Appropriateness
@@ -422,7 +493,7 @@ partner organization could also be a district and referenced with a foreign key.
   - rating
   - rater
   - date
-
+    
 ** Core Entity (Primary Dimension) Tables
 ** Introduction
 These tables are descriptive data elements that make up the relationships in our
@@ -513,7 +584,7 @@ individuals, or Bootstrap itself.
 #+end_src
 
 ** TODO Communication Preferences (Opt In/Out)
-** Relationship Tables
+** Relationship (Fact) Tables
 
 ** Internal and external roles
 
@@ -718,6 +789,7 @@ Is this redundant from Insightly?
 
 #+end_src
 
+* Data Model
 * The Teacher Journey
 ** The Bootstrap Participant Landscape
 Professional educators find themselves in a Bootsrap training from a
