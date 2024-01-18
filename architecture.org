@@ -394,7 +394,6 @@ Reports for partners include
       - Classes
 	- Teachers
 	  - Implementations
-
 *** Dimension Tables and Attributes
 - Contact
   - id
@@ -582,7 +581,6 @@ completed training paperwork.
     userState varchar(255), homePhone varchar(15), cellPhone
     varchar(15), workPhone varchar(15), gender varchar(255) REFERENCES
     gender (genderID), race varchar(255) REFERENCES race (raceID) );
-
 #+end_src
 *** Events
 Bootstrap facilitates events for professional educators. These events focus on
@@ -655,6 +653,7 @@ individuals, or Bootstrap itself.
   CREATE TABLE Textbooks ( textBookID varchar(255), textBookName
     varchar(255), textBookPublisher varchar(255) );
 
+
 #+end_src
 
 *** TODO Communication Preferences (Opt In/Out)
@@ -673,6 +672,7 @@ Training.
 
   CREATE TABLE enrollments ( enrollmentID varchar(255), userID
     varchar(255) REFERENCES Users (UserID) );
+
 #+end_src
 *** User-Organization Roles (OrgRoles)
 
@@ -703,12 +703,9 @@ Training.
   CREATE TABLE comments ( authorUserID varchar(255), regardingUserID
     varchar(255), commentDate varchar(255), tagUserID varchar(255),
     commentType varchar(255)
-
   );
 
 #+end_src
-
-
 
 *** User-Event-Attendance (Attendance)
 
@@ -731,7 +728,6 @@ Bootsrap that lead to the create
   CREATE TABLE Contracts ( ContractID varchar(255), OrgID varchar(255)
     REFERENCES Organizations (OrgID), EventID varchar(255) REFERENCES
     Events (EventID) );
-
 #+end_src
 
 *** Coaching
@@ -748,7 +744,6 @@ same calendar year.
 #+begin_src sql
   CREATE TABLE Coaching ( -- Coaching is a postive entry table. A user
   found in this table has -- coaching included in their contract );
-
 #+end_src
 
 *** Assessment Instrument Data
@@ -797,6 +792,7 @@ enrolled to an event before a facilitator has first been enrolled.
 #+begin_src sql
   CREATE TYPE gender AS ENUM ('Male', 'Female', 'Transgender', 'None of
   these');
+
 #+end_src
 
 *** License
@@ -930,4 +926,3 @@ siimplified class program for each of our participants.
 
 ** On-going Support and Monitoring
 ** The Journey to Master Teacher
-

@@ -100,13 +100,13 @@
 
 <a id="org351521b"></a>
 
+
 ## This file
 
 This is the data definition and architecture expressed in POSTGRESQL
 for Bootstrap facilitated training events and participant
 tracking. This is a literate file written in Orgmode and tangled using
 org-babel.
-
 
 <a id="org7d1b051"></a>
 
@@ -336,6 +336,7 @@ bringing Bootstrap into the classroom include:
 
 ## Reporting
 
+
 Bootstrap partners are in the business of supporting student
 learning. Additionally partners may have special interest in a particular
 student grouping.
@@ -347,7 +348,6 @@ interest that overlaps with Bootstrap products and service
 Partners are interested in how well the curriculum supports student
 achievement. Bootstrap's niche is supporting student learning in traditional
 core subjects such as Algebra.
-
 
 <a id="orge80fbe7"></a>
 
@@ -399,6 +399,7 @@ or store any individual student data.
 
 
 <a id="org4845838"></a>
+
 
 ### Teacher and Student
 
@@ -502,14 +503,12 @@ Within a Bootstrap contract the point persons for the partner
 organization are the admins of the contracted event. Admins receive
 reporting and communication about their cohort.
 
-
 <a id="org3072487"></a>
 
 ### Cohort
 
 A cohort is a group of teachers supported by a particular
 contract. Cohorts begin with a training event and a certain date. 
-
 
 <a id="org6e7528b"></a>
 
@@ -518,7 +517,6 @@ contract. Cohorts begin with a training event and a certain date.
 Training events are facilitated by Bootstrap Master Teachers. A
 facilitator is the primary point person for training participants
 during and immediately after the training event.
-
 
 <a id="org3677ecc"></a>
 
@@ -529,7 +527,6 @@ through short regular sessions. These sessions are largely driven by
 the questions and needs of teachers in the process of using Bootstrap
 curriculum in their classrooms.
 
-
 <a id="org3b90a8f"></a>
 
 ### Professional Development
@@ -538,7 +535,6 @@ A training event that covers an entire curriculum is considered
 professional development. Participants in professional development
 events are trained as both student and teacher. They must understand
 the curriculum and the pedagogy behind key point in the curriculum.
-
 
 <a id="org83d5a16"></a>
 
@@ -551,7 +547,6 @@ the curriculum and the pedagogy behind key point in the curriculum.
 -   Solo Implementation
 -   Master Teacher in Training
 -   Master Teacher
-
 
 <a id="orgda62e13"></a>
 
@@ -604,8 +599,8 @@ Reports for partners include
 
 <a id="orga9e28f2"></a>
 
-## Dimensions
 
+## Dimensions
 
 <a id="org5a8dea6"></a>
 
@@ -629,6 +624,7 @@ Reports for partners include
             -   Admin
             -   Master teacher in training
             -   Ambassador #not really an enrollment role
+
 -   States
     -   Districts
         -   Schools
@@ -721,17 +717,16 @@ Reports for partners include
 
 <a id="org8456d28"></a>
 
+
 ### Explanation
 
 All (most) schools have districts or other support organizations.  Partner
 organizations build contracts with Bootstrap to train cohorts of educators. A
 partner organization could also be a district and referenced with a foreign key.
 
-
 <a id="orgab1f3f4"></a>
 
 ### TODO How to represent indepent schools?
-
 
 <a id="org45c8476"></a>
 
@@ -767,6 +762,7 @@ partner organization could also be a district and referenced with a foreign key.
     -   Serving Zip Codes
     -   Website
 -   Comm Preferences
+
 -   Feedbacks
     -   Confidence
     -   Appropriateness
@@ -798,7 +794,6 @@ partner organization could also be a district and referenced with a foreign key.
     -   rating
     -   rater
     -   date
-
 
 <a id="org6ff6203"></a>
 
@@ -835,7 +830,6 @@ answer keys, or joined Discourse.
       emailProfessional varchar(255)
     );
 
-
 <a id="orgc19dfc2"></a>
 
 ### Users
@@ -851,7 +845,6 @@ completed training paperwork.
       userState varchar(255), homePhone varchar(15), cellPhone
       varchar(15), workPhone varchar(15), gender varchar(255) REFERENCES
       gender (genderID), race varchar(255) REFERENCES race (raceID) );
-
 
 <a id="orgee24caf"></a>
 
@@ -1302,4 +1295,5 @@ siimplified class program for each of our participants.
 <a id="org2f2be88"></a>
 
 ## The Journey to Master Teacher
+
 
