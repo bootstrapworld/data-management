@@ -2,6 +2,16 @@
 #+PROPERTY: header-args :exports code
 #+PROPERTY: header-args :tangle yes
 #+STARTUP: content
+* Is our org growing?
+** Are we bringing in more money?
+** Are more teachers using our stuff?
+* Are teachers growing and gaining?
+** Are teachers demonstrating growth in skills?
+** Are teachers reporting growth in confidence?
+* Are students learning and growing?
+** Are teachers submitting artifacts?
+** Are students demonstrating growth on pre and post tests?
+
 * TODO Include in Bootstrap overview the essential nature of integrate curriculum
 Bootstrap's essential nature invite complexities and constraints. Our
 target audience is much more reluctant to change because their courses
