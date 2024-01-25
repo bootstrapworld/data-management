@@ -11,6 +11,7 @@
 * Are students learning and growing?
 ** Are teachers submitting artifacts?
 ** Are students demonstrating growth on pre and post tests?
+* Connect a particular change to growth/usage.
 
 * TODO Include in Bootstrap overview the essential nature of integrate curriculum
 Bootstrap's essential nature invite complexities and constraints. Our
