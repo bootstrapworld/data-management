@@ -548,45 +548,40 @@ partner organization may or may not be a district.
   - date
     
 * Data Model
-** Custom Types
+** Dimensional Data
 #+begin_src sql
   --------------------------------------------------------------------------
-  -- Custom Types
+  -- Dimensional Data
   --------------------------------------------------------------------------
 #+end_src
 *** Curricula
 #+begin_src sql
-  -- These are Bootstrap internal curricula used in Bootstrap trainings. Participants are associated with their most recent training enrollment curricula.
-  CREATE TYPE "CURRICULA" AS ENUM (
-    "Algebra",
-    "Data Science",
-    "Physics",
-    "Algebra 2",
-    "Early Math",
-    "Data Science (CODAP)"
+  -- These are internal curricula used in trainings. Participants are associated with their most recent training enrollment curricula.
+  -- Currently a training is based on a single curriculum.
+CREATE TABLE IF NOT EXISTS "curricula" (
+    "id" SERIAL,
+    "name" TEXT
   );
 
 #+end_src
 
 *** Event Types
 #+begin_src sql
-  -- The scope of the event
-  CREATE TYPE "EVENT_TYPE" AS ENUM (
-    "full",
-    "intro",
-    "coaching",
-    "office_hour",
-    "review"
+  -- The scope of the event    "full", "intro", "coaching", "one-on-one", "office_hour", "review"
+  CREATE TABLE IF NOT EXISTS "event_type" (
+    "id" SERIAL PRIMARY KEY,
+    "event_type" TEXT,
+    "date_added" DATE
   );
 #+end_src
 
 *** Event Formats
 #+begin_src sql
-  CREATE TYPE "EVENT_FORMAT" AS ENUM (
-    "intensive",
-    "distributed",
-    "one-day",
-    "half-day"
+    --     "intensive",    "distributed",    "one-day",    "half-day"
+  CREATE TABLE IF NOT EXISTS "event_format" (
+    "id" SERIAL PRIMARY KEY,
+    "format" TEXT,
+    "date_added" DATE
   );
 
 #+end_src
@@ -596,38 +591,32 @@ These are the roles are used with respect to enrollment in an event. They answer
 question what are you doing as part of this event. This list could
 grow as the type and complexity of event planning changes.
 #+begin_src sql
-  CREATE TYPE "ENROLLMENT_ROLE" AS ENUM (
-    "facilitator",
-    "participant",
-    "admin",
-    "master teacher in training"
+  CREATE TYPE "event_role" (
+    "id" SERIAL PRIMARY KEY,
+    "role" TEXT -- "facilitator", "administrator", "participant", "observer"
   );
 #+end_src
 
-**** TODO Attach rules to enrollments, a participant cannot be enrolled to an event before a facilitator has first been enrolled.
 *** Race and Ethnicity
 #+begin_src sql
-  CREATE TYPE "RACE" AS ENUM (
-    "American Indian or Alaska Native",
-    "Asian",
-    "Black or African American",
-    "Native Hawaiian or Other Pacific Islander",
-    "White"
+  --     "American Indian or Alaska Native",    "Asian",    "Black or African American",    "Native Hawaiian or Other Pacific Islander",    "White"
+  CREATE TABLE IF NOT EXISTS "race" (
+    "id" SERIAL PRIMARY KEY,
+    "description" TEXT
   );
 
-  CREATE TYPE "ETHNICITY" AS ENUM (
-    "Hispanic or Latino",
-    "Not Hispanic or Latino"
+  CREATE TABLE IF NOT EXISTS "ethnicity" (
+    "id" SERIAL PRIMARY KEY,
+    "description" TEXT
   );
 #+end_src
 
 *** Gender
 #+begin_src sql
-  CREATE TYPE "GENDER" AS ENUM (
-    "female",
-    "male",
-    "transgender",
-    "none of these"
+  --     "female",    "male",    "transgender",    "none of these"
+  CREATE TABLE IF NOT EXISTS "gender" (
+    "id" SERIAL PRIMARY KEY,
+    "description" TEXT
   );
 
 #+end_src
@@ -635,87 +624,98 @@ grow as the type and complexity of event planning changes.
 *** Teacher License Area
 
 #+begin_src sql
-    CREATE TYPE "LICENSE_AREA" AS ENUM (
-      "Early Childhood Education",
-      "Early Childhood Special Education",
-      "Elementary Education",
-      "Secondary Education",
-      "English",
-      "Mathematics",
-      "Sciences",
-      "Biology",
-      "Chemistry",
-      "Life Sciences",
-      "Physics",
-      "Social Sciences",
-      "Agriculture",
-      "American Sign Language",
-      "Art Teacher",
-      "Business Education",
-      "Computer Science",
-      "Dance",
-      "Drama/Theater",
-      "English as a Second Language (ESL)",
-      "Foreign Language"
-      "Gifted and Talented Education (GATE)",
-      "Health",
-      "Home Economics",
-      "Journalism",
-      "Music",
-      "Physical Education",
-      "Reading Specialist",
-      "Special Education",
-      "Speech Language Pathologist",
-      "Technology",
-      "Visually Impaired Teacher",
-      "Education Technology",
-      "Librarian"
-    );
+  /*"Early Childhood Education",
+    "Early Childhood Special Education",
+    "Elementary Education",
+    "Secondary Education",
+    "English",
+    "Mathematics",
+    "Sciences",
+    "Biology",
+    "Chemistry",
+    "Life Sciences",
+    "Physics",
+    "Social Sciences",
+    "Agriculture",
+    "American Sign Language",
+    "Art Teacher",
+    "Business Education",
+    "Computer Science",
+    "Dance",
+    "Drama/Theater",
+    "English as a Second Language (ESL)",
+    "Foreign Language"
+    "Gifted and Talented Education (GATE)",
+    "Health",
+    "Home Economics",
+    "Journalism",
+    "Music",
+    "Physical Education",
+    "Reading Specialist",
+    "Special Education",
+    "Speech Language Pathologist",
+    "Technology",
+    "Visually Impaired Teacher",
+    "Education Technology",
+    "Librarian"*/
+  CREATE TABLE IF NOT EXISTS "license_area" (
+    "id" SERIAL PRIMARY KEY,
+    "description" TEXT
+  );
 #+end_src
 
 *** Organization Types
 #+begin_src sql
-  CREATE TYPE "ORG_TYPE" AS ENUM (
-    "non-profit",
-    "for-profit",
-    "school",
-    "district",
-    "state government office",
-    "philathropic foundation"
+  /*    "non-profit",
+	"for-profit",
+	"school",
+	"district",
+	"state government office",
+	"philathropic foundation"
+   */
+  CREATE TABLE IF NOT EXISTS "org_type" (
+    "id" SERIAL PRIMARY KEY,
+    "description" TEXT
   );
 
 #+end_src
 *** Subjects
 
 #+begin_src sql
-  CREATE TYPE "SUBJECTS" AS ENUM (
-    "Math",
-    "Science",
-    "English",
-    "Social studies",
-    "Health/physical education",
-    "Art/music",
-    "Language other than English"
+  /*    "Math",
+	"Science",
+	"English",
+	"Social studies",
+	"Health/physical education",
+	"Art/music",
+	"Language other than English"
+   */
+  CREATE TABLE IF NOT EXISTS "subject" (
+    "id" SERIAL PRIMARY KEY,
+    "description" TEXT
   );
 
 #+end_src
 
 *** Grades
 #+begin_src sql
-  CREATE TYPE "GRADE" AS ENUM (
-    "Kindergarten",
-    "1st",
-    "2nd",
-    "3rd",
-    "4th",
-    "5th",
-    "6th",
-    "7th",
-    "8th",
-    "9th",
-    "10th",
-    "11th",
-    "12th"
+  /* "Kindergarten",
+     "1st",
+     "2nd",
+     "3rd",
+     "4th",
+     "5th",
+     "6th",
+     "7th",
+     "8th",
+     "9th",
+     "10th",
+     "11th",
+     "12th"
+  */
+  CREATE TABLE IF NOT EXISTS "grade" (
+    "id" SERIAL PRIMARY KEY,
+    "description" TEXT
   );
 
 #+end_src
@@ -723,33 +723,42 @@ grow as the type and complexity of event planning changes.
 *** Skills
 
 #+begin_src sql
-  CREATE TYPE "SKILL" AS ENUM (
-    "S1",
+  /*"S1",
     "S2",
     "S3",
     "S4"
+  */
+  CREATE TABLE IF NOT EXISTS "skill" (
+    "id" SERIAL PRIMARY KEY,
+    "descrition" TEXT
   );
 #+end_src
 *** Attendance Values
 #+begin_src sql
-  CREATE TYPE "ATTENDANCE_VALUE" AS ENUM (
-    "present",
+  /*"present",
     "absent",
     "tardy",
     "disengaged",
     "excused"
+  */
+  CREATE TABLE IF NOT EXISTS "attendance_value" (
+    "id" SERIAL PRIMARY KEY,
+    "description" TEXT
   );
 #+end_src
 *** Assessment Values
 #+begin_src sql
-  CREATE TYPE "ASSESSMENT_VALUE" AS ENUM (
-    "novice",
-    "practitioner",
-    "professional",
-    "master"
+  /*    "novice",
+	"practitioner",
+	"professional",
+	"master"
+  */
+  CREATE TABLE IF NOT EXISTS "assessment_value" (
+    "id" SERIAL PRIMARY KEY,
+    "description" TEXT
   );
 #+end_src
-** Dimensional Data
+
 #+begin_src sql
   --------------------------------------------------------------------------------
   -- Dimensional Data   
@@ -768,9 +777,9 @@ philanthropic foundations, individuals, or Bootstrap itself.
   CREATE TABLE IF NOT EXISTS "organization" (
     "id"           SERIAL PRIMARY KEY,
     "name"         TEXT NOT NULL UNIQUE,
-    "location_id"     INTEGER,
+    "location_id"  INTEGER,
     "url"          TEXT,
-    "district_id"     INTEGER,
+    "district_id"  INTEGER,
     CONSTRAINT "fk_location" FOREIGN KEY ("location_id") REFERENCES "location",
     CONSTRAINT "fk_district" FOREIGN KEY ("district_id") REFERENCES "district"
   );
@@ -795,8 +804,8 @@ philanthropic foundations, individuals, or Bootstrap itself.
 #+begin_src sql
   CREATE TABLE IF NOT EXISTS "state" (
     "name_jurisdiction" TEXT,
-    "ansi_code" INTEGER,
-    "abbreviation" varchar(2) PRIMARY KEY,
+    "ansi_code"         INTEGER,
+    "abbreviation"      varchar(2) PRIMARY KEY,
   );
 
 #+end_src
@@ -804,30 +813,30 @@ philanthropic foundations, individuals, or Bootstrap itself.
 *** Schools
 #+begin_src sql
       CREATE TABLE IF NOT EXISTS "school" (
-	"NCESSCH"  TEXT PRIMARY KEY, -- School identification number
-	"LEAID"    TEXT REFERENCES "district", -- School district identification number
-	"NAME"     TEXT, -- String Name of institution
-	"OPSTFIPS" TEXT, -- FIPS state code for operating state
-	"STREET"   TEXT, -- Reported location street address
-	"CITY"     TEXT, -- Reported location city
-	"STATE"    TEXT, -- Reported location state
-	"ZIP"      TEXT, -- Reported location ZIP code
-	"STFIP"    TEXT, -- State FIPS
-	"CNTY"     TEXT, -- County FIPS
-	"NMCNTY"   TEXT, -- County name
-	"LOCALE"   TEXT, -- Locale code
-	"LAT"      DOUBLE PRECISION, -- Latitude of school location
-	"LON"      DOUBLE PRECISION, -- Longitude of school location
-	"CBSA"     TEXT, -- Core Based Statistical Area
-	"NMCBSA    TEXT, -- Core Based Statistical Area name
-	"CBSATYPE" TEXT, -- Metropolitan or Micropolitan Statistical Area indicator
-	"CSA"      TEXT, -- Combined Statistical
-	"NMCSA"    TEXT, -- Combined Statistical Area name
-	"NECTA"    TEXT, -- New England City and Town Area
-	"NMNECTA"  TEXT, -- New England City and Town Area name
-	"CD"       TEXT, -- Congressional District
-	"SLDL"     TEXT, -- State Legislative District - Lower
-	"SLDU"     TEXT, -- State Legislative District - Upper
+	"NCESSCH"    TEXT PRIMARY KEY, -- School identification number
+	"LEAID"      TEXT REFERENCES "district", -- School district identification number
+	"NAME"       TEXT, -- String Name of institution
+	"OPSTFIPS"   TEXT, -- FIPS state code for operating state
+	"STREET"     TEXT, -- Reported location street address
+	"CITY"       TEXT, -- Reported location city
+	"STATE"      TEXT, -- Reported location state
+	"ZIP"        TEXT, -- Reported location ZIP code
+	"STFIP"      TEXT, -- State FIPS
+	"CNTY"       TEXT, -- County FIPS
+	"NMCNTY"     TEXT, -- County name
+	"LOCALE"     TEXT, -- Locale code
+	"LAT"        DOUBLE PRECISION, -- Latitude of school location
+	"LON"        DOUBLE PRECISION, -- Longitude of school location
+	"CBSA"       TEXT, -- Core Based Statistical Area
+	"NMCBSA      TEXT, -- Core Based Statistical Area name
+	"CBSATYPE"   TEXT, -- Metropolitan or Micropolitan Statistical Area indicator
+	"CSA"        TEXT, -- Combined Statistical
+	"NMCSA"      TEXT, -- Combined Statistical Area name
+	"NECTA"      TEXT, -- New England City and Town Area
+	"NMNECTA"    TEXT, -- New England City and Town Area name
+	"CD"         TEXT, -- Congressional District
+	"SLDL"       TEXT, -- State Legislative District - Lower
+	"SLDU"       TEXT, -- State Legislative District - Upper
 	"SCHOOLYEAR" TEXT, -- School year
   );
 #+end_src
