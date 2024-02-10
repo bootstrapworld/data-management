@@ -1,62 +1,51 @@
 --------------------------------------------------------------------------
--- Custom Types
+-- Dimensional Data
 --------------------------------------------------------------------------
 
--- These are Bootstrap internal curricula used in Bootstrap trainings. Participants are associated with their most recent training enrollment curricula.
-CREATE TYPE "CURRICULA" AS ENUM (
-  "Algebra",
-  "Data Science",
-  "Physics",
-  "Algebra 2",
-  "Early Math",
-  "Data Science (CODAP)"
+-- These are internal curricula used in trainings. Participants are associated with their most recent training enrollment curricula.
+  -- Currently a training is based on a single curriculum.
+CREATE TABLE IF NOT EXISTS "curricula" (
+  "id" SERIAL,
+  "name" TEXT
 );
 
--- The scope of the event
-CREATE TYPE "EVENT_TYPE" AS ENUM (
-  "full",
-  "intro",
-  "coaching",
-  "office_hour",
-  "review"
+-- The scope of the event    "full", "intro", "coaching", "one-on-one", "office_hour", "review"
+CREATE TABLE IF NOT EXISTS "event_type" (
+  "id" SERIAL PRIMARY KEY,
+  "event_type" TEXT,
+  "date_added" DATE
 );
 
-CREATE TYPE "EVENT_FORMAT" AS ENUM (
-  "intensive",
-  "distributed",
-  "one-day",
-  "half-day"
+--     "intensive",    "distributed",    "one-day",    "half-day"
+CREATE TABLE IF NOT EXISTS "event_format" (
+  "id" SERIAL PRIMARY KEY,
+  "format" TEXT,
+  "date_added" DATE
 );
 
-CREATE TYPE "ENROLLMENT_ROLE" AS ENUM (
-  "facilitator",
-  "participant",
-  "admin",
-  "master teacher in training"
+CREATE TABLE IF NOT EXISTS "event_role" (
+  "id" SERIAL PRIMARY KEY,
+  "role" TEXT -- "facilitator", "administrator", "participant", "observer"
 );
 
-CREATE TYPE "RACE" AS ENUM (
-  "American Indian or Alaska Native",
-  "Asian",
-  "Black or African American",
-  "Native Hawaiian or Other Pacific Islander",
-  "White"
+--     "American Indian or Alaska Native",    "Asian",    "Black or African American",    "Native Hawaiian or Other Pacific Islander",    "White"
+CREATE TABLE IF NOT EXISTS "race" (
+  "id" SERIAL PRIMARY KEY,
+  "description" TEXT
 );
 
-CREATE TYPE "ETHNICITY" AS ENUM (
-  "Hispanic or Latino",
-  "Not Hispanic or Latino"
+CREATE TABLE IF NOT EXISTS "ethnicity" (
+  "id" SERIAL PRIMARY KEY,
+  "description" TEXT
 );
 
-CREATE TYPE "GENDER" AS ENUM (
-  "female",
-  "male",
-  "transgender",
-  "none of these"
+--     "female",    "male",    "transgender",    "none of these"
+CREATE TABLE IF NOT EXISTS "gender" (
+  "id" SERIAL PRIMARY KEY,
+  "description" TEXT
 );
 
-CREATE TYPE "LICENSE_AREA" AS ENUM (
-  "Early Childhood Education",
+/*"Early Childhood Education",
   "Early Childhood Special Education",
   "Elementary Education",
   "Secondary Education",
@@ -89,78 +78,95 @@ CREATE TYPE "LICENSE_AREA" AS ENUM (
   "Technology",
   "Visually Impaired Teacher",
   "Education Technology",
-  "Librarian"
+  "Librarian"*/
+CREATE TABLE IF NOT EXISTS "license_area" (
+  "id" SERIAL PRIMARY KEY,
+  "description" TEXT
 );
 
-CREATE TYPE "ORG_TYPE" AS ENUM (
-  "non-profit",
-  "for-profit",
-  "school",
-  "district",
-  "state government office",
-  "philathropic foundation"
+/*    "non-profit",
+      "for-profit",
+      "school",
+      "district",
+      "state government office",
+      "philathropic foundation"
+ */
+CREATE TABLE IF NOT EXISTS "org_type" (
+  "id" SERIAL PRIMARY KEY,
+  "description" TEXT
 );
 
-CREATE TYPE "SUBJECTS" AS ENUM (
-  "Math",
-  "Science",
-  "English",
-  "Social studies",
-  "Health/physical education",
-  "Art/music",
-  "Language other than English"
+/*    "Math",
+      "Science",
+      "English",
+      "Social studies",
+      "Health/physical education",
+      "Art/music",
+      "Language other than English"
+ */
+CREATE TABLE IF NOT EXISTS "subject" (
+  "id" SERIAL PRIMARY KEY,
+  "description" TEXT
 );
 
-CREATE TYPE "GRADE" AS ENUM (
-  "Kindergarten",
-  "1st",
-  "2nd",
-  "3rd",
-  "4th",
-  "5th",
-  "6th",
-  "7th",
-  "8th",
-  "9th",
-  "10th",
-  "11th",
-  "12th"
+/* "Kindergarten",
+   "1st",
+   "2nd",
+   "3rd",
+   "4th",
+   "5th",
+   "6th",
+   "7th",
+   "8th",
+   "9th",
+   "10th",
+   "11th",
+   "12th"
+*/
+CREATE TABLE IF NOT EXISTS "grade" (
+  "id" SERIAL PRIMARY KEY,
+  "description" TEXT
 );
 
-CREATE TYPE "SKILL" AS ENUM (
-  "S1",
+/*"S1",
   "S2",
   "S3",
   "S4"
+*/
+CREATE TABLE IF NOT EXISTS "skill" (
+  "id" SERIAL PRIMARY KEY,
+  "descrition" TEXT
 );
 
-CREATE TYPE "ATTENDANCE_VALUE" AS ENUM (
-  "present",
+/*"present",
   "absent",
   "tardy",
   "disengaged",
   "excused"
+*/
+CREATE TABLE IF NOT EXISTS "attendance_value" (
+  "id" SERIAL PRIMARY KEY,
+  "description" TEXT
 );
 
-CREATE TYPE "ASSESSMENT_VALUE" AS ENUM (
-  "novice",
-  "practitioner",
-  "professional",
-  "master"
+/*    "novice",
+      "practitioner",
+      "professional",
+      "master"
+*/
+CREATE TABLE IF NOT EXISTS "assessment_value" (
+  "id" SERIAL PRIMARY KEY,
+  "description" TEXT
 );
 
 --------------------------------------------------------------------------------
 -- Dimensional Data   
 --------------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS "organization" (
-  "id"           SERIAL PRIMARY KEY,
-  "name"         TEXT NOT NULL UNIQUE,
-  "location_id"     INTEGER,
-  "url"          TEXT,
-  "district_id"     INTEGER,
-  CONSTRAINT "fk_location" FOREIGN KEY ("location_id") REFERENCES "location",
-  CONSTRAINT "fk_district" FOREIGN KEY ("district_id") REFERENCES "district"
+CREATE TABLE IF NOT EXISTS "state" (
+  "name_jurisdiction" TEXT,
+  "ansi_code"         INTEGER,
+  "abbreviation"      varchar(2) PRIMARY KEY
 );
 
 CREATE TABLE IF NOT EXISTS "location" (
@@ -170,40 +176,6 @@ CREATE TABLE IF NOT EXISTS "location" (
   "state"   TEXT REFERENCES "state",
   "lat"     NUMERIC,
   "lon"     NUMERIC
-);
-
-CREATE TABLE IF NOT EXISTS "state" (
-  "name_jurisdiction" TEXT,
-  "ansi_code" INTEGER,
-  "abbreviation" varchar(2) PRIMARY KEY,
-);
-
-CREATE TABLE IF NOT EXISTS "school" (
-      "NCESSCH"  TEXT PRIMARY KEY, -- School identification number
-      "LEAID"    TEXT REFERENCES "district", -- School district identification number
-      "NAME"     TEXT, -- String Name of institution
-      "OPSTFIPS" TEXT, -- FIPS state code for operating state
-      "STREET"   TEXT, -- Reported location street address
-      "CITY"     TEXT, -- Reported location city
-      "STATE"    TEXT, -- Reported location state
-      "ZIP"      TEXT, -- Reported location ZIP code
-      "STFIP"    TEXT, -- State FIPS
-      "CNTY"     TEXT, -- County FIPS
-      "NMCNTY"   TEXT, -- County name
-      "LOCALE"   TEXT, -- Locale code
-      "LAT"      DOUBLE PRECISION, -- Latitude of school location
-      "LON"      DOUBLE PRECISION, -- Longitude of school location
-      "CBSA"     TEXT, -- Core Based Statistical Area
-      "NMCBSA    TEXT, -- Core Based Statistical Area name
-      "CBSATYPE" TEXT, -- Metropolitan or Micropolitan Statistical Area indicator
-      "CSA"      TEXT, -- Combined Statistical
-      "NMCSA"    TEXT, -- Combined Statistical Area name
-      "NECTA"    TEXT, -- New England City and Town Area
-      "NMNECTA"  TEXT, -- New England City and Town Area name
-      "CD"       TEXT, -- Congressional District
-      "SLDL"     TEXT, -- State Legislative District - Lower
-      "SLDU"     TEXT, -- State Legislative District - Upper
-      "SCHOOLYEAR" TEXT, -- School year
 );
 
 CREATE TABLE IF NOT EXISTS "district" (
@@ -242,11 +214,39 @@ CREATE TABLE IF NOT EXISTS "district" (
   "PCT_TOWN33" NUMERIC, -- Percentage of enrolled students attending schools in locale 33 (town – remote)
   "PCT_RURAL41" NUMERIC, -- Percentage of enrolled students attending schools in locale 41 (rural – fringe)
   "PCT_RURAL42" NUMERIC, -- Percentage of enrolled students attending schools in locale 42 (rural – distant)
-  "PCT_RURAL43" NUMERIC, -- Percentage of enrolled students attending schools in locale 43 (rural - remote)
+  "PCT_RURAL43" NUMERIC  -- Percentage of enrolled students attending schools in locale 43 (rural - remote)
+);
+
+CREATE TABLE IF NOT EXISTS "school" (
+      "NCESSCH"    TEXT PRIMARY KEY, -- School identification number
+      "LEAID"      TEXT REFERENCES "district", -- School district identification number
+      "NAME"       TEXT, -- String Name of institution
+      "OPSTFIPS"   TEXT, -- FIPS state code for operating state
+      "STREET"     TEXT, -- Reported location street address
+      "CITY"       TEXT, -- Reported location city
+      "STATE"      TEXT, -- Reported location state
+      "ZIP"        TEXT, -- Reported location ZIP code
+      "STFIP"      TEXT, -- State FIPS
+      "CNTY"       TEXT, -- County FIPS
+      "NMCNTY"     TEXT, -- County name
+      "LOCALE"     TEXT, -- Locale code
+      "LAT"        DOUBLE PRECISION, -- Latitude of school location
+      "LON"        DOUBLE PRECISION, -- Longitude of school location
+      "CBSA"       TEXT, -- Core Based Statistical Area
+      "NMCBSA"     TEXT, -- Core Based Statistical Area name
+      "CBSATYPE"   TEXT, -- Metropolitan or Micropolitan Statistical Area indicator
+      "CSA"        TEXT, -- Combined Statistical
+      "NMCSA"      TEXT, -- Combined Statistical Area name
+      "NECTA"      TEXT, -- New England City and Town Area
+      "NMNECTA"    TEXT, -- New England City and Town Area name
+      "CD"         TEXT, -- Congressional District
+      "SLDL"       TEXT, -- State Legislative District - Lower
+      "SLDU"       TEXT, -- State Legislative District - Upper
+      "SCHOOLYEAR" TEXT  -- School year
 );
 
 CREATE TABLE IF NOT EXISTS "textbooks" (
-  "id SERIAL PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "name"      TEXT,
   "publisher" TEXT,
   "year_published" INTEGER
@@ -255,8 +255,8 @@ CREATE TABLE IF NOT EXISTS "textbooks" (
 CREATE TABLE IF NOT EXISTS "assessment_instrument" (
   "id" SERIAL PRIMARY KEY,
   "name" TEXT,
-  "curricula" CURRICULA, 
-  "skills" SKILL[]
+  "curricula" TEXT REFERENCES "curricula", 
+  "skills" TEXT REFERENCES "skill"
 );
 
 CREATE TABLE IF NOT EXISTS "feedback" (
@@ -264,6 +264,16 @@ CREATE TABLE IF NOT EXISTS "feedback" (
   "name" TEXT,
   "curricula" CURRICULA, 
   "skills" SKILL[]
+);
+
+CREATE TABLE IF NOT EXISTS "organization" (
+  "id"           SERIAL PRIMARY KEY,
+  "name"         TEXT NOT NULL UNIQUE,
+  "location_id"  INTEGER,
+  "url"          TEXT,
+  "district_id"  TEXT,
+  CONSTRAINT "fk_location" FOREIGN KEY ("location_id") REFERENCES "location",
+  CONSTRAINT "fk_district" FOREIGN KEY ("district_id") REFERENCES "district"
 );
 
 --------------------------------------------------------------------------------
@@ -277,26 +287,26 @@ CREATE TABLE IF NOT EXISTS "user" (
   "name_first_alt"     TEXT, -- usually shortened nick name, e.g. David -> Dave
   "name_last_alt"      TEXT, -- usually for married name change
   "email_personal"     TEXT, -- email that persists after job change
-  "email_professional" TEXT  -- email that changes with job change
+  "email_professional" TEXT, -- email that changes with job change
   "home_location"      INTEGER REFERENCES "location",
   "home_phone"         varchar(15),
   "cell_phone"         varchar(15),
   "work_phone"         varchar(15),
-  "gender"             GENDER,
-  "race"               RACE
+  "user_gender"             GENDER,
+  "user_race"               RACE
 );
 
 --   
-CREATE TABLE "events" (
+CREATE TABLE IF NOT EXISTS "event" (
   "id"            TEXT PRIMARY KEY,
   "event_name"    TEXT NOT NULL,
   "location_id"   INTEGER,
-  "event_days"    INTEGER CONSTRAINT positive_days GENERATED ALWAYS AS ("end_date" - "start_date") STORED CHECK (event_days > 0),
+  "event_days"    INTEGER CONSTRAINT "positive_days" GENERATED ALWAYS AS ("end_date" - "start_date") STORED CHECK (event_days > 0),
   --length in days
   "end_date"      INTEGER,
   "start_date"    INTEGER,
-  "type"          EVENT_TYPE,
-  "format"        EVENT_FORMAT
+  "type"          INTEGER REFERENCES "event_type",
+  "format"        INTEGER REFERENCES "event_type"
 );
 
 --------------------------------------------------------------------------------
@@ -311,11 +321,11 @@ CREATE TABLE IF NOT EXISTS "comm_preference" (
 
 -- a class in a teachers program tells us the subject and grade level where the teacher will be interacticng with students
 CREATE TABLE IF NOT EXISTS "class" (
-  "id" PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "teacher_id" INTEGER,
   "name" TEXT NOT NULL,
   "subject" SUBJECT,
-  "grade_level" GRADELEVEL,
+  "grade_level" TEXT,
   "start_date" DATE,
   "end_date"   DATE,
   "students"   INTEGER, -- the number of students enrolled in this class
@@ -330,19 +340,19 @@ CREATE TABLE IF NOT EXISTS "class" (
 
 CREATE TABLE IF NOT EXISTS "certification" (
   -- tracks the certifications relative to state wide professional educators
-  "teacher_id"   TEXT,
+  "teacher_id"   INTEGER,
   "cert_id"      TEXT,
   "state_ab"     varchar(2) REFERENCES "state",
   "title"        TEXT,
-  "license_area" LICENSE_AREA,
+  "license_area" INTEGER REFERENCES "license_area",
   CONSTRAINT "fk_teacher" FOREIGN KEY ("teacher_id") REFERENCES "user"
 );
 
 -- One row per user organization relationship
 CREATE TABLE IF NOT EXISTS "role" (
-    "id" SERIAL PRIMARY KEY,
-    "user_id"   REFERENCES "user"
-    "org_id"    REFERENCES "organization"
+    "id"        SERIAL PRIMARY KEY,
+    "user_id"   INTEGER REFERENCES "user",
+    "org_id"    INTEGER REFERENCES "organization",
     "title"     TEXT,
     "start_date" DATE,
     "end_date"   DATE,
@@ -350,63 +360,63 @@ CREATE TABLE IF NOT EXISTS "role" (
   );
 
 CREATE TABLE IF NOT EXISTS "license" (
-  "id" SERIAL PRIMARY KEY,
-  "user_id" TEXT REFERENCES "user",
-  "license" LICENSE_AREA,
+  "id"      SERIAL PRIMARY KEY,
+  "user_id" INTEGER REFERENCES "user",
+  "license" INTEGER REFERENCES "license_area",
   "state"   varchar(2) REFERENCES "state"
 );
 
-CREATE TABLE "enrollment" (
+CREATE TABLE IF NOT EXISTS "enrollment" (
   "id"          SERIAL PRIMARY KEY,
   "user_id"     INTEGER,
-  "event_id"    INTEGER,
-  "role"        ENROLLMENT_ROLE,
+  "event_id"    TEXT,
+  "role"        INTEGER REFERENCES "event_role",
   "is_enrolled" BOOLEAN NOT NULL DEFAULT TRUE,
-  CONSTRAINT "fk_user" FOREIGN KEY ("user_id") REFERENCES "user",
-  CONSTRAINT "fk_event" FOREIGN KEY ("event_id") REFERENCES "event",
+  CONSTRAINT "fk_user"  FOREIGN KEY ("user_id")  REFERENCES "user",
+  CONSTRAINT "fk_event" FOREIGN KEY ("event_id") REFERENCES "event"
 );
 
-CREATE TABLE "comments" (
+CREATE TABLE IF NOT EXISTS "comments" (
   "id" SERIAL PRIMARY KEY,
   "comment_target" INTEGER, -- the user about which the comment refers
   "date" DATE, -- the date the comment was authored
   "comment_author" INTEGER,
   "tag_id" INTEGER[], -- the ids of any users who should track or follow up on the comment
   "comment_text" TEXT,
-  CONSTRAINT "fk_user"   FOREIGN KEY ("comment_target") REFERENCES "user"
+  CONSTRAINT "fk_user"   FOREIGN KEY ("comment_target") REFERENCES "user",
   CONSTRAINT "fk_author" FOREIGN KEY ("comment_author") REFERENCES "user"
 );
 
-CREATE TABLE "attendance" (
+CREATE TABLE IF NOT EXISTS "attendance" (
   "id" SERIAL PRIMARY KEY,
-  "event_id"  INTEGER NOT NULL,
+  "event_id"  TEXT NOT NULL,
   "user_id"   INTEGER NOT NULL,
   "date"      DATE    NOT NULL,
-  "attendance_value" ATTENDANCE_VALUE,
+  "attendance_value" INTEGER REFERENCES "attendance_value",
   CONSTRAINT "fk_event" FOREIGN KEY ("event_id") REFERENCES "event",
   CONSTRAINT "fk_user"  FOREIGN KEY ("user_id")  REFERENCES "users"
 );
 
-CREATE TABLE "contract" (
+CREATE TABLE IF NOT EXISTS "contract" (
   "id"  SERIAL PRIMARY KEY,
   "partner_id" INTEGER,
-  "event_id"   INTEGER,
-  CONSTRAINT "fk_partner" FOREIGN KEY ("partner_id") REFERENCES "organization"
+  "event_id"   TEXT,
+  CONSTRAINT "fk_partner" FOREIGN KEY ("partner_id") REFERENCES "organization",
   CONSTRAINT "fk_event"   FOREIGN KEY ("event_id")   REFERENCES "event"
 );
 
 CREATE TABLE IF NOT EXISTS "coaching" (
-  "user_id" REFERNCES "user" -- Coaching is a postive entry table. A user found in this table has -- coaching included in their contract
+  "user_id"    INTEGER REFERENCES "user", -- Coaching is a postive entry table. A user found in this table has -- coaching included in their contract
   "start_date" DATE,
-  "end_date"   DEFAULT ("start_date" + 365)
+  "end_date"   DATE GENERATED ALWAYS AS ("start_date" + 365) STORED
 );
 
-CREATE TABLE "assessment" (
-  "id" SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS "assessment" (
+  "id"             SERIAL PRIMARY KEY,
   "assessment_id"  INTEGER,
   "user_id"        INTEGER,
-  "assessment_value" ASSESSMENT_VALUE,
+  "assessment_value" INTEGER REFERENCES "assessment_value",
   "data"           TEXT,
   CONSTRAINT "fk_assessment" FOREIGN KEY ("assessment_id") REFERENCES "assessment_instrument",
-  CONSTRAINT "fk_user"       FOREIGN KEY ("user_id")       REFERENCES "user",
+  CONSTRAINT "fk_user"       FOREIGN KEY ("user_id")       REFERENCES "user"
 );
