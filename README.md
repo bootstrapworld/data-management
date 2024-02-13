@@ -10,6 +10,9 @@ Some of the original rosters are linked to active rosters with on going dates. T
 ## PD OPs Tracker
 [PD OPs Tracker](https://docs.google.com/spreadsheets/d/1MoBEaWZRZqmDD3I_Av5B3U54HUTZcKkz-XUAJyronJc/edit?usp=sharing) is the source of truth for training events. This repository's milestones should be closely tied to these events.
 
+## Metrics
+[Metrics](https://docs.google.com/spreadsheets/d/1NRnCBNQ4ZxlQrt3VPCVSpuWkkcj6RB2KUYUTtHKS3gk/edit?usp=sharing) tracks key areas of measurement and related discussions. Metrics is the backbone of our data collection framework.
+
 ### Data Architecture
 
 All of the roster data from events over the past year have been joined into a small number of tables. In the future more tables will be added as we capture more of the changeable nature of roles and relationships within our system.
