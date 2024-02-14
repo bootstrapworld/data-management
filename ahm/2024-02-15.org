@@ -32,24 +32,10 @@
 - Set communications schedule and templats
 - Build out communications infrastructure
 - Draft templates and send conditions
-  
-*** Building communications infrastructure
-- Connect data to email engine
-- Confirm templates and send conditions
-- Build time and event triggers
-  
-*** Communications' schedu`le and templates
-- Welcome, enrollment, and logistics
-- Signup and enrollment reminders
-- Partner notifications
-
-*** Build templates and connect to data
-- Test message templates
-- Review 
 
 
 ** Facilitation Tools
-- Attendance roster generation
+- Attendance rosters
 - /Whose in the room/ reports
 - Reminders and notifications
 
@@ -91,7 +77,7 @@
 ** Expand support services
 - Newsletters, tips, and announcements
 - Edited and organized video content
-- Automated, personalized follow-up and survey
+- Automated, personalized follow-ups and surveys
 
 
 ** Refine and extend data model and infrastructure
