@@ -1,105 +1,111 @@
 
 # Table of Contents
 
-1.  [Overview](#org004e27e)
-    1.  [This file](#org351521b)
-    2.  [Bootstrap](#org7d1b051)
-    3.  [Goals](#orgaa3e4f9)
-        1.  [What am I doing?](#orgc711bfe)
-        2.  [This data model](#org22536fc)
-    4.  [Non-goals](#orgd9722d9)
-    5.  [Measures of Success](#orgedb86fa)
-    6.  [Analysis](#org6e31aa8)
-        1.  [Appropriateness (Fitness) of Training to Participant](#org75f9758)
-        2.  [Confidence, Implementation, Growth Sentiment Analysis](#org25222e6)
-        3.  [Skills Analysis](#org266c3c4)
-        4.  [Students](#org46c8545)
-        5.  [Correlation Questions](#orgb44ceec)
-        6.  [Factors toward implementation](#orgbf43aef)
-    7.  [Reporting](#org8c9e535)
-        1.  [Attendance Reports](#orge80fbe7)
-        2.  [Pre Post Diagnostic Results Analysis](#org70a6fc5)
-        3.  [Implementation Reports](#org93c9f60)
-        4.  [Standardized Achievement](#org09e56e0)
-    8.  [Grain](#org0c589c7)
-    9.  [Definitions](#orgebd410f)
-        1.  [Teacher and Student](#org4845838)
-        2.  [Admin](#orgd60bdfc)
-        3.  [Cohort](#org3072487)
-        4.  [Facilitator, Master Teacher, and Master Teacher in Training](#org6e7528b)
-        5.  [Coach](#org3677ecc)
-        6.  [Professional Development](#org3b90a8f)
-        7.  [Participant Life Cycle](#org83d5a16)
-        8.  [Teacher](#orgda62e13)
-        9.  [Partners](#org94f8359)
-        10. [Internal analysis](#org917f913)
-    10. [Dimensions](#orga9e28f2)
-        1.  [Dimension Hierarchy](#org5a8dea6)
-        2.  [Dimension Tables and Attributes](#org07f466d)
-        3.  [Explanation](#org8456d28)
-        4.  [How to represent indepent schools?](#orgab1f3f4)
-    11. [Facts](#org45c8476)
-2.  [Data Model](#org6ff6203)
-    1.  [Core Entity (Primary Dimensions) Tables](#org0bf5da3)
-        1.  [Contacts](#org73fa1a0)
-        2.  [Users](#orgc19dfc2)
-        3.  [Events](#orgee24caf)
-        4.  [Organizations](#org27b70e5)
-        5.  [Teaching programs (schedule of classes)](#orge6d85df)
-        6.  [Assessment Instruments](#orgd5c792d)
-        7.  [Feedback Instruments](#org70be525)
-        8.  [Attribute (Derived) Tables](#org2c5d4c4)
-        9.  [Locations](#org85c0132)
-        10. [Licenses](#orgbfba898)
-        11. [Schools](#org6a8bd60)
-        12. [Districts](#org1a371f1)
-        13. [Roles](#orgb07a616)
-        14. [Textbooks](#org3c19da0)
-        15. [Communication Preferences (Opt In/Out)](#org13315f3)
-    2.  [Relationship (Facts) Tables](#orgb6f3c02)
-        1.  [Internal and external roles](#orgde0e340)
-        2.  [User-Event Roles (Enrollments)](#org6ab55b0)
-        3.  [User-Organization Roles (OrgRoles)](#orga416b64)
-        4.  [User-Organization Roles (UserOrganizationRoles)](#org7828070)
-        5.  [Comments](#org20b3dca)
-        6.  [User-Event-Attendance (Attendance)](#orge63a3ed)
-        7.  [Contracts](#org3679db5)
-        8.  [Coaching](#orgb99138d)
-        9.  [Assessment Instrument Data](#orge124271)
-        10. [Custom Data Types](#org0bf4ebc)
-        11. [Enrollment Roles](#orgdcdfd33)
-        12. [Race and Ethnicity](#org8b0bb6b)
-        13. [Gender](#org6678fa7)
-        14. [License](#org39e3568)
-        15. [Organization Types](#org510f3d3)
-        16. [What are the organization types we interact with?](#org4cef02e)
-        17. [Subjects Taught](#org13d6def)
-        18. [Grades Taught](#org9d2ca50)
-        19. [Event Formats](#orgeec8ab9)
-        20. [Event Types](#org8b12cf8)
-        21. [Curricula](#orgf9ef59c)
-3.  [The Teacher Journey](#org0a42426)
-    1.  [The Bootstrap Participant Landscape](#orgc8b4904)
-    2.  [The Timespan of a Teacher Journey](#orgf2184dd)
-    3.  [Milestones](#org3cd64f0)
-        1.  [Year 1](#orgc2ac34b)
-        2.  [Year 2](#orgcac058d)
-        3.  [Year 3](#org8ba8061)
-    4.  [Communication Plan](#org38b38b6)
-        1.  [First Contact](#org03c0432)
-        2.  [Preworkshop Intake Data](#org24461b2)
-    5.  [On-going Support and Monitoring](#org90b905a)
-    6.  [The Journey to Master Teacher](#org2f2be88)
+1.  [Overview](#orga482912)
+    1.  [This file](#orgfef79e4)
+    2.  [Bootstrap](#org3510688)
+    3.  [Goals](#orge6cfc0f)
+        1.  [What am I doing?](#org86eb1d8)
+        2.  [This data model](#org2e65cef)
+    4.  [Non-goals](#org541e9ef)
+    5.  [Measures of Success](#orgc0af669)
+        1.  [Is our org growing?](#orgef63262)
+        2.  [Are teachers growing and gaining?](#orgcce5212)
+        3.  [Are students learning and growing?](#org7d33b99)
+        4.  [Connect a particular change to growth/usage.](#orgca3aab5)
+        5.  [Include in Bootstrap overview the essential nature of integrate curriculum](#org7dfb29f)
+    6.  [Analysis](#org45e8e46)
+        1.  [Appropriateness (Fitness) of Training to Participant](#orgfb7e265)
+        2.  [Confidence, Implementation, Growth Sentiment Analysis](#org7a3d188)
+        3.  [Skills Analysis](#orgab74fc2)
+        4.  [Students](#org88ae857)
+        5.  [Correlation Questions](#orgf3573d2)
+        6.  [Factors toward implementation](#org30fc56a)
+    7.  [Reporting](#org19d2788)
+        1.  [Attendance Reports](#orgba6417b)
+        2.  [Pre Post Diagnostic Results Analysis](#org1ff1923)
+        3.  [Implementation Reports](#orge8506e7)
+        4.  [Standardized Achievement](#org222f5fe)
+2.  [Data Model](#org782bb83)
+    1.  [Grain](#orgc6314bf)
+    2.  [Definitions](#org4e0cad1)
+        1.  [Contact](#org3d6ae87)
+        2.  [User](#org1e0a574)
+        3.  [Educator](#org5d16106)
+        4.  [Participant](#orgb7d3c94)
+        5.  [Teacher](#org2bdeaca)
+        6.  [Student](#orgf504026)
+        7.  [Partner](#org5b73386)
+        8.  [Contract](#orgbb7d481)
+        9.  [Stipend](#org4f9a601)
+        10. [Administrator](#orgec01313)
+        11. [Implementation](#orgda1168c)
+        12. [Student achievement](#org60bdfab)
+        13. [Curriculum End User](#orgc30f0a7)
+        14. [Participant Life Cycle](#org25b9690)
+        15. [Training End User](#orgdf1fa05)
+        16. [Year Cohort](#org36b1148)
+        17. [Partner Cohort](#orga95dd26)
+        18. [Curriculum Cohort](#org66e15a5)
+        19. [State Cohort](#orgf990609)
+        20. [Cohort Admin](#orgb804eb7)
+        21. [Master Teacher in Training](#orgbdff7b0)
+        22. [Master Teacher](#org492a7cb)
+        23. [Facilitator](#orgc25935a)
+        24. [Coach](#orgc32b02a)
+        25. [Professional Development](#org883fdad)
+        26. [Partner Reports](#org4de387e)
+        27. [Internal Reports](#orgfecfd69)
+    3.  [Dimensions](#org65e769e)
+        1.  [Dimension Hierarchy](#orga16b460)
+        2.  [Dimension Tables and Attributes](#org7cce18b)
+        3.  [Data Tables](#orgddb45c9)
+        4.  [Curricula](#org47c0522)
+        5.  [Event Types](#orgd56e5ad)
+        6.  [Event Formats](#org68e360a)
+        7.  [Event Roles](#org51d0991)
+        8.  [Race and Ethnicity](#org054ee9e)
+        9.  [Gender](#orgd664580)
+        10. [Teacher License Area](#org6550dd7)
+        11. [Organization Types](#org2045683)
+        12. [Subjects](#org90bb936)
+        13. [Grades](#org151d916)
+        14. [Skills](#orgea4967c)
+        15. [Attendance Values](#org9ea209b)
+        16. [Assessment Values](#orgd7aef0a)
+        17. [States](#org88db11e)
+        18. [Locations](#org2a273d4)
+        19. [Districts](#org8c6d3e4)
+        20. [Schools](#orgf62cade)
+        21. [Textbooks](#orgfa4a2b7)
+        22. [Assessment Instruments](#orgbf3ae68)
+        23. [Feedback Instruments](#org95a2002)
+        24. [Partner Organizations](#org1554c2b)
+    4.  [User & Event Data](#orge46b116)
+        1.  [Users](#orga1916c9)
+        2.  [Events](#org1a304ad)
+    5.  [Facts](#org006ce20)
+        1.  [Implementation](#orgcd7c8f7)
+        2.  [Class](#orgaec4be8)
+        3.  [Communication Preferences (Opt In/Out)](#org9b43613)
+        4.  [Teaching programs (schedule of classes)](#org3902660)
+        5.  [Roles](#org125271d)
+        6.  [Licences](#org57eb318)
+        7.  [Enrollments](#orgaa38b2b)
+        8.  [Comments](#orgdea643e)
+        9.  [User-Event-Attendance (Attendance)](#org98010a6)
+        10. [Contracts](#org0f7c20e)
+        11. [Coaching](#org909d731)
+        12. [Assessment Instrument Data](#org1dfbf7a)
 
 
 
-<a id="org004e27e"></a>
+<a id="orga482912"></a>
 
 # Overview
 
 
-<a id="org351521b"></a>
-
+<a id="orgfef79e4"></a>
 
 ## This file
 
@@ -108,7 +114,8 @@ for Bootstrap facilitated training events and participant
 tracking. This is a literate file written in Orgmode and tangled using
 org-babel.
 
-<a id="org7d1b051"></a>
+
+<a id="org3510688"></a>
 
 ## Bootstrap
 
@@ -121,6 +128,14 @@ confidently implement Bootstrap curriculum in their
 classrooms. Bootstrap trainings prepare teachers to deliver the
 curriculum such that their students can demonstrate certain skills
 evidenced through the curriculum's learning products.
+
+The overarching goal of Bootstrap curricula and trainings is to
+support student learning in core academic skills, especially
+mathematical reasoning. Teachers are the professionals who deploy
+Bootstrap content. The quality of that deployment directly correlates
+to student achievement with Bootstrap.  Whether Bootstrap curricula
+meets its aim to boost standardized achievement relies on the quality
+of teacher's deployment.
 
 Some of Bootstrap's activities can be accessed by the student
 directly. However, the primary market for Bootstrap products and
@@ -153,13 +168,19 @@ supports. We hope to facilitate analysis and lead to improvements in
 training and curriculum, which become measurably better suited to the
 needs of teachers and student achievement over time.
 
+These relationships to outside organizations are orthogonal to the
+relationships to Bootstrap. A principal could be a participant
+learning Data Science. However, the relationship to the outside
+organization affects how the user receives the material and our
+expectations of them.
 
-<a id="orgaa3e4f9"></a>
+
+<a id="orge6cfc0f"></a>
 
 ## Goals
 
 
-<a id="orgc711bfe"></a>
+<a id="org86eb1d8"></a>
 
 ### What am I doing?
 
@@ -172,7 +193,7 @@ offerings. This model should hold rolling data for years and
 facilitate slicing by year, cohort, etc.
 
 
-<a id="org22536fc"></a>
+<a id="org2e65cef"></a>
 
 ### This data model
 
@@ -186,7 +207,7 @@ classrooms. Bootstrap further measures success through the achievement
 of students who received Bootstrap curriculum.
 
 
-<a id="orgd9722d9"></a>
+<a id="org541e9ef"></a>
 
 ## Non-goals
 
@@ -198,7 +219,7 @@ imagine other aspects such as pathway could be stored here.  Contracts
 services for client cohorts and for reporting back to stakeholders.
 
 
-<a id="orgedb86fa"></a>
+<a id="orgc0af669"></a>
 
 ## Measures of Success
 
@@ -233,12 +254,55 @@ classrooms.
 -   Pathway Creation
 
 
-<a id="org6e31aa8"></a>
+<a id="orgef63262"></a>
+
+### Is our org growing?
+
+1.  Are we bringing in more money?
+
+2.  Are more teachers using our stuff?
+
+
+<a id="orgcce5212"></a>
+
+### Are teachers growing and gaining?
+
+1.  Are teachers demonstrating growth in skills?
+
+2.  Are teachers reporting growth in confidence?
+
+
+<a id="org7d33b99"></a>
+
+### Are students learning and growing?
+
+1.  Are teachers submitting artifacts?
+
+2.  Are students demonstrating growth on pre and post tests?
+
+
+<a id="orgca3aab5"></a>
+
+### Connect a particular change to growth/usage.
+
+
+<a id="org7dfb29f"></a>
+
+### TODO Include in Bootstrap overview the essential nature of integrate curriculum
+
+Bootstrap's essential nature invite complexities and constraints. Our
+target audience is much more reluctant to change because their courses
+are standardized and measured. In effect we have chosen the most
+difficult teaching population. This plays directly into our
+understanding of the free choice spectrum of our teachers. **see Reporting section**
+
+
+<a id="org45e8e46"></a>
 
 ## Analysis
 
 
-<a id="org75f9758"></a>
+<a id="orgfb7e265"></a>
 
 ### Appropriateness (Fitness) of Training to Participant
 
@@ -252,17 +316,17 @@ classrooms.
 -   Which curriculum is most effective at training teachers to implement?
 
 
-<a id="org25222e6"></a>
+<a id="org7a3d188"></a>
 
 ### Confidence, Implementation, Growth Sentiment Analysis
 
 
-<a id="org266c3c4"></a>
+<a id="orgab74fc2"></a>
 
 ### Skills Analysis
 
 
-<a id="org46c8545"></a>
+<a id="org88ae857"></a>
 
 ### Students
 
@@ -273,7 +337,7 @@ classrooms.
     -   How many students are we reaching per lesson?
 
 
-<a id="orgb44ceec"></a>
+<a id="orgf3573d2"></a>
 
 ### Correlation Questions
 
@@ -286,7 +350,7 @@ classrooms.
     -   Facilitator or Event vs Confidence
 
 
-<a id="orgbf43aef"></a>
+<a id="org30fc56a"></a>
 
 ### Factors toward implementation
 
@@ -332,10 +396,9 @@ bringing Bootstrap into the classroom include:
     student achievement on the exam is not as predictably guaranteed.
 
 
-<a id="org8c9e535"></a>
+<a id="org19d2788"></a>
 
 ## Reporting
-
 
 Bootstrap partners are in the business of supporting student
 learning. Additionally partners may have special interest in a particular
@@ -349,7 +412,8 @@ Partners are interested in how well the curriculum supports student
 achievement. Bootstrap's niche is supporting student learning in traditional
 core subjects such as Algebra.
 
-<a id="orge80fbe7"></a>
+
+<a id="orgba6417b"></a>
 
 ### Attendance Reports
 
@@ -357,7 +421,7 @@ core subjects such as Algebra.
 -   
 
 
-<a id="org70a6fc5"></a>
+<a id="org1ff1923"></a>
 
 ### Pre Post Diagnostic Results Analysis
 
@@ -366,12 +430,12 @@ core subjects such as Algebra.
 -   pre/post diagnostics from classroom final exam
 
 
-<a id="org93c9f60"></a>
+<a id="orge8506e7"></a>
 
 ### Implementation Reports
 
 
-<a id="org09e56e0"></a>
+<a id="org222f5fe"></a>
 
 ### Standardized Achievement
 
@@ -379,7 +443,12 @@ Are students achieving higher outcomes on standardized exams that they would alr
 Some teachers administer their own diagnostics, and this practice is increasingly more common in administrative mandates.
 
 
-<a id="org0c589c7"></a>
+<a id="org782bb83"></a>
+
+# Data Model
+
+
+<a id="orgc6314bf"></a>
 
 ## Grain
 
@@ -393,18 +462,74 @@ data stops at the teacher level. We do not track students as entities
 or store any individual student data.
 
 
-<a id="orgebd410f"></a>
+<a id="org4e0cad1"></a>
 
 ## Definitions
 
 
-<a id="org4845838"></a>
+<a id="org3d6ae87"></a>
+
+### Contact
 
 
-### Teacher and Student
+<a id="org1e0a574"></a>
 
-Teachers spend the majority of their professional
-time interacting with students.
+### User
+
+
+<a id="org5d16106"></a>
+
+### Educator
+
+are often teachers or have had experience in the classroom, but can
+also be administrators, paraprofessionals, learning coaches, or
+department coordinators. We wish to track the changing role our
+professional educators have to their profession and employer. We wish
+to know a teachers current schedule and where in that schedule they
+have been able to utilize Bootstrap curricula or pedagogy.
+
+Sometimes the participant works alongside teachers and will take the
+learning from Bootstrap back to their teachers in their own
+professional enrichment setting.
+
+-   Principal
+-   Dean
+-   Librarian
+-   Counselor
+-   Paraprofessional
+-   Learning Coach
+
+
+<a id="orgb7d3c94"></a>
+
+### Participant
+
+Is enrolled in a training event in order to learning skills and
+content. Not facilitating, observing, or supervising.
+
+
+<a id="org2bdeaca"></a>
+
+### Teacher
+
+has a role within their organization that places them in front of
+students for the majority of their day.  Teachers spend the majority
+of their professional time interacting with students, and have the
+largest and most direct role in affecting student outcomes and the
+quality of the Bootstrap implementation.
+
+
+<a id="orgf504026"></a>
+
+### Student
+
+Bootstrap students are 10-17 years old, live primarily in the lower 48
+states, and attend school in grades 5-12.
+
+
+<a id="org5b73386"></a>
+
+### Partner
 
 Bootstrap interacts with partners who develop or
 support teacher excellence through continued
@@ -414,60 +539,52 @@ private foundations, corporations, states, and
 schools. Individual teachers also join open
 enrollment events and may be paying out of pocket.
 
+
+<a id="orgbb7d481"></a>
+
+### Contract
+
+
+<a id="org4f9a601"></a>
+
+### Stipend
+
 Teachers often receive some form of compensation
 from their school, district, or supporting
 organization.
 
-Partners often request reports, especially
-attendance, which they use to track participant
-participation and to validate stipends. The
-partner may or may not have requirements for the
-form of the report.
 
-Professional educators are often teachers or have
-had experience in the classroom, but can also be
-administrators, paraprofessionals, learning
-coaches, or department coordinators. We wish to
-track the changing role our teachers have to their
-profession and employer. We wish to know a
-teachers current schedule and where in that
-schedule they have been able to utilize Bootstrap
-curricula or pedagogy.
+<a id="orgec01313"></a>
 
-Teachers have the largest and most direct role in
-affecting student outcomes and the quality of the
-Bootstrap implementation.
+### Administrator
 
-Bootstraps primary aim is to support student
-learning in core academic skills, especially
-mathematical reasoning. Teachers are the
-professionals who deploy Bootstrap content. The
-quality of that deployment directly correlates to
-student achievement with Bootstrap.  Whether
-Bootstrap curricula meets its aim to boost
-standardized achievement relies on the quality of
-teacher's deployment.
+Administrators have a role to their organization that places them
+supporting teachers for the majority of their day. They are sometimes
+the point persons on the contracts (cohort admin), who create training
+events and build cohorts. More often teachers are beholden to
+administrators who are not directly connected to Bootstrap, but who
+may have a large role in the teacher's implementation.
 
-Administrators oversee teachers. They are the
-point persons on the contracts the create training
-events and build cohorts. Administrators track
-teacher attendance at training events and may
-disperse stipends to teachers based on
-deliverables.
 
-Implementation describes a teacher using Bootstrap
-curriculum with their students. Bootstrap
-curriculum is designed to fit in as a module into
-existing classes with established goals. Teachers
-using Bootstrap in their classes have identified a
-learning goal or series of goals that Bootstrap
-curriculum covers. Depending on the course
-objectives and grade band of students different
-swaths of curriculum are available. Implementation
-is a description of the context in which a teacher
-is using Boostrap, to what depth and what breadth.
+<a id="orgda1168c"></a>
 
-Student achievement measures show gains through
+### Implementation
+
+describes a teacher using Bootstrap curriculum with
+their students. Bootstrap curriculum is designed to fit in as a module
+into existing classes with established goals. Teachers using Bootstrap
+in their classes have identified a learning goal or series of goals
+that Bootstrap curriculum covers. Depending on the course objectives
+and grade band of students different swaths of curriculum are
+available. Implementation is a description of the context in which a
+teacher is using Boostrap, to what depth and what breadth.
+
+
+<a id="org60bdfab"></a>
+
+### Student achievement
+
+measures show gains through
 pre and post diagnostics of skills covered by the
 Bootstrap curriculum. These skills overlap between
 Bootstrap curriculum, but have different contexts
@@ -475,68 +592,16 @@ that they support. Student learning requires both
 high quality curriculum and high quality
 deployment by the teacher.
 
-Teacher learning &#x2026;
 
-1.  Curriculum End User
+<a id="orgc30f0a7"></a>
 
-    The end users of Bootstrap curriculum are students, who will be using tools like
-    the Pyret or CODAP to build projects.
+### Curriculum End User
 
-2.  Training End User
-
-    The end users of Bootsrap trainings are
-    teachers. In most cases the person in the chair is
-    a teacher, who will bring the training, pedagogy,
-    and curriculum back to students in their
-    classroom.
-    
-    Sometimes the person in the chair works alongside teachers and will take the
-    learning from Bootstrap back to their teachers in their own professional
-    enrichment setting.
+The end users of Bootstrap curriculum are students, who will be using tools like
+the Pyret or CODAP to build projects.
 
 
-<a id="orgd60bdfc"></a>
-
-### Admin
-
-Within a Bootstrap contract the point persons for the partner
-organization are the admins of the contracted event. Admins receive
-reporting and communication about their cohort.
-
-<a id="org3072487"></a>
-
-### Cohort
-
-A cohort is a group of teachers supported by a particular
-contract. Cohorts begin with a training event and a certain date. 
-
-<a id="org6e7528b"></a>
-
-### Facilitator, Master Teacher, and Master Teacher in Training
-
-Training events are facilitated by Bootstrap Master Teachers. A
-facilitator is the primary point person for training participants
-during and immediately after the training event.
-
-<a id="org3677ecc"></a>
-
-### Coach
-
-A coach is a Bootstrap Master teacher supporting groups of teachers
-through short regular sessions. These sessions are largely driven by
-the questions and needs of teachers in the process of using Bootstrap
-curriculum in their classrooms.
-
-<a id="org3b90a8f"></a>
-
-### Professional Development
-
-A training event that covers an entire curriculum is considered
-professional development. Participants in professional development
-events are trained as both student and teacher. They must understand
-the curriculum and the pedagogy behind key point in the curriculum.
-
-<a id="org83d5a16"></a>
+<a id="org25b9690"></a>
 
 ### Participant Life Cycle
 
@@ -545,51 +610,123 @@ the curriculum and the pedagogy behind key point in the curriculum.
 -   Training
 -   Implementation with Support
 -   Solo Implementation
+-   Repeated training
+-   Second curriculum
 -   Master Teacher in Training
 -   Master Teacher
 
-<a id="orgda62e13"></a>
 
-### Teacher
+<a id="orgdf1fa05"></a>
 
-has a role within their organization that places them in front
-of students for the majority of their day.
+### Training End User
 
-Administrators have a role to their organization that places them
-supporting teachers for the majority of their day.
-
-These relationships to the outside organization are orthogonal to the
-relationships to Bootstrap trainings. However, the relationship to the
-outside organization affects how the 
-
-This data model seeks to capture the changing roles educators have to their external
-organizations and to their students.  and how that affects their relationship
-with us.
-
-Things to change about the curriculum.
-
-Things to change about training.
-
-Things to change about on-going support.
-
-Quality assurance 
+The end users of Bootsrap trainings are
+teachers. In most cases the person in the chair is
+a teacher, who will bring the training, pedagogy,
+and curriculum back to students in their
+classroom.
 
 
-<a id="org94f8359"></a>
+<a id="org36b1148"></a>
 
-### Partners
+### Year Cohort
+
+
+<a id="orga95dd26"></a>
+
+### Partner Cohort
+
+
+<a id="org66e15a5"></a>
+
+### Curriculum Cohort
+
+
+<a id="orgf990609"></a>
+
+### State Cohort
+
+A partner cohort is a group of teachers supported by a particular
+contract. Cohorts begin with a training event and end at a certain date. 
+
+
+<a id="orgb804eb7"></a>
+
+### Cohort Admin
+
+Within a Bootstrap contract the point persons for the partner
+organization are the admins of the contracted event. Admins receive
+reporting and communication about their cohort. Cohort admins track teacher
+attendance at training events and may disperse stipends to teachers
+based on deliverables.
+
+
+<a id="orgbdff7b0"></a>
+
+### Master Teacher in Training
+
+Has been in trainings for several years and demonstrated proficiency across the concept map
+
+
+<a id="org492a7cb"></a>
+
+### Master Teacher
+
+Can co-lead a professional development, run coaching sessions, and moderate on the question forum.
+
+
+<a id="orgc25935a"></a>
+
+### Facilitator
+
+Training events are facilitated by Bootstrap Master Teachers who have
+been trained to facilitate events. Typically Master Teachers co-lead
+for a period of time before they facilitate events by themselves. A
+facilitator is the primary point person for training participants
+during and immediately after the training event.
+
+
+<a id="orgc32b02a"></a>
+
+### Coach
+
+A coach is a Bootstrap Master teacher supporting groups of teachers
+through short regular sessions. These sessions are largely driven by
+the questions and needs of teachers in the process of using Bootstrap
+curriculum in their classrooms.
+
+
+<a id="org883fdad"></a>
+
+### Professional Development
+
+A training event that covers an entire curriculum is considered
+professional development. Participants in professional development
+events are trained as both student and teacher. They must understand
+the curriculum and the pedagogy behind key point in the curriculum.
+
+
+<a id="org4de387e"></a>
+
+### Partner Reports
+
+Partners often request reports, especially
+attendance, which they use to track participant
+participation and to validate stipends. The
+partner may or may not have requirements for the
+form of the report.
 
 Reports for partners include
 
 -   a teacher level attendance report
 -   a teacher level proficiency report
--   cohort aggregations
 -   implementation reports
+-   cohort aggregations
 
 
-<a id="org917f913"></a>
+<a id="orgfecfd69"></a>
 
-### Internal analysis
+### Internal Reports
 
 -   Interventions over time
 -   Teacher retention
@@ -597,43 +734,70 @@ Reports for partners include
 -   Teaching context vs implementation
 
 
-<a id="orga9e28f2"></a>
-
+<a id="org65e769e"></a>
 
 ## Dimensions
 
-<a id="org5a8dea6"></a>
+Most schools are members of districts or other support organizations.  Partner
+organizations build contracts with Bootstrap to train cohorts of educators. A
+partner organization may or may not be a district.
+
+
+<a id="orga16b460"></a>
 
 ### Dimension Hierarchy
 
--   Contact
-    -   User #subset, rather than child
-        -   Enrollment
--   Curriculum
+1.  Contact
+
+    -   Enrollment
+
+2.  Curricula
+
     -   Skills
--   Partner
+
+3.  Partner
+
     -   Contract
--   Cohort
+
+4.  Cohort
+
     -   Participant
--   Event
-    -   User
-    -   Enrollments
-        -   Role
-            -   Facilitator
-            -   Participant
-            -   Admin
-            -   Master teacher in training
-            -   Ambassador #not really an enrollment role
+    
+    -   Event
+        -   User
+        -   Enrollments
+            -   Role
+                -   Facilitator
+                -   Participant
+                -   Admin
+                -   Master teacher in training
+                -   Ambassador #not really an enrollment role
+    -   States
+        -   Districts
+            -   Schools
+                -   Classes
+                    -   Teachers
+                        -   Implementations
+    -   School
+        -   Name
+        -   District/Org
+        -   Student Age or Grade Range
+        -   City
+        -   State
+        -   Address
+        -   Principal
+        -   Website
+        -   Gradebook/LMS Software
+        -   Tech Affiliation, Google, MSFT, etc.
+        -   CS Affiliation, Code.org, PLTW, etc.
+    -   District
+        -   Name
+        -   State
+        -   Serving Zip Codes
+        -   Website
 
--   States
-    -   Districts
-        -   Schools
-            -   Classes
-                -   Teachers
-                    -   Implementations
 
-
-<a id="org07f466d"></a>
+<a id="org7cce18b"></a>
 
 ### Dimension Tables and Attributes
 
@@ -715,54 +879,496 @@ Reports for partners include
 -   Standard
 
 
-<a id="org8456d28"></a>
+<a id="orgddb45c9"></a>
+
+### Data Tables
+
+    --------------------------------------------------------------------------
+    -- Dimensional Data
+    --------------------------------------------------------------------------
 
 
-### Explanation
+<a id="org47c0522"></a>
 
-All (most) schools have districts or other support organizations.  Partner
-organizations build contracts with Bootstrap to train cohorts of educators. A
-partner organization could also be a district and referenced with a foreign key.
+### Curricula
 
-<a id="orgab1f3f4"></a>
+      -- These are internal curricula used in trainings. Participants are associated with their most recent training enrollment curricula.
+      -- Currently a training is based on a single curriculum.
+    CREATE TABLE IF NOT EXISTS "curricula" (
+      "id" SERIAL,
+      "name" TEXT
+    );
 
-### TODO How to represent indepent schools?
 
-<a id="org45c8476"></a>
+<a id="orgd56e5ad"></a>
+
+### Event Types
+
+    -- The scope of the event    "full", "intro", "coaching", "one-on-one", "office_hour", "review"
+    CREATE TABLE IF NOT EXISTS "event_type" (
+      "id" SERIAL PRIMARY KEY,
+      "event_type" TEXT,
+      "date_added" DATE
+    );
+
+
+<a id="org68e360a"></a>
+
+### Event Formats
+
+      --     "intensive",    "distributed",    "one-day",    "half-day"
+    CREATE TABLE IF NOT EXISTS "event_format" (
+      "id" SERIAL PRIMARY KEY,
+      "format" TEXT,
+      "date_added" DATE
+    );
+
+
+<a id="org51d0991"></a>
+
+### Event Roles
+
+These are the roles are used with respect to enrollment in an event. They answer the
+question what are you doing as part of this event. This list could
+grow as the type and complexity of event planning changes.
+
+    CREATE TABLE IF NOT EXISTS "event_role" (
+      "id" SERIAL PRIMARY KEY,
+      "role" TEXT -- "facilitator", "administrator", "participant", "observer"
+    );
+
+
+<a id="org054ee9e"></a>
+
+### Race and Ethnicity
+
+    --     "American Indian or Alaska Native",    "Asian",    "Black or African American",    "Native Hawaiian or Other Pacific Islander",    "White"
+    CREATE TABLE IF NOT EXISTS "race" (
+      "id" SERIAL PRIMARY KEY,
+      "description" TEXT
+    );
+    
+    CREATE TABLE IF NOT EXISTS "ethnicity" (
+      "id" SERIAL PRIMARY KEY,
+      "description" TEXT
+    );
+
+
+<a id="orgd664580"></a>
+
+### Gender
+
+    --     "female",    "male",    "transgender",    "none of these"
+    CREATE TABLE IF NOT EXISTS "gender" (
+      "id" SERIAL PRIMARY KEY,
+      "description" TEXT
+    );
+
+
+<a id="org6550dd7"></a>
+
+### Teacher License Area
+
+    /*"Early Childhood Education",
+      "Early Childhood Special Education",
+      "Elementary Education",
+      "Secondary Education",
+      "English",
+      "Mathematics",
+      "Sciences",
+      "Biology",
+      "Chemistry",
+      "Life Sciences",
+      "Physics",
+      "Social Sciences",
+      "Agriculture",
+      "American Sign Language",
+      "Art Teacher",
+      "Business Education",
+      "Computer Science",
+      "Dance",
+      "Drama/Theater",
+      "English as a Second Language (ESL)",
+      "Foreign Language"
+      "Gifted and Talented Education (GATE)",
+      "Health",
+      "Home Economics",
+      "Journalism",
+      "Music",
+      "Physical Education",
+      "Reading Specialist",
+      "Special Education",
+      "Speech Language Pathologist",
+      "Technology",
+      "Visually Impaired Teacher",
+      "Education Technology",
+      "Librarian"*/
+    CREATE TABLE IF NOT EXISTS "license_area" (
+      "id" SERIAL PRIMARY KEY,
+      "description" TEXT
+    );
+
+
+<a id="org2045683"></a>
+
+### Organization Types
+
+    /*    "non-profit",
+          "for-profit",
+          "school",
+          "district",
+          "state government office",
+          "philathropic foundation"
+     */
+    CREATE TABLE IF NOT EXISTS "org_type" (
+      "id" SERIAL PRIMARY KEY,
+      "description" TEXT
+    );
+
+
+<a id="org90bb936"></a>
+
+### Subjects
+
+    /*    "Math",
+          "Science",
+          "English",
+          "Social studies",
+          "Health/physical education",
+          "Art/music",
+          "Language other than English"
+     */
+    CREATE TABLE IF NOT EXISTS "subject" (
+      "id" SERIAL PRIMARY KEY,
+      "description" TEXT
+    );
+
+
+<a id="org151d916"></a>
+
+### Grades
+
+    /* "Kindergarten",
+       "1st",
+       "2nd",
+       "3rd",
+       "4th",
+       "5th",
+       "6th",
+       "7th",
+       "8th",
+       "9th",
+       "10th",
+       "11th",
+       "12th"
+    */
+    CREATE TABLE IF NOT EXISTS "grade" (
+      "id" SERIAL PRIMARY KEY,
+      "description" TEXT
+    );
+
+
+<a id="orgea4967c"></a>
+
+### Skills
+
+    /*"S1",
+      "S2",
+      "S3",
+      "S4"
+    */
+    CREATE TABLE IF NOT EXISTS "skill" (
+      "id" SERIAL PRIMARY KEY,
+      "descrition" TEXT
+    );
+
+
+<a id="org9ea209b"></a>
+
+### Attendance Values
+
+    /*"present",
+      "absent",
+      "tardy",
+      "disengaged",
+      "excused"
+    */
+    CREATE TABLE IF NOT EXISTS "attendance_value" (
+      "id" SERIAL PRIMARY KEY,
+      "description" TEXT
+    );
+
+
+<a id="orgd7aef0a"></a>
+
+### Assessment Values
+
+    /*    "novice",
+          "practitioner",
+          "professional",
+          "master"
+    */
+    CREATE TABLE IF NOT EXISTS "assessment_value" (
+      "id" SERIAL PRIMARY KEY,
+      "description" TEXT
+    );
+
+    --------------------------------------------------------------------------------
+    -- Dimensional Data   
+    --------------------------------------------------------------------------------
+
+These tables are descriptive data elements that make up the relationships in our
+system. They represent everything we know about the people, organizations, and
+events in our facilitation ecosystem.
+
+
+<a id="org88db11e"></a>
+
+### States
+
+    CREATE TABLE IF NOT EXISTS "state" (
+      "name_jurisdiction" TEXT,
+      "ansi_code"         INTEGER,
+      "abbreviation"      varchar(2) PRIMARY KEY
+    );
+
+
+<a id="org2a273d4"></a>
+
+### Locations
+
+    CREATE TABLE IF NOT EXISTS "location" (
+      "id" SERIAL PRIMARY KEY,
+      "address" TEXT UNIQUE,
+      "city"    TEXT,
+      "state"   TEXT REFERENCES "state",
+      "lat"     NUMERIC,
+      "lon"     NUMERIC
+    );
+
+
+<a id="org8c6d3e4"></a>
+
+### Districts
+
+    CREATE TABLE IF NOT EXISTS "district" (
+      "LEAID" TEXT PRIMARY KEY, -- Agency identification number
+      "NAME"  TEXT, -- Name of agency
+      "OPSTFIPS" TEXT, -- FIPS state code for operating state
+      "STREET" TEXT, -- Reported location street address
+      "CITY"   TEXT, -- Reported location city
+      "STATE"  TEXT, -- Reported location state
+      "ZIP"    TEXT, -- Reported location ZIP code
+      "STFIP"  TEXT, -- State FIPS
+      "CNTY"   TEXT, -- County FIPS
+      "NMCNTY" TEXT, -- County name
+      "LAT"    NUMERIC, -- Latitude of agency office location
+      "LON"    NUMERIC, -- Longitude of agency office location
+      "CBSA"   TEXT, -- Core Based Statistical Area
+      "NMCBSA" TEXT, -- Core Based Statistical Area name
+      "CBSATYPE" TEXT, -- Metropolitan or Micropolitan Statistical Area indicator
+      "CSA"    TEXT, -- Combined Statistical Area
+      "NMCSA"  TEXT, -- Combined Statistical Area name
+      "NECTA"  TEXT, -- New England City and Town Area
+      "NMNECTA" TEXT, -- New England City and Town Area name
+      "CD"     TEXT, -- Congressional District
+      "SLDL"   TEXT, -- State Legislative District - Lower
+      "SLDU"   TEXT, -- State Legislative District - Upper
+      "SCHOOLYEAR" TEXT, -- School year
+      "LOCALE" TEXT, -- Locale assigned to district
+      "PCT_CITY11" NUMERIC, -- Percentage of enrolled students attending schools in locale 11 (city – large)
+      "PCT_CITY12" NUMERIC, -- Percentage of enrolled students attending schools in locale 12 (city – midsize)
+      "PCT_CITY13" NUMERIC, -- Percentage of enrolled students attending schools in locale 13 (city – small)
+      "PCT_SUB21"  NUMERIC, -- Percentage of enrolled students attending schools in locale 21 (suburb – large)
+      "PCT_SUB22"  NUMERIC, -- Percentage of enrolled students attending schools in locale 22 (suburb – midsize)
+      "PCT_SUB23"  NUMERIC, -- Percentage of enrolled students attending schools in locale 23 (suburb – small)
+      "PCT_TOWN31" NUMERIC, -- Percentage of enrolled students attending schools in locale 31 (town – fringe)
+      "PCT_TOWN32" NUMERIC, -- Percentage of enrolled students attending schools in locale 32 (town – distant)
+      "PCT_TOWN33" NUMERIC, -- Percentage of enrolled students attending schools in locale 33 (town – remote)
+      "PCT_RURAL41" NUMERIC, -- Percentage of enrolled students attending schools in locale 41 (rural – fringe)
+      "PCT_RURAL42" NUMERIC, -- Percentage of enrolled students attending schools in locale 42 (rural – distant)
+      "PCT_RURAL43" NUMERIC  -- Percentage of enrolled students attending schools in locale 43 (rural - remote)
+    );
+
+
+<a id="orgf62cade"></a>
+
+### Schools
+
+        CREATE TABLE IF NOT EXISTS "school" (
+          "NCESSCH"    TEXT PRIMARY KEY, -- School identification number
+          "LEAID"      TEXT REFERENCES "district", -- School district identification number
+          "NAME"       TEXT, -- String Name of institution
+          "OPSTFIPS"   TEXT, -- FIPS state code for operating state
+          "STREET"     TEXT, -- Reported location street address
+          "CITY"       TEXT, -- Reported location city
+          "STATE"      TEXT, -- Reported location state
+          "ZIP"        TEXT, -- Reported location ZIP code
+          "STFIP"      TEXT, -- State FIPS
+          "CNTY"       TEXT, -- County FIPS
+          "NMCNTY"     TEXT, -- County name
+          "LOCALE"     TEXT, -- Locale code
+          "LAT"        DOUBLE PRECISION, -- Latitude of school location
+          "LON"        DOUBLE PRECISION, -- Longitude of school location
+          "CBSA"       TEXT, -- Core Based Statistical Area
+          "NMCBSA"     TEXT, -- Core Based Statistical Area name
+          "CBSATYPE"   TEXT, -- Metropolitan or Micropolitan Statistical Area indicator
+          "CSA"        TEXT, -- Combined Statistical
+          "NMCSA"      TEXT, -- Combined Statistical Area name
+          "NECTA"      TEXT, -- New England City and Town Area
+          "NMNECTA"    TEXT, -- New England City and Town Area name
+          "CD"         TEXT, -- Congressional District
+          "SLDL"       TEXT, -- State Legislative District - Lower
+          "SLDU"       TEXT, -- State Legislative District - Upper
+          "SCHOOLYEAR" TEXT  -- School year
+    );
+
+
+<a id="orgfa4a2b7"></a>
+
+### Textbooks
+
+    CREATE TABLE IF NOT EXISTS "textbooks" (
+      "id" SERIAL PRIMARY KEY,
+      "name"      TEXT,
+      "publisher" TEXT,
+      "year_published" INTEGER
+      );
+
+
+<a id="orgbf3ae68"></a>
+
+### Assessment Instruments
+
+    CREATE TABLE IF NOT EXISTS "assessment_instrument" (
+      "id" SERIAL PRIMARY KEY,
+      "name" TEXT,
+      "curricula" TEXT REFERENCES "curricula", 
+      "skills" TEXT REFERENCES "skill"
+    );
+
+
+<a id="org95a2002"></a>
+
+### Feedback Instruments
+
+    CREATE TABLE IF NOT EXISTS "feedback" (
+      "id" SERIAL PRIMARY KEY,
+      "name" TEXT,
+      "curricula" CURRICULA, 
+      "skills" SKILL[]
+    );
+
+
+<a id="org1554c2b"></a>
+
+### Partner Organizations
+
+Bootstrap works with partners organizations to build contracts for
+facilitated events. Organizations can be municipal or state level
+education districts or offices, non-profits, individual schools,
+philanthropic foundations, individuals, or Bootstrap itself.
+
+    CREATE TABLE IF NOT EXISTS "organization" (
+      "id"           SERIAL PRIMARY KEY,
+      "name"         TEXT NOT NULL UNIQUE,
+      "location_id"  INTEGER,
+      "url"          TEXT,
+      "district_id"  TEXT,
+      CONSTRAINT "fk_location" FOREIGN KEY ("location_id") REFERENCES "location",
+      CONSTRAINT "fk_district" FOREIGN KEY ("district_id") REFERENCES "district"
+    );
+
+
+<a id="orge46b116"></a>
+
+## User & Event Data
+
+    --------------------------------------------------------------------------------
+    -- User & Event Data
+    --------------------------------------------------------------------------------
+
+
+<a id="orga1916c9"></a>
+
+### Users
+
+One row per person. Anyone who has interacted with Bootstrap, who ever
+signed up for an event, even if they did not
+attend. Anyone who joined the mailing list through
+a web form, reached out directly to Bootstrap
+staff, messaged through social media, requested
+answer keys, or joined Discourse.
+
+    CREATE TABLE IF NOT EXISTS "user" (
+      "id"                 SERIAL PRIMARY KEY, --TEXT,
+      "name_first"         TEXT, -- the legal first name, i.e. would appear on DL
+      "name_last"          TEXT,
+      "name_first_alt"     TEXT, -- usually shortened nick name, e.g. David -> Dave
+      "name_last_alt"      TEXT, -- usually for married name change
+      "email_personal"     TEXT, -- email that persists after job change
+      "email_professional" TEXT, -- email that changes with job change
+      "home_location"      INTEGER REFERENCES "location",
+      "home_phone"         varchar(15),
+      "cell_phone"         varchar(15),
+      "work_phone"         varchar(15),
+      "user_gender"             GENDER,
+      "user_race"               RACE
+    );
+
+
+<a id="org1a304ad"></a>
+
+### Events
+
+Bootstrap facilitates events for professional educators. These events focus on
+the conceptual understanding and implementation of Bootstrap curriculum.
+
+    --   
+    CREATE TABLE IF NOT EXISTS "event" (
+      "id"            TEXT PRIMARY KEY,
+      "event_name"    TEXT NOT NULL,
+      "location_id"   INTEGER,
+      "event_days"    INTEGER CONSTRAINT "positive_days" GENERATED ALWAYS AS ("end_date" - "start_date") STORED CHECK (event_days > 0),
+      --length in days
+      "end_date"      INTEGER,
+      "start_date"    INTEGER,
+      "type"          INTEGER REFERENCES "event_type",
+      "format"        INTEGER REFERENCES "event_type"
+    );
+
+
+<a id="org006ce20"></a>
 
 ## Facts
 
--   Implementation
-    -   Start Data
-    -   End Data
-    -   Class
--   Class
-    -   School
-    -   \# Students
-    -   Demographics
-    -   Grade Level
-    -   Course Name
-    -   Subject
-    -   Level
--   School
-    -   Name
-    -   District/Org
-    -   Student Age or Grade Range
-    -   City
-    -   State
-    -   Address
-    -   Principal
-    -   Website
-    -   Gradebook/LMS Software
-    -   Tech Affiliation, Google, MSFT, etc.
-    -   CS Affiliation, Code.org, PLTW, etc.
--   District
-    -   Name
-    -   State
-    -   Serving Zip Codes
-    -   Website
--   Comm Preferences
+    --------------------------------------------------------------------------------
+    -- Fact Tables
+    --------------------------------------------------------------------------------
 
+
+<a id="orgcd7c8f7"></a>
+
+### Implementation
+
+-   Start Data
+-   End Data
+-   Class
+
+
+<a id="orgaec4be8"></a>
+
+### Class
+
+-   School
+-   \# Students
+-   Demographics
+-   Grade Level
+-   Course Name
+-   Subject
+-   Level
+
+-   Comm Preferences
 -   Feedbacks
     -   Confidence
     -   Appropriateness
@@ -795,250 +1401,143 @@ partner organization could also be a district and referenced with a foreign key.
     -   rater
     -   date
 
-<a id="org6ff6203"></a>
 
-# Data Model
+<a id="org9b43613"></a>
 
+### Communication Preferences (Opt In/Out)
 
-<a id="org0bf5da3"></a>
-
-## Core Entity (Primary Dimensions) Tables
-
-These tables are descriptive data elements that make up the relationships in our
-system. They represent everything we know about the people, organizations, and
-events in our facilitation ecosystem.
-
-
-<a id="org73fa1a0"></a>
-
-### Contacts
-
-Anyone who has interacted with Bootstrap, who ever
-signed up for an event, even if they did not
-attend. Anyone who joined the mailing list through
-a web form, reached out directly to Bootstrap
-staff, messaged through social media, requested
-answer keys, or joined Discourse.
-
-    CREATE TABLE IF NOT EXISTS "contacts" (
-      "id" SERIAL PRIMARY KEY, --varchar(255),
-      NameFirst varchar(255),
-      NameLast varchar(255),
-      AltNameFirst varchar(255),
-      AltNameLast varchar(255),
-      emailPersonal varchar(255),
-      emailProfessional varchar(255)
+    
+    CREATE TABLE IF NOT EXISTS "comm_preference" (
+      "user_id"    SERIAL PRIMARY KEY,
+      "preference" TEXT,
+      CONSTRAINT "comm_id" FOREIGN KEY ("user_id") REFERENCES "user"
     );
 
-<a id="orgc19dfc2"></a>
 
-### Users
-
-All of the individual persons who make up the Bootstrap event
-facilitation ecosystem. Users are required to submit a full personal
-and professional questionaire. Contacts become users when they have
-completed training paperwork.
-
-    CREATE TABLE users ( userID varchar(255), contactID varchar(255)
-      REFERENCES contacts (contactID), lastName varchar(255), firstName
-      varchar(255), userAddress varchar(255), userCity varchar(255),
-      userState varchar(255), homePhone varchar(15), cellPhone
-      varchar(15), workPhone varchar(15), gender varchar(255) REFERENCES
-      gender (genderID), race varchar(255) REFERENCES race (raceID) );
-
-<a id="orgee24caf"></a>
-
-### Events
-
-Bootstrap facilitates events for professional educators. These events focus on
-the conceptual understanding and implementation of Bootstrap curriculum.
-
-    CREATE TABLE "events" ( "event_id" varchar(255), eventName
-      varchar(255), eventDays int CONSTRAINT positive_days CHECK
-      (eventDays > 0),
-      --length in days eventType varchar(255) REFERENCES eventTypes
-      (typeID), eventFormat varchar(255) REFERENCES eventFormats
-      (formatID), );
-
-
-<a id="org27b70e5"></a>
-
-### Organizations
-
-Bootstrap partners with external organizations to build contracts
-for facilitated events. Organizations can be municipal or state
-level education districts, non-profits, individual schools, private
-individuals, or Bootstrap itself.
-
--   State
--   Main Email
--   Type
-
-    --Main Tables Users, Organizations, Events CREATE TABLE organizations
-    ( orgID varchar(255), orgAddress varchar(255), orgCity varchar(255),
-    orgState varchar(255) );
-
-
-<a id="orge6d85df"></a>
+<a id="org3902660"></a>
 
 ### Teaching programs (schedule of classes)
 
-    -- a class in a teachers program tells us the subject and grade level
-    where the teacher will be interacticng with students CREATE TABLE IF
-    NOT EXISTS "classes" ( "teacher_id" , "class_id" PRIMARY KEY,
-    "class_name" , "class_subject" SUBJECT, "class_gradelevel" GRADELEVEL,
-    "class_start_date" DATE, "class_end_date" DATE, CONSTRAINT
-    "fk_teacher" FOREIGN KEY ("teacher_id") REFERENCES "users" ("user_id")
+    -- a class in a teachers program tells us the subject and grade level where the teacher will be interacticng with students
+    CREATE TABLE IF NOT EXISTS "class" (
+      "id" SERIAL PRIMARY KEY,
+      "teacher_id" INTEGER,
+      "name" TEXT NOT NULL,
+      "subject" SUBJECT,
+      "grade_level" TEXT,
+      "start_date" DATE,
+      "end_date"   DATE,
+      "students"   INTEGER, -- the number of students enrolled in this class
+      "pct_disability" NUMERIC,
+      "pct_african_american" NUMERIC, --  Black or African American
+      "pct_asian" NUMERIC, -- Percent Asian
+      "pct_white" NUMERIC, -- Percent White
+      "pct_american_indian" NUMERIC, -- American Indian or Alaska Native
+      "pct_native_hawaiian" NUMERIC, -- Native Hawaiian or Other Pacific Islander
+      CONSTRAINT "fk_teacher" FOREIGN KEY ("teacher_id") REFERENCES "user"
     );
 
-    CREATE TABLE IF NOT EXISTS "certification" ( -- tracks the
-    certifications relative to state wide professional educators
-    "teacher_id" varchar(255), "cert_id" varchar(255), "state_ab"
-    varchar(2), "title" varchar(255), "subject" varchar(255), CONTSTRAINT
-    "fk_teacher" FOREIGN KEY ("teacher_id") REFERENCES "users" ("user_id")
+    CREATE TABLE IF NOT EXISTS "certification" (
+      -- tracks the certifications relative to state wide professional educators
+      "teacher_id"   INTEGER,
+      "cert_id"      TEXT,
+      "state_ab"     varchar(2) REFERENCES "state",
+      "title"        TEXT,
+      "license_area" INTEGER REFERENCES "license_area",
+      CONSTRAINT "fk_teacher" FOREIGN KEY ("teacher_id") REFERENCES "user"
     );
 
 
-<a id="orgd5c792d"></a>
-
-### Assessment Instruments
-
-    CREATE TABLE assessments ( assessmentID varchar(255) );
-
-
-<a id="org70be525"></a>
-
-### Feedback Instruments
-
-
-<a id="org2c5d4c4"></a>
-
-### Attribute (Derived) Tables
-
-
-<a id="org85c0132"></a>
-
-### Locations
-
-
-<a id="orgbfba898"></a>
-
-### Licenses
-
-
-<a id="org6a8bd60"></a>
-
-### Schools
-
-
-<a id="org1a371f1"></a>
-
-### Districts
-
-
-<a id="orgb07a616"></a>
+<a id="org125271d"></a>
 
 ### Roles
 
-
-<a id="org3c19da0"></a>
-
-### Textbooks
-
-    CREATE TABLE Textbooks ( textBookID varchar(255), textBookName
-      varchar(255), textBookPublisher varchar(255) );
-
-
-<a id="org13315f3"></a>
-
-### TODO Communication Preferences (Opt In/Out)
+    -- One row per user organization relationship
+    CREATE TABLE IF NOT EXISTS "role" (
+        "id"        SERIAL PRIMARY KEY,
+        "user_id"   INTEGER REFERENCES "user",
+        "org_id"    INTEGER REFERENCES "organization",
+        "title"     TEXT,
+        "start_date" DATE,
+        "end_date"   DATE,
+        "is_teacher" BOOLEAN
+      );
 
 
-<a id="orgb6f3c02"></a>
+<a id="org57eb318"></a>
 
-## Relationship (Facts) Tables
+### Licences
 
-
-<a id="orgde0e340"></a>
-
-### Internal and external roles
-
-People have different relationships to our facilitated events. Current roles
-relative to events are Facilitator, Participant, Admin, and Master Teacher in
-Training.
-
-
-<a id="org6ab55b0"></a>
-
-### User-Event Roles (Enrollments)
-
-    
-    --Relationship Tables
-    
-    CREATE TABLE enrollments ( enrollmentID varchar(255), userID
-      varchar(255) REFERENCES Users (UserID) );
-
-
-<a id="orga416b64"></a>
-
-### User-Organization Roles (OrgRoles)
-
-    CREATE TABLE orgRoles ( userID varchar(255) REFERENCES users (UserID),
-      orgID varchar(255) REFERENCES organizations (OrgID), roleID
-      varchar(255) REFERENCES roles (RoleID)
-    
-    CREATE TABLE Enrollments ( EnrollmentID varchar(255), UserID
-      varchar(255) REFERENCES Users (UserID) );
-
-
-<a id="org7828070"></a>
-
-### User-Organization Roles (UserOrganizationRoles)
-
-    CREATE TABLE UserOrganizationRoles ( UserID varchar(255) REFERENCES
-      Users (UserID), OrgID varchar(255) REFERENCES Organizations (OrgID),
-      RoleID varchar(255) REFERNCES Roles (RoleID)
-    
+    CREATE TABLE IF NOT EXISTS "license" (
+      "id"      SERIAL PRIMARY KEY,
+      "user_id" INTEGER REFERENCES "user",
+      "license" INTEGER REFERENCES "license_area",
+      "state"   varchar(2) REFERENCES "state"
     );
 
 
-<a id="org20b3dca"></a>
+<a id="orgaa38b2b"></a>
+
+### Enrollments
+
+    CREATE TABLE IF NOT EXISTS "enrollment" (
+      "id"          SERIAL PRIMARY KEY,
+      "user_id"     INTEGER,
+      "event_id"    TEXT,
+      "role"        INTEGER REFERENCES "event_role",
+      "is_enrolled" BOOLEAN NOT NULL DEFAULT TRUE,
+      CONSTRAINT "fk_user"  FOREIGN KEY ("user_id")  REFERENCES "user",
+      CONSTRAINT "fk_event" FOREIGN KEY ("event_id") REFERENCES "event"
+    );
+
+
+<a id="orgdea643e"></a>
 
 ### Comments
 
     
-    CREATE TABLE comments ( authorUserID varchar(255), regardingUserID
-      varchar(255), commentDate varchar(255), tagUserID varchar(255),
-      commentType varchar(255)
-    
+    CREATE TABLE IF NOT EXISTS "comments" (
+      "id" SERIAL PRIMARY KEY,
+      "comment_target" INTEGER, -- the user about which the comment refers
+      "date" DATE, -- the date the comment was authored
+      "comment_author" INTEGER,
+      "tag_id" INTEGER[], -- the ids of any users who should track or follow up on the comment
+      "comment_text" TEXT,
+      CONSTRAINT "fk_user"   FOREIGN KEY ("comment_target") REFERENCES "user",
+      CONSTRAINT "fk_author" FOREIGN KEY ("comment_author") REFERENCES "user"
     );
 
 
-<a id="orge63a3ed"></a>
+<a id="org98010a6"></a>
 
 ### User-Event-Attendance (Attendance)
 
     
-    CREATE TABLE attendance ( serID varchar(255), eventID varchar(255),
-      attendanceDate Date, attendancePeriod varchar(255), attendanceValue
-      varchar(255)
-    
+    CREATE TABLE IF NOT EXISTS "attendance" (
+      "id" SERIAL PRIMARY KEY,
+      "event_id"  TEXT NOT NULL,
+      "user_id"   INTEGER NOT NULL,
+      "date"      DATE    NOT NULL,
+      "attendance_value" INTEGER REFERENCES "attendance_value",
+      CONSTRAINT "fk_event" FOREIGN KEY ("event_id") REFERENCES "event",
+      CONSTRAINT "fk_user"  FOREIGN KEY ("user_id")  REFERENCES "users"
     );
 
 
-<a id="org3679db5"></a>
+<a id="org0f7c20e"></a>
 
 ### Contracts
 
-Organizations and individual create contracts with
-Bootsrap that lead to the create
+    CREATE TABLE IF NOT EXISTS "contract" (
+      "id"  SERIAL PRIMARY KEY,
+      "partner_id" INTEGER,
+      "event_id"   TEXT,
+      CONSTRAINT "fk_partner" FOREIGN KEY ("partner_id") REFERENCES "organization",
+      CONSTRAINT "fk_event"   FOREIGN KEY ("event_id")   REFERENCES "event"
+    );
 
-    CREATE TABLE Contracts ( ContractID varchar(255), OrgID varchar(255)
-      REFERENCES Organizations (OrgID), EventID varchar(255) REFERENCES
-      Events (EventID) );
 
-
-<a id="orgb99138d"></a>
+<a id="org909d731"></a>
 
 ### Coaching
 
@@ -1051,249 +1550,25 @@ curriculum. Usually you are assigned coaching for
 the curriculum in which you were trained in the
 same calendar year.
 
-    CREATE TABLE Coaching ( -- Coaching is a postive entry table. A user
-    found in this table has -- coaching included in their contract );
+    CREATE TABLE IF NOT EXISTS "coaching" (
+      "user_id"    INTEGER REFERENCES "user", -- Coaching is a postive entry table. A user found in this table has -- coaching included in their contract
+      "start_date" DATE,
+      "end_date"   DATE GENERATED ALWAYS AS ("start_date" + 365) STORED
+    );
 
 
-<a id="orge124271"></a>
+<a id="org1dfbf7a"></a>
 
 ### Assessment Instrument Data
 
     
-    CREATE TABLE instrumentData ( instrumentDataID varchar(255), userID
-      varchar(255) REFERENCES Users (userID), submitted varchar(255)
-      timestamp with time zone, instrumentData text );
-
-
-<a id="org0bf4ebc"></a>
-
-### Custom Data Types
-
-I'm still working out which helper collections are ENUMs.
-
-types and which we add to a helper table. My intuition is that there are short
-sets that we know already and that aren't likely to change, such as race, and
-there are longer sets like the textbooks that might continue to grow.
-
-
-<a id="orgdcdfd33"></a>
-
-### Enrollment Roles
-
-These are the roles with respect to our enrollment relationship. They answer the
-question what are you doing as part of this event. This list could grow as the
-type and complexity of event planning changes.
-
-Some rules attached to these roles. For example, perhaps a participant cannot be
-enrolled to an event before a facilitator has first been enrolled.
-
-    CREATE TYPE "enrollment_roles" AS ENUM ('facilitator', 'participant',
-    'admin', 'master teacher in training' );
-
-
-<a id="org8b0bb6b"></a>
-
-### Race and Ethnicity
-
-    CREATE TYPE race AS ENUM ('American Indian or Alaska Native', 'Asian',
-    'Black or African American', 'Native Hawaiian or Other Pacific
-    Islander', 'White' );
-    
-    CREATE TYPE ethnicity AS ENUM ('Hispanic or Latino', 'Not Hispanic or
-    Latino' );
-
-
-<a id="org6678fa7"></a>
-
-### Gender
-
-    CREATE TYPE gender AS ENUM ('Male', 'Female', 'Transgender', 'None of
-    these');
-
-
-<a id="org39e3568"></a>
-
-### License
-
-    CREATE TYPE license AS ENUM ('Math', 'Science', 'Social Studies',
-    'English', 'Language other than English', 'Elementary General Ed',
-    'Special Education');
-    
-    CREATE TABLE license ( userID varchar(255) REFERENCES users (userID),
-      license varchar(255), licenseState varchar(255) );
-
-
-<a id="org510f3d3"></a>
-
-### Organization Types
-
-
-<a id="org4cef02e"></a>
-
-### TODO What are the organization types we interact with?
-
-Is this redundant from Insightly?
-
-    CREATE TYPE orgTypes AS ENUM ('Non-profit', 'For-profit', 'School',
-    'District', 'State Government Office', 'Foundation');
-
-
-<a id="org13d6def"></a>
-
-### Subjects Taught
-
-    CREATE TYPE subjectsTaught AS ENUM ('AP', 'Algebra', 'Geometry',
-    'Biology' );
-
-
-<a id="org9d2ca50"></a>
-
-### Grades Taught
-
-    
-    CREATE TYPE "grades_taught" AS ENUM ('1st', '2nd', '3rd', '4th',
-    '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th');
-
-
-<a id="orgeec8ab9"></a>
-
-### Event Formats
-
-    
-    CREATE TYPE "event_formats" AS ENUM ('Intensive', 'Distributed',
-    'One-day', '2-hour' );
-
-
-<a id="org8b12cf8"></a>
-
-### Event Types
-
-    CREATE TYPE eventTypes AS ENUM ('Full PD', 'Intro PD', 'Coaching',
-    'Academic Year Workshop' );
-
-
-<a id="orgf9ef59c"></a>
-
-### Curricula
-
-    CREATE TYPE curricula AS ENUM ('Algebra', 'Data Science', 'Physics',
-    'Algebra 2', 'Early Math', 'Data Science (CODAP)' );
-
-
-<a id="org0a42426"></a>
-
-# The Teacher Journey
-
-
-<a id="orgc8b4904"></a>
-
-## The Bootstrap Participant Landscape
-
-Professional educators find themselves in a Bootsrap training from a
-variety of pathways. Typically, partner organizations build training
-contracts for cohorts of teachers, which leads to participants with a
-range of motivations and prior knowledge.
-
-Bootstrap curriculum is freely available on the internet. Teachers
-attend trainings (and have done so for many years), and those who have
-been trained contiue to expose others. Teachers who attend Bootstrap
-trainings generally love their experience, hence word of mouth brings
-teachers in.
-
-1.  TODO Add data table for how you connect to bootstrap
-
-    This is to distinguish from the teacher added by an administrator without intrinsic interest
-
-
-<a id="orgf2184dd"></a>
-
-## The Timespan of a Teacher Journey
-
-How long does a teacher receive support and monitoring? Educators can
-attend multiple workshops. Does the clock reset? Do we track cohort
-contracts, which may have different time lengths for continued
-support? Do we continue to assess teaching confidence and strength of
-implementation and offer support as long as the teacher is using
-Bootstrap curricula? What is the average or typical journey? Are their
-logical subsets that may have different typical journeys?
-
-Analysis of our current implementers will help. We have responses to the
-implementation survey. We have attendance at coaching and we have on-going
-contact. In the future we hope to have users log into a website where we can
-track lesson plan usage and custom pathways.
-
-
-<a id="org3cd64f0"></a>
-
-## Milestones
-
-
-<a id="orgc2ac34b"></a>
-
-### Year 1
-
-
-<a id="orgcac058d"></a>
-
-### Year 2
-
-
-<a id="org8ba8061"></a>
-
-### Year 3
-
-
-<a id="org38b38b6"></a>
-
-## Communication Plan
-
-
-<a id="org03c0432"></a>
-
-### First Contact
-
-First contact can be casual or formal. Casual contacts include requests for
-information through web forms, posting or emailing questions, and tags on social
-media. Formal contacts are typically enrolled in a workshop; the first they hear
-from us would be a formal welcome to a training event with logistic information.
-
-
-<a id="org24461b2"></a>
-
-### Preworkshop Intake Data
-
-Information prior to enrolling in a full training scenario is used to
-ensure the training is appropriate for the participant, the
-training addresses participant needs, and . So, what do we want or need to know
-about our teachers?
-
-We want to know how to contact them. We want to know two email
-addresses for each person: their school or organization based address
-and a personal or persistent address that would not change if they
-left their current position. Teachers may change schools, but they
-remain Bootstrap teachers.
-
-We want to know about their training and prior
-experience. Professional educators typically hold certification and
-licensure. Their state has typically granted and certification and
-their municipallity has licensed them to teach in the district. A
-teacher could work at an independent school and have no certification
-or licensure. A teacher could be instructing classes within their
-licensed area or outside of it.
-
-We want to know about the classes they are currently teaching and the classes
-they plan to teach next year. We want to know the subject and grade level of
-those classes, which may be different for each class. Hence, we actually want a
-siimplified class program for each of our participants.
-
-
-<a id="org90b905a"></a>
-
-## On-going Support and Monitoring
-
-
-<a id="org2f2be88"></a>
-
-## The Journey to Master Teacher
-
+    CREATE TABLE IF NOT EXISTS "assessment" (
+      "id"             SERIAL PRIMARY KEY,
+      "assessment_id"  INTEGER,
+      "user_id"        INTEGER,
+      "assessment_value" INTEGER REFERENCES "assessment_value",
+      "data"           TEXT,
+      CONSTRAINT "fk_assessment" FOREIGN KEY ("assessment_id") REFERENCES "assessment_instrument",
+      CONSTRAINT "fk_user"       FOREIGN KEY ("user_id")       REFERENCES "user"
+    );
 

@@ -7,6 +7,12 @@ This repository contains issues and communications related to our user, event, e
 Some of the original rosters are copies of data that where cleaned in the master file. Original rosters in the wild may differ from the copies in the master. Primarily, rosters tended to keep participants that dropped before the event began and used strike-through or some other formatting to indicate the person was no longer in the workshop.
 Some of the original rosters are linked to active rosters with on going dates. These rosters are often duplicated by hand for partner reporting. In this way we are in a hybrid state where some attendance is taken in original rosters and some is taken by new import tools.
 
+## PD OPs Tracker
+[PD OPs Tracker](https://docs.google.com/spreadsheets/d/1MoBEaWZRZqmDD3I_Av5B3U54HUTZcKkz-XUAJyronJc/edit?usp=sharing) is the source of truth for training events. This repository's milestones should be closely tied to these events.
+
+## Metrics
+[Metrics](https://docs.google.com/spreadsheets/d/1NRnCBNQ4ZxlQrt3VPCVSpuWkkcj6RB2KUYUTtHKS3gk/edit?usp=sharing) tracks key areas of measurement and related discussions. Metrics is the backbone of our data collection framework.
+
 ### Data Architecture
 
 All of the roster data from events over the past year have been joined into a small number of tables. In the future more tables will be added as we capture more of the changeable nature of roles and relationships within our system.
