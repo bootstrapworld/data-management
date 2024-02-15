@@ -10,8 +10,8 @@
 - Execute communications schedule
 - Produce and consume attendance data
 - Produce and deliver enrollment reports
-    
 
+  
 * PD to Success Transition, Fall 2024
 - Revisit the tech stack
 - Expand support services
