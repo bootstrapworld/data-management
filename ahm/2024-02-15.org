@@ -1,0 +1,18 @@
+* Pre-Summer Intensive, Feb-April
+- Refining the Data Model
+- Intake and Enrollment
+- Communications
+- Facilitation Tools
+- Next version development
+  
+
+* Summer Training Season, May-July
+- Execute communications schedule
+- Produce and consume attendance data
+- Produce and deliver enrollment reports
+    
+
+* PD to Success Transition, Fall 2024
+- Revisit the tech stack
+- Expand support services
+- Refine and extend data model and infrastructure
