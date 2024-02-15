@@ -1,86 +1,18 @@
 * Pre-Summer Intensive, Feb-April
-
-** Refining the Data Model
-
-*** Lock down definitions
-- Partner
-- User
-- Event
-- Sponsored-by
-- Implementation
-
-*** Modeling associations
-- Partner <-> Contract <-> Event
-- Class <-> Implementation <-> Student Achievement
-- User <-> Partner sponsorship
-- User <-> Employer job title
-- User <-> Event role
-
-*** Connecting to metrics
-- Are we helping teachers learn, grow, and achieve their teaching goals?
-- Are we helping partners achieve their goals?
-- Is Bootstrap growing sustainably?
-
-
-** Intake and Enrollment
-- Review intake forms plan
-- Revise forms with standardized inputs
-- Build out additional forms, e.g. classroom setting and motivation
-
-
-** Communications
-- Set communications schedule and templats
-- Build out communications infrastructure
-- Draft templates and send conditions
-
-
-** Facilitation Tools
-- Attendance rosters
-- /Whose in the room/ reports
-- Reminders and notifications
-
-
-** Next version development
-- POSTGRESql
-- Postmark
-- Discourse API
-
+- Refining the Data Model
+- Intake and Enrollment
+- Communications
+- Facilitation Tools
+- Next version development
+  
 
 * Summer Training Season, May-July
+- Execute communications schedule
+- Produce and consume attendance data
+- Produce and deliver enrollment reports
+    
 
-** Execute communications schedule
-- Monitor timed email jobs
-- Monitor enrollment imports and reminders
-- Trigger additional one-off communications as needed
-  
-
-** Produce and consume attendance data
-- Generate attendance files for facilitators
-- Consume edited attendance files
-- Consume zoom data for online sessions
-
-
-** Produce and deliver enrollment reports
-- Deliver /Whose in the room?/ reports
-- Deliver partner summaries
-- Respond to on-demand report requests
-
-  
 * PD to Success Transition, Fall 2024
-
-** Revisit the Tech Stack
-- Database supported communications and enrollment
-- Facilitation software, i.e. learning management system
-- Team task transparency and project planning
-
-
-** Expand support services
-- Newsletters, tips, and announcements
-- Edited and organized video content
-- Automated, personalized follow-ups and surveys
-
-
-** Refine and extend data model and infrastructure
-- Revisit metrics
-- Review data collection feasibility
-- Incorporate website identity data
+- Revisit the tech stack
+- Expand support services
+- Refine and extend data model and infrastructure
