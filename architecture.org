@@ -2,24 +2,6 @@
 #+PROPERTY: header-args :exports code
 #+PROPERTY: header-args :tangle yes
 #+STARTUP: content
-* Notes
-** Is our org growing?
-*** Are we bringing in more money?
-*** Are more teachers using our stuff?
-** Are teachers growing and gaining?
-*** Are teachers demonstrating growth in skills?
-*** Are teachers reporting growth in confidence?
-** Are students learning and growing?
-*** Are teachers submitting artifacts?
-*** Are students demonstrating growth on pre and post tests?
-** Connect a particular change to growth/usage.
-
-** TODO Include in Bootstrap overview the essential nature of integrate curriculum
-Bootstrap's essential nature invite complexities and constraints. Our
-target audience is much more reluctant to change because their courses
-are standardized and measured. In effect we have chosen the most
-difficult teaching population. This plays directly into our
-understanding of the free choice spectrum of our teachers. *see Reporting section*
 * Overview
 :PROPERTIES:
 :VISIBILITY: folded
@@ -142,6 +124,25 @@ classrooms.
 - Workbook orders
 - Self Assessment
 - Pathway Creation
+
+*** Is our org growing?
+**** Are we bringing in more money?
+**** Are more teachers using our stuff?
+*** Are teachers growing and gaining?
+**** Are teachers demonstrating growth in skills?
+**** Are teachers reporting growth in confidence?
+*** Are students learning and growing?
+**** Are teachers submitting artifacts?
+**** Are students demonstrating growth on pre and post tests?
+*** Connect a particular change to growth/usage.
+
+*** TODO Include in Bootstrap overview the essential nature of integrate curriculum
+Bootstrap's essential nature invite complexities and constraints. Our
+target audience is much more reluctant to change because their courses
+are standardized and measured. In effect we have chosen the most
+difficult teaching population. This plays directly into our
+understanding of the free choice spectrum of our teachers. *see Reporting section*
+
 ** Analysis
 *** Appropriateness (Fitness) of Training to Participant
 - Participant computing background vs implementation
@@ -225,6 +226,7 @@ core subjects such as Algebra.
 *** Standardized Achievement
 Are students achieving higher outcomes on standardized exams that they would already be required to take?
 Some teachers administer their own diagnostics, and this practice is increasingly more common in administrative mandates.
+* Data Model
 ** Grain
 The grain in our data model is the professional educator and the
 classrooms they work in. We measure the efficacy of the training
@@ -235,6 +237,28 @@ Bootstrap curriculum into the classroom. Pre and post test student
 data stops at the teacher level. We do not track students as entities
 or store any individual student data.
 ** Definitions
+*** Contact
+*** User
+*** Educator
+are often teachers or have had experience in the classroom, but can
+also be administrators, paraprofessionals, learning coaches, or
+department coordinators. We wish to track the changing role our
+professional educators have to their profession and employer. We wish
+to know a teachers current schedule and where in that schedule they
+have been able to utilize Bootstrap curricula or pedagogy.
+
+Sometimes the participant works alongside teachers and will take the
+learning from Bootstrap back to their teachers in their own
+professional enrichment setting.
+- Principal
+- Dean
+- Librarian
+- Counselor
+- Paraprofessional
+- Learning Coach
+*** Participant
+Is enrolled in a training event in order to learning skills and
+content. Not facilitating, observing, or supervising.
 *** Teacher
 has a role within their organization that places them in front of
 students for the majority of their day.  Teachers spend the majority
@@ -246,7 +270,7 @@ quality of the Bootstrap implementation.
 Bootstrap students are 10-17 years old, live primarily in the lower 48
 states, and attend school in grades 5-12.
 
-*** Partners
+*** Partner
 Bootstrap interacts with partners who develop or
 support teacher excellence through continued
 education or "professional development" for
@@ -255,27 +279,13 @@ private foundations, corporations, states, and
 schools. Individual teachers also join open
 enrollment events and may be paying out of pocket.
 
+*** Contract
 *** Stipend
 Teachers often receive some form of compensation
 from their school, district, or supporting
 organization.
 
-*** Partner Reports
-Partners often request reports, especially
-attendance, which they use to track participant
-participation and to validate stipends. The
-partner may or may not have requirements for the
-form of the report.
-
-*** Professional educators
-are often teachers or have had experience in the classroom, but can
-also be administrators, paraprofessionals, learning coaches, or
-department coordinators. We wish to track the changing role our
-professional educators have to their profession and employer. We wish
-to know a teachers current schedule and where in that schedule they
-have been able to utilize Bootstrap curricula or pedagogy.
-
-*** Administrators
+*** Administrator
 Administrators have a role to their organization that places them
 supporting teachers for the majority of their day. They are sometimes
 the point persons on the contracts (cohort admin), who create training
@@ -306,6 +316,17 @@ deployment by the teacher.
 The end users of Bootstrap curriculum are students, who will be using tools like
 the Pyret or CODAP to build projects.
 
+*** Participant Life Cycle
+- Intake
+- Onboarding
+- Training
+- Implementation with Support
+- Solo Implementation
+- Repeated training
+- Second curriculum
+- Master Teacher in Training
+- Master Teacher
+
 *** Training End User
 The end users of Bootsrap trainings are
 teachers. In most cases the person in the chair is
@@ -313,14 +334,12 @@ a teacher, who will bring the training, pedagogy,
 and curriculum back to students in their
 classroom.
 
-*** Learning Coach
-Sometimes the participant works alongside teachers and will take the
-learning from Bootstrap back to their teachers in their own
-professional enrichment setting.
-
-*** Cohort
-A cohort is a group of teachers supported by a particular
-contract. Cohorts begin with a training event and a certain date. 
+*** Year Cohort
+*** Partner Cohort
+*** Curriculum Cohort
+*** State Cohort
+A partner cohort is a group of teachers supported by a particular
+contract. Cohorts begin with a training event and end at a certain date. 
 
 *** Cohort Admin
 Within a Bootstrap contract the point persons for the partner
@@ -353,25 +372,19 @@ A training event that covers an entire curriculum is considered
 professional development. Participants in professional development
 events are trained as both student and teacher. They must understand
 the curriculum and the pedagogy behind key point in the curriculum.
+*** Partner Reports
+Partners often request reports, especially
+attendance, which they use to track participant
+participation and to validate stipends. The
+partner may or may not have requirements for the
+form of the report.
 
-*** Participant Life Cycle
-- Intake
-- Onboarding
-- Training
-- Implementation with Support
-- Solo Implementation
-- Repeated training
-- Second curriculum
-- Master Teacher in Training
-- Master Teacher
-
-*** Partners
 Reports for partners include
 - a teacher level attendance report
 - a teacher level proficiency report
-- cohort aggregations
 - implementation reports
-*** Internal analysis
+- cohort aggregations
+*** Internal Reports
 - Interventions over time
 - Teacher retention
 - Types of facilitation experience vs implementation
@@ -501,54 +514,7 @@ partner organization may or may not be a district.
 - Course
 - Standard
 
-** Facts
-*** Implementation
-  - Start Data
-  - End Data
-  - Class
-*** Class
-  - School
-  - # Students
-  - Demographics
-  - Grade Level
-  - Course Name
-  - Subject
-  - Level
-- Comm Preferences    
-- Feedbacks
-  - Confidence
-  - Appropriateness
-- Event Cohorts
-  - event_id
-  - teacher_id
-- Year Cohorts
-- Comments
-  - teacher_id
-  - commenter_id
-  - comment
-  - date
-  - time
-  - tags
-  - refer_to
-- Attendances
-  - teacher_id
-  - event_id
-  - attendance_value
-  - attenadance_date
-  - attendance_period
-- Assessments
-  - teacher_id
-  - title
-  - context
-  - cohort_id
-  - skill
-  - evidence
-  - rating
-  - rater
-  - date
-    
-* Data Model
-** Dimensional Data
+*** Data Tables
 #+begin_src sql
   --------------------------------------------------------------------------
   -- Dimensional Data
@@ -972,7 +938,7 @@ the conceptual understanding and implementation of Bootstrap curriculum.
 
 #+end_src
 
-** Relationship (Facts) Tables
+** Facts
 #+begin_src sql
   --------------------------------------------------------------------------------
   -- Fact Tables
@@ -980,6 +946,51 @@ the conceptual understanding and implementation of Bootstrap curriculum.
 
 #+end_src
 
+*** Implementation
+  - Start Data
+  - End Data
+  - Class
+*** Class
+  - School
+  - # Students
+  - Demographics
+  - Grade Level
+  - Course Name
+  - Subject
+  - Level
+- Comm Preferences    
+- Feedbacks
+  - Confidence
+  - Appropriateness
+- Event Cohorts
+  - event_id
+  - teacher_id
+- Year Cohorts
+- Comments
+  - teacher_id
+  - commenter_id
+  - comment
+  - date
+  - time
+  - tags
+  - refer_to
+- Attendances
+  - teacher_id
+  - event_id
+  - attendance_value
+  - attenadance_date
+  - attendance_period
+- Assessments
+  - teacher_id
+  - title
+  - context
+  - cohort_id
+  - skill
+  - evidence
+  - rating
+  - rater
+  - date
+    
 *** Communication Preferences (Opt In/Out)
 #+begin_src sql
 
