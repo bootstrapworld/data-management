@@ -1,111 +1,111 @@
 
 # Table of Contents
 
-1.  [Overview](#orga482912)
-    1.  [This file](#orgfef79e4)
-    2.  [Bootstrap](#org3510688)
-    3.  [Goals](#orge6cfc0f)
-        1.  [What am I doing?](#org86eb1d8)
-        2.  [This data model](#org2e65cef)
-    4.  [Non-goals](#org541e9ef)
-    5.  [Measures of Success](#orgc0af669)
-        1.  [Is our org growing?](#orgef63262)
-        2.  [Are teachers growing and gaining?](#orgcce5212)
-        3.  [Are students learning and growing?](#org7d33b99)
-        4.  [Connect a particular change to growth/usage.](#orgca3aab5)
-        5.  [Include in Bootstrap overview the essential nature of integrate curriculum](#org7dfb29f)
-    6.  [Analysis](#org45e8e46)
-        1.  [Appropriateness (Fitness) of Training to Participant](#orgfb7e265)
-        2.  [Confidence, Implementation, Growth Sentiment Analysis](#org7a3d188)
-        3.  [Skills Analysis](#orgab74fc2)
-        4.  [Students](#org88ae857)
-        5.  [Correlation Questions](#orgf3573d2)
-        6.  [Factors toward implementation](#org30fc56a)
-    7.  [Reporting](#org19d2788)
-        1.  [Attendance Reports](#orgba6417b)
-        2.  [Pre Post Diagnostic Results Analysis](#org1ff1923)
-        3.  [Implementation Reports](#orge8506e7)
-        4.  [Standardized Achievement](#org222f5fe)
-2.  [Data Model](#org782bb83)
-    1.  [Grain](#orgc6314bf)
-    2.  [Definitions](#org4e0cad1)
-        1.  [Contact](#org3d6ae87)
-        2.  [User](#org1e0a574)
-        3.  [Educator](#org5d16106)
-        4.  [Participant](#orgb7d3c94)
-        5.  [Teacher](#org2bdeaca)
-        6.  [Student](#orgf504026)
-        7.  [Partner](#org5b73386)
-        8.  [Contract](#orgbb7d481)
-        9.  [Stipend](#org4f9a601)
-        10. [Administrator](#orgec01313)
-        11. [Implementation](#orgda1168c)
-        12. [Student achievement](#org60bdfab)
-        13. [Curriculum End User](#orgc30f0a7)
-        14. [Participant Life Cycle](#org25b9690)
-        15. [Training End User](#orgdf1fa05)
-        16. [Year Cohort](#org36b1148)
-        17. [Partner Cohort](#orga95dd26)
-        18. [Curriculum Cohort](#org66e15a5)
-        19. [State Cohort](#orgf990609)
-        20. [Cohort Admin](#orgb804eb7)
-        21. [Master Teacher in Training](#orgbdff7b0)
-        22. [Master Teacher](#org492a7cb)
-        23. [Facilitator](#orgc25935a)
-        24. [Coach](#orgc32b02a)
-        25. [Professional Development](#org883fdad)
-        26. [Partner Reports](#org4de387e)
-        27. [Internal Reports](#orgfecfd69)
-    3.  [Dimensions](#org65e769e)
-        1.  [Dimension Hierarchy](#orga16b460)
-        2.  [Dimension Tables and Attributes](#org7cce18b)
-        3.  [Data Tables](#orgddb45c9)
-        4.  [Curricula](#org47c0522)
-        5.  [Event Types](#orgd56e5ad)
-        6.  [Event Formats](#org68e360a)
-        7.  [Event Roles](#org51d0991)
-        8.  [Race and Ethnicity](#org054ee9e)
-        9.  [Gender](#orgd664580)
-        10. [Teacher License Area](#org6550dd7)
-        11. [Organization Types](#org2045683)
-        12. [Subjects](#org90bb936)
-        13. [Grades](#org151d916)
-        14. [Skills](#orgea4967c)
-        15. [Attendance Values](#org9ea209b)
-        16. [Assessment Values](#orgd7aef0a)
-        17. [States](#org88db11e)
-        18. [Locations](#org2a273d4)
-        19. [Districts](#org8c6d3e4)
-        20. [Schools](#orgf62cade)
-        21. [Textbooks](#orgfa4a2b7)
-        22. [Assessment Instruments](#orgbf3ae68)
-        23. [Feedback Instruments](#org95a2002)
-        24. [Partner Organizations](#org1554c2b)
-    4.  [User & Event Data](#orge46b116)
-        1.  [Users](#orga1916c9)
-        2.  [Events](#org1a304ad)
-    5.  [Facts](#org006ce20)
-        1.  [Implementation](#orgcd7c8f7)
-        2.  [Class](#orgaec4be8)
-        3.  [Communication Preferences (Opt In/Out)](#org9b43613)
-        4.  [Teaching programs (schedule of classes)](#org3902660)
-        5.  [Roles](#org125271d)
-        6.  [Licences](#org57eb318)
-        7.  [Enrollments](#orgaa38b2b)
-        8.  [Comments](#orgdea643e)
-        9.  [User-Event-Attendance (Attendance)](#org98010a6)
-        10. [Contracts](#org0f7c20e)
-        11. [Coaching](#org909d731)
-        12. [Assessment Instrument Data](#org1dfbf7a)
+1.  [Overview](#org07b7e63)
+    1.  [This file](#org5aec675)
+    2.  [Bootstrap](#orgccc3fd2)
+    3.  [Goals](#orgd1d12ce)
+        1.  [What am I doing?](#org63846f6)
+        2.  [This data model](#orgcc1e639)
+    4.  [Non-goals](#org18f2f6f)
+    5.  [Measures of Success](#orgdb98506)
+        1.  [Is our org growing?](#org7366395)
+        2.  [Are more students teachers growing and gaining?](#org6120fcb)
+        3.  [Are partner goals being met?](#orgda046cd)
+        4.  [Connect a particular change to growth/usage.](#orgbc8a7d6)
+        5.  [Include in Bootstrap overview the essential nature of integrate curriculum](#org33da640)
+    6.  [Analysis](#orgbdcdb81)
+        1.  [Appropriateness (Fitness) of Training to Participant](#orga784a80)
+        2.  [Confidence, Implementation, Growth Sentiment Analysis](#org8fc99ec)
+        3.  [Skills Analysis](#orgedf4e47)
+        4.  [Students](#org3451c07)
+        5.  [Correlation Questions](#org9741a32)
+        6.  [Factors toward implementation](#orgb339792)
+    7.  [Reporting](#org6a00589)
+        1.  [Attendance Reports](#org63ea5b5)
+        2.  [Pre Post Diagnostic Results Analysis](#orgde247ce)
+        3.  [Implementation Reports](#orge6f8bee)
+        4.  [Standardized Achievement](#orgea8454f)
+2.  [Data Model](#org6bfd677)
+    1.  [Grain](#orge523e75)
+    2.  [Definitions](#org4b85f0f)
+        1.  [Contact](#orgf400c12)
+        2.  [User](#org82328de)
+        3.  [Educator](#orgf52ecf3)
+        4.  [Participant](#org0f6fd54)
+        5.  [Teacher](#org0413c62)
+        6.  [Student](#org09f6af0)
+        7.  [Partner](#org669ff87)
+        8.  [Contract](#orgc614bf8)
+        9.  [Stipend](#orga39af7f)
+        10. [Administrator](#org3f9b340)
+        11. [Implementation](#org18770d1)
+        12. [Student achievement](#orgea48237)
+        13. [Curriculum End User](#org0b86c7d)
+        14. [Participant Life Cycle](#org7765808)
+        15. [Training End User](#orgd6fe4f4)
+        16. [Year Cohort](#org2feb771)
+        17. [Partner Cohort](#orga0ea0a1)
+        18. [Curriculum Cohort](#org597135b)
+        19. [State Cohort](#org991cf80)
+        20. [Cohort Admin](#orga741e94)
+        21. [Master Teacher in Training](#orgcaf7753)
+        22. [Master Teacher](#org01fd8f6)
+        23. [Facilitator](#org07c2ebc)
+        24. [Coach](#orge5594dc)
+        25. [Professional Development](#orgaed9955)
+        26. [Partner Reports](#org0e73795)
+        27. [Internal Reports](#org6dae797)
+    3.  [Dimensions](#org131d7fe)
+        1.  [Dimension Hierarchy](#orgbc43a4d)
+        2.  [Dimension Tables and Attributes](#org48f9d76)
+        3.  [Data Tables](#org497a7d3)
+        4.  [Curricula](#org6c3c256)
+        5.  [Event Types](#org8f9f09c)
+        6.  [Event Formats](#orgbb4b16e)
+        7.  [Event Roles](#orgc45cf19)
+        8.  [Race and Ethnicity](#orgde892b2)
+        9.  [Gender](#org5911e9b)
+        10. [Teacher License Area](#org966dcee)
+        11. [Organization Types](#orgb4638b2)
+        12. [Subjects](#org22e521b)
+        13. [Grades](#orgdc126b1)
+        14. [Skills](#org90ede18)
+        15. [Attendance Values](#org0c8b121)
+        16. [Assessment Values](#orgaccb9cb)
+        17. [States](#orgf073034)
+        18. [Locations](#orgfe5a163)
+        19. [Districts](#org78d5191)
+        20. [Schools](#org6185fd0)
+        21. [Textbooks](#org4962853)
+        22. [Assessment Instruments](#org7bf2a79)
+        23. [Feedback Instruments](#orgb2d5be2)
+        24. [Partner Organizations](#org0acd533)
+    4.  [User & Event Data](#org897aa92)
+        1.  [Users](#org6d12fdf)
+        2.  [Events](#orgb367979)
+    5.  [Facts](#orgba370f7)
+        1.  [Implementation](#org2a6a93f)
+        2.  [Class](#org66e86d5)
+        3.  [Communication Preferences (Opt In/Out)](#org9ece295)
+        4.  [Teaching programs (schedule of classes)](#orgb7e80a4)
+        5.  [Roles](#org8380787)
+        6.  [Licences](#orgf443e0e)
+        7.  [Enrollments](#orgb350ce4)
+        8.  [Comments](#org5574f06)
+        9.  [User-Event-Attendance (Attendance)](#orgca32eca)
+        10. [Contracts](#org69c3a8f)
+        11. [Coaching](#org7c06aac)
+        12. [Assessment Instrument Data](#orgedf8797)
 
 
 
-<a id="orga482912"></a>
+<a id="org07b7e63"></a>
 
 # Overview
 
 
-<a id="orgfef79e4"></a>
+<a id="org5aec675"></a>
 
 ## This file
 
@@ -115,7 +115,7 @@ tracking. This is a literate file written in Orgmode and tangled using
 org-babel.
 
 
-<a id="org3510688"></a>
+<a id="orgccc3fd2"></a>
 
 ## Bootstrap
 
@@ -123,7 +123,7 @@ Bootstrap develops curriculum and facilitates training for
 professional educators and the organizations that support
 them. Bootstrap delivers pedagogical strategies to participant
 educators through in-person or virtual learning sessions. Bootstrap
-seeks to support teacher from novice learners until they can
+seeks to support teachers from novice learners until they can
 confidently implement Bootstrap curriculum in their
 classrooms. Bootstrap trainings prepare teachers to deliver the
 curriculum such that their students can demonstrate certain skills
@@ -135,12 +135,14 @@ mathematical reasoning. Teachers are the professionals who deploy
 Bootstrap content. The quality of that deployment directly correlates
 to student achievement with Bootstrap.  Whether Bootstrap curricula
 meets its aim to boost standardized achievement relies on the quality
-of teacher's deployment.
+of a teacher's deployment.
 
 Some of Bootstrap's activities can be accessed by the student
 directly. However, the primary market for Bootstrap products and
 services is the teacher-student classroom where one teacher will
 typically work with a groups of fifteen to thirty students. Bootstrap
+teachers must deliver the curriculum. There is no mechanism for
+student to work in an entirely self guided environment. Bootstrap
 students are typically 10 to 17 years old.
 
 Classrooms vary widely across the United States, and if we consider
@@ -162,25 +164,26 @@ who do not interact with classrooms in their daily work, but are
 otherwise connected to Bootstrap and may attend training events.
 
 The Bootstrap data model collects data for improving the curriculum,
-track student academic achievement, and analyzing the relationship
-between changes to curriculum, training, and on-going teacher
-supports. We hope to facilitate analysis and lead to improvements in
-training and curriculum, which become measurably better suited to the
-needs of teachers and student achievement over time.
+tracking student academic achievement, and analyzing the relationship
+between curriculum, training, and on-going teacher supports and the
+experience of teachers in the classroom. We hope to facilitate
+analysis and lead to improvements in training and curriculum, which
+become measurably better suited to the needs of teachers and student
+achievement over time.
 
-These relationships to outside organizations are orthogonal to the
-relationships to Bootstrap. A principal could be a participant
-learning Data Science. However, the relationship to the outside
-organization affects how the user receives the material and our
-expectations of them.
+Relationships between users and outside organizations are orthogonal
+to the relationships between users and Bootstrap. A principal could be
+a participant learning Data Science. However, the relationship to the
+outside organization affects how the user receives and deploys the
+learning and our expectations of them.
 
 
-<a id="orge6cfc0f"></a>
+<a id="orgd1d12ce"></a>
 
 ## Goals
 
 
-<a id="org86eb1d8"></a>
+<a id="org63846f6"></a>
 
 ### What am I doing?
 
@@ -188,40 +191,907 @@ I am trying to capture the ways Bootstrap is working to grow through a
 relational data model.  This model should enable facilitation of
 training events, particularly the communication required of
 facilitation.  This model should answer key question for the Bootstrap
-organization such as how should it grow its trainee support
-offerings. This model should hold rolling data for years and
-facilitate slicing by year, cohort, etc.
+organization such as whether it is meeting teacher and partner goals
+and succeeding in its own growth or how should it grow its trainee
+support offerings. This model should hold rolling data for years and
+facilitate slicing by year, partner cohort, curriculum, etc.
 
 
-<a id="org2e65cef"></a>
+<a id="orgcc1e639"></a>
 
 ### This data model
 
 The primary goal of this data model is to track and analyze the
 efficacy of learning supports created by Bootstrap: curriculum
 materials and facilitated trainings events.  Bootstrap hopes to
-improve the learning model for professional educators. Support for
-educators are successful, if the educator feels confident enough to
-actually bring a set of Bootstrap lessons into their
-classrooms. Bootstrap further measures success through the achievement
-of students who received Bootstrap curriculum.
+improve the learning model for professional educators, build support
+for educators such that they are successful, and works toward
+educators feeling confident enough to actually bring a set of
+Bootstrap lessons into their classrooms. Bootstrap further measures
+success through the achievement of students who received Bootstrap
+curriculum. To what extent we can track individual student learning is
+on open and complex question.
 
 
-<a id="org541e9ef"></a>
+<a id="org18f2f6f"></a>
 
 ## Non-goals
 
 It is not a goal at this time to hold curriculum and financial change
-records.  Certain aspects of curriculum are represented here in the
-assessment model. Lesson titles and curriculum are here and one can
-imagine other aspects such as pathway could be stored here.  Contracts
+records, nor to track contracts facilitators performance, though
+information contained here will support a variety of analysis
+regarding training efficacy.  Certain aspects of curriculum are
+represented here in the assessment model, such as skill groups, lesson
+and assessment titles, and curriculum are here and one can imagine
+other aspects such as pathway could be stored here as well.  Contracts
 (in the business sense) are represented for the purpose of turning on
-services for client cohorts and for reporting back to stakeholders.
+services (e.g. workbooks, coaching) for client cohorts and for
+reporting back to stakeholders.
 
 
-<a id="orgc0af669"></a>
+<a id="orgdb98506"></a>
 
 ## Measures of Success
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">SUCCESS DEFINITION</th>
+<th scope="col" class="org-left">METRICS (QUANTITATIVE)</th>
+<th scope="col" class="org-left">METRICS (ANECDOTAL)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td class="org-left">We help teachers achieve their goals</td>
+<td class="org-left">Teacher:  Are we helping teachers learn, grow, and achieve their teaching goals?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">More teachers are using more Bootstrap with their students for multiple years (more: users, depth, years)</td>
+<td class="org-left">How wide is our reach and how great is our potential could it be based on the teachers we trained?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">What is our conversion rate from PD to classroom implementation?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">How far are Bootstrap students going?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">How many students are we reaching, and are we reaching the ones we want?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">How far are Bootstrap students going, by type of implementation and curriculum?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">How many teachers do we lose each year?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">How long do teachers teach Bootstrap?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">Educators use everything we make (i.e., we make things educators use), including updated materials</td>
+<td class="org-left">How well are teachers able to support student inquiry?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">How well do our printed and online materials meet teachers' needs?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">How do our teachers' skills progress over time?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">How well do our offerings meet teachers' needs?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">Students are learning more</td>
+<td class="org-left">How much are students learning?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">Are students achieving learning goals for their courses through our materials?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">Are students excited and empowered by our materials?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">Teachers are so happy they are brand evangelists and refer other teachers to Bootstrap</td>
+<td class="org-left">-</td>
+<td class="org-left">Are teachers evangelizing Bootstrap?</td>
+</tr>
+
+
+<tr>
+<td class="org-left">We help partners achieve their goals</td>
+<td class="org-left">Partner: Are we helping partners achieve their goals?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">Partners are happy with our work and show appreciation (e.g., to us directly, recommend us to others)</td>
+<td class="org-left">How satisfied are our partners?</td>
+<td class="org-left">Are partners expressing gratitutude/appreciation?</td>
+</tr>
+
+
+<tr>
+<td class="org-left">Partners engage us year over year</td>
+<td class="org-left">How long do partners work with us?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">How many partners renew?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">How many partners do not renew?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">We are poised to grow sustainably</td>
+<td class="org-left">Bootstrap: Is Bootstrap is growing sustainably?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">Growing team who is satisfied with their jobs</td>
+<td class="org-left">How quickly is our organization growing?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">How satisfied is our team?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">We are financially stable and growing</td>
+<td class="org-left">How quickly is our organization growing financially?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">We establish new clients each year in more geographies (more schools and more geographies)</td>
+<td class="org-left">How quickly is our partner bench growing?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">How well are we poised for growth from a marketing and sales perspective?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">How well are we poised for growth and sustainability?</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">OTHER Success Definition Points to Consider</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">We reach threshold where we are ingrained in the system.</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">Administrators support excited educators (bottom up / top down expansion)</td>
+<td class="org-left">-</td>
+<td class="org-left">Are admins promoting expansion?</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Major Question/Metric</th>
+<th scope="col" class="org-left">Proxy Metric</th>
+<th scope="col" class="org-left">How it's Measured</th>
+<th scope="col" class="org-left">How it's Displayed</th>
+<th scope="col" class="org-left">Frequency of Reporting</th>
+<th scope="col" class="org-left">Target/Goal</th>
+<th scope="col" class="org-left">Comment</th>
+<th scope="col" class="org-left">Action Implications</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td class="org-left">Teacher:  Are we helping teachers learn, grow, and achieve their teaching goals?</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">How wide is our reach and how great is our potential could it be based on the teachers we trained?</td>
+<td class="org-left">Geographic Reach Score</td>
+<td class="org-left">% of US map shaded in, representing where we have teachers using Bootstrap.</td>
+<td class="org-left">US Map:  Shade in districts where teachers we trained are using Bootstrap. Darker shading = more teachers. In different color, shade in districts where teachers we trained aren't implementing.  Be able to toggle by year.  Summary table at bottom: #teachers implementing, #teachers trained but not implementing, #teachers trained total, # school districts represented by each (trained v implementing)  Bar chart displaying summary table numbers by year.</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left"># teachers who implement is found via surveys, interactions, wb orders, attendance at events</td>
+<td class="org-left">1) Sales: Establish partnerships in regions where we have no/low representation 2) Success: Understand why/not those who are implementing are/not doing so. Increase conversion rate of teachers, if/where applicable.  3) Curric: Develop curric (e.g., datasets) that are more attractive to educators in underreepresented regions</td>
+</tr>
+
+
+<tr>
+<td class="org-left">What is our conversion rate from PD to classroom implementation?</td>
+<td class="org-left">Teacher Conversion Rate</td>
+<td class="org-left"># teachers implementing / # teachers trained by year</td>
+<td class="org-left">Bar chart showing conversion rate by year.</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">if someone added mid-year, and never received formal/full PD, add them to both numerator and denomenator</td>
+<td class="org-left">1) Partnerships/Sales: Make sure we train teachers who will be able to implement 2) Success: understand why/not teachers are/not implementing to provide feedback to upstream activities (e.g., curric writing, recruiting, PD). Help teachers who aren't implementing to use Bootstrap in class</td>
+</tr>
+
+
+<tr>
+<td class="org-left">How far are Bootstrap students going?</td>
+<td class="org-left">Student Exposure Depth</td>
+<td class="org-left"># copies made of shared files by file by geography</td>
+<td class="org-left">US Map Bubble Graph:  color = deep (red) v shallow (blue) implementation.  size of bubble = # copies  Summary table at bottom: #shared files copied by state or major US region  Bar chart displaying summary table numbers by year.  By able to toggle by curriculum, or choose "All"</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">TODO:  Sort starter files into "shallow" v "deep", to determine how far along in the curriculum a student would be when encountering.   **JOE: Is it possible to tie a login from bsw.org to pyret AND know which teachers are using which lessons?</td>
+<td class="org-left">1) Success: Research if there is circumstantial reason for this (e.g., something to do with policy, restrictions, etc) 2) Success: Work with teachers in regions to increase depth. Adapt success approach, if applicable, in those regions to better support teachers moving farther. 3) Curric: Update curric/workshops to attract more teachers in these regions (e.g., datasets that are more attractive to students in particular regions, adapt workshops in those regions). Update lesser-uesd lessons.</td>
+</tr>
+
+
+<tr>
+<td class="org-left">How many students are we reaching, and are we reaching the ones we want?</td>
+<td class="org-left">Student Reach</td>
+<td class="org-left">avg # students / teacher * # teachers implementing</td>
+<td class="org-left">In total and by subgroups (e.g., F/R lunch, girls)</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">Supports triangulation of # students reached when used with Student Learning Depth Distribution</td>
+<td class="org-left">1) Partnerships/Sales: Make sure we train teachers who will be able to implement. Bring on more partners. 2) Success: understand why/not teachers are/not implementing to provide feedback to upstream activities (e.g., curric writing, recruiting, PD). Help teachers who aren't implementing to use Bootstrap in class</td>
+</tr>
+
+
+<tr>
+<td class="org-left">How far are Bootstrap students going, by type of implementation and curriculum?</td>
+<td class="org-left">Implementation Depth Score</td>
+<td class="org-left">%lessons taught by teacher by curriculum by teaching format</td>
+<td class="org-left">By curriculum and by teaching format (integration vs standalone class): HIstogram showing the number of teachers who teach a particular lesson Histogram showing the average number of lessons a teacher teachers Summary table showing total and average stats</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">How many teachers do we lose each year?</td>
+<td class="org-left">Teacher Churn Rate</td>
+<td class="org-left">%  teachers who stop teaching Bootstrap each year</td>
+<td class="org-left">mutilbargraph by year showing: teaachers who stop for "good reason", "bad reason", "unknown"</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">How long do teachers teach Bootstrap?</td>
+<td class="org-left">Teacher Longevity Score</td>
+<td class="org-left">avg # years a teacher uses Bootstrap in their classroom by year</td>
+<td class="org-left">Histogram (bucketed by year)</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">1) Success: Work with teachers to increase longevity. 2) Curric: Consider product offerings to support longevity.</td>
+</tr>
+
+
+<tr>
+<td class="org-left">How well are teachers able to support student inquiry?</td>
+<td class="org-left">Teacher Ability to Support Student Inquiry</td>
+<td class="org-left">Teacher Rating Scale 1-5 1 = Novice 5 = Master Teacher</td>
+<td class="org-left">Teacher ability to support student inquiry distributed by # years teaching</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">Flannery question: Are we giving teachers what they need to have the confidence to give students space to explore and be curious and potentially surface questions teachers won’t have answers to? (Includes: are we providing them w support in the answer-key world to make it clear there’s space for open-ended discussions and to catch misconceptions?)</td>
+<td class="org-left">1) Curric: Update materials and PD to promote desired behavior.  2) Success: Update coaching and other support to promote desired behavior.</td>
+</tr>
+
+
+<tr>
+<td class="org-left">How well do our printed and online materials meet teachers' needs?</td>
+<td class="org-left">Materials Score</td>
+<td class="org-left">Teacher Rating Scale 1-5 1 = Not useful at all 5 = Very useful  + open ended comments (qualitative)</td>
+<td class="org-left">multibarchart: goals (with material subgroups)  cluster represents goals  colors represent Lesson plans / Datasets / Starterfiles / Slides / Workbooks / Discourse</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">Do teachers feel like our materials are ready to go for them? Do teachers see our materials as meeting and supporting the learning goals of their courses? Lesson plans? Datasets? Starterfiles? Slides? Workbooks? Discourse?  Survey teachers - in addition to rating scale, give them space to let us know what needs we are not addressing with our materials Also ask if they're open to talking with us about their experience</td>
+<td class="org-left">1) Curric: Update materials to promote desired behavior.</td>
+</tr>
+
+
+<tr>
+<td class="org-left">How do our teachers' skills progress over time?</td>
+<td class="org-left">Teacher Skill Level over Time</td>
+<td class="org-left">Teacher Rating Scale 1-5 1 = Novice 5 = Master Teacher</td>
+<td class="org-left">Bar chart showing Average Teacher skill level at beginning of PD, end of PD, and periodically thereafter  Toggle by facilitator (?)</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">Use pre/post diagnostics + observations checklist* at PD, student pre/post and something else (surveys/self-assessment?) thereafter  *Eric has checklist idea</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">How well do our offerings meet teachers' needs?</td>
+<td class="org-left">Offering Usage Score</td>
+<td class="org-left">By offering (e.g., coaching, PD, 1x1s), # teachers who use an offering / # teachers eligible to use an offering</td>
+<td class="org-left">Bar chart showing offering value for each offering over time (e.g., each monthly coaching session = 1 bar)</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">Offerings: events, discourse, email, 1x1s, website, social  Need to account for impact of these offerings (i.e., this is about quality of interaction, not just quantity).</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">How much are students learning?</td>
+<td class="org-left">Student Learning Gains</td>
+<td class="org-left">Average student improvement from pre to post test by curriculum by teaching format</td>
+<td class="org-left">By curriculum and by teaching format (integration vs standalone class): Histogram showing student improvement from pre to post test  Bar chart showing improvement from pre to post test by question  Summary: show #students included in results</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">At student level or classroom level? Collect demographic data?  Can use student deliverables to augment score? Something else?</td>
+<td class="org-left">1) Curric: Update materials and PD to promote desired behavior.  2) Success: Update coaching and other support to promote desired behavior.</td>
+</tr>
+
+
+<tr>
+<td class="org-left">Are students achieving learning goals for their courses through our materials?</td>
+<td class="org-left">Student Learning Gains</td>
+<td class="org-left">pre and post test at student level - each learning goal with its own rating scale, perhaps just 0-1, perhaps 0-3&#x2026; like what Paul Zachos showed us</td>
+<td class="org-left">Stacked bar chart before and after for each learning goal we assess</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">1) Curric: Update materials and PD to promote desired behavior.  2) Success: Update coaching and other support to promote desired behavior.</td>
+</tr>
+
+
+<tr>
+<td class="org-left">Are students excited and empowered by our materials?</td>
+<td class="org-left">Student Engagement Score</td>
+<td class="org-left">Teacher Rating 1 - 5  1= least  5= most engaged I've ever seen my students</td>
+<td class="org-left">pie chart</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">1) Curric: Update materials and PD to promote desired behavior.  2) Success: Update coaching and other support to promote desired behavior.</td>
+</tr>
+
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">Partner: Are we helping partners achieve their goals?</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">How satisfied are our partners?</td>
+<td class="org-left">Partner NPS</td>
+<td class="org-left">Rating 1 - 5 1 = I would not recommend Bootstrap 5 = I would definitely recommend Bootstrap</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">How long do partners work with us?</td>
+<td class="org-left">Partner Longevity</td>
+<td class="org-left">avg # years a partner works with us</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">How many partners renew?</td>
+<td class="org-left">Partner Renewals</td>
+<td class="org-left"># renewals</td>
+<td class="org-left">Bar chart: # renewals by year</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">How many partners do not renew?</td>
+<td class="org-left">Partner Churn</td>
+<td class="org-left">%partners who do not renew YoY</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">Bootstrap: Is Bootstrap is growing sustainably?</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">How quickly is our organization growing?</td>
+<td class="org-left">Team Growth</td>
+<td class="org-left"># FTEs</td>
+<td class="org-left">Bar chart showing total core team headcount + FTEs by year MT headcount</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">How satisfied is our team?</td>
+<td class="org-left">Team Sentiment</td>
+<td class="org-left">team survey results from core team, MTs, MTiTs</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">How quickly is our organization growing financially?</td>
+<td class="org-left">Revenue Growth</td>
+<td class="org-left">Annual total sales and sales by product, broken out by new v renewing partner</td>
+<td class="org-left">Bar chart: Rev YoY (overall + by product) split by new vs renewal Summary chart</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">How quickly is our partner bench growing?</td>
+<td class="org-left">Partner Growth</td>
+<td class="org-left">#new partners %new partners</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">How well are we poised for growth from a marketing and sales perspective?</td>
+<td class="org-left">Size of Funnel</td>
+<td class="org-left">#leads, #pursuits by stage</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">How well are we poised for growth and sustainability?</td>
+<td class="org-left">Size of Audience</td>
+<td class="org-left"># followers on socials, # presentations made, # ppl who attended presentations, # ppl on mailing list</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">can wait on this one</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">Other data to collect to support growth of top-level metrics</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">Why aren’t partners renewing?</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">Something around research (we claim we are research-based)</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">who is implementing? What percentage? How many lessons? WHY / why not?</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">Why aren’t teachers showing up (coaching, office hours, etc)? Why aren’t they implementing?</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">Teacher enjoyment of lessons</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">Lesson’s impact on students: enjoyment, learning outcomes, interest in CS</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">Workbook orders</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">Self Assessment</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">Pathway Creation</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">Sentiment</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">Are teachers learning and succeeding? DO they feel they are part of something bigger?</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">Does teacher have a partner / collaborator? (from conversation)</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+
+
+<tr>
+<td class="org-left">Before School Year - Data Needed When does the teacher plan to begin using the curriculum?  In which course will the work be used?  To what extent will the teacher implement: full course or integrate a few lessons?  How many students will they be teaching?  During School Year - Metrics 1) Which lessons has the teacher tried so far? Rate each on how it has gone? 2) What topics would be most helpful to review in coaching sessions? 3) How many coaching sessions has the teacher attended?  4) What is the percentage of attendance at coaching/AYW sessions by cohort? 5) Which date/time/format of coaching resulted in the most attendance?</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+</tr>
+</tbody>
+</table>
 
 \`\`Success is when a deliberate change has an intended effect.''
 
@@ -254,7 +1124,7 @@ classrooms.
 -   Pathway Creation
 
 
-<a id="orgef63262"></a>
+<a id="org7366395"></a>
 
 ### Is our org growing?
 
@@ -263,30 +1133,30 @@ classrooms.
 2.  Are more teachers using our stuff?
 
 
-<a id="orgcce5212"></a>
+<a id="org6120fcb"></a>
 
-### Are teachers growing and gaining?
+### Are more students teachers growing and gaining?
 
 1.  Are teachers demonstrating growth in skills?
 
 2.  Are teachers reporting growth in confidence?
 
 
-<a id="org7d33b99"></a>
+<a id="orgda046cd"></a>
 
-### Are students learning and growing?
+### Are partner goals being met?
 
 1.  Are teachers submitting artifacts?
 
 2.  Are students demonstrating growth on pre and post tests?
 
 
-<a id="orgca3aab5"></a>
+<a id="orgbc8a7d6"></a>
 
 ### Connect a particular change to growth/usage.
 
 
-<a id="org7dfb29f"></a>
+<a id="org33da640"></a>
 
 ### TODO Include in Bootstrap overview the essential nature of integrate curriculum
 
@@ -297,12 +1167,12 @@ difficult teaching population. This plays directly into our
 understanding of the free choice spectrum of our teachers. **see Reporting section**
 
 
-<a id="org45e8e46"></a>
+<a id="orgbdcdb81"></a>
 
 ## Analysis
 
 
-<a id="orgfb7e265"></a>
+<a id="orga784a80"></a>
 
 ### Appropriateness (Fitness) of Training to Participant
 
@@ -316,17 +1186,17 @@ understanding of the free choice spectrum of our teachers. **see Reporting secti
 -   Which curriculum is most effective at training teachers to implement?
 
 
-<a id="org7a3d188"></a>
+<a id="org8fc99ec"></a>
 
 ### Confidence, Implementation, Growth Sentiment Analysis
 
 
-<a id="orgab74fc2"></a>
+<a id="orgedf4e47"></a>
 
 ### Skills Analysis
 
 
-<a id="org88ae857"></a>
+<a id="org3451c07"></a>
 
 ### Students
 
@@ -337,7 +1207,7 @@ understanding of the free choice spectrum of our teachers. **see Reporting secti
     -   How many students are we reaching per lesson?
 
 
-<a id="orgf3573d2"></a>
+<a id="org9741a32"></a>
 
 ### Correlation Questions
 
@@ -350,7 +1220,7 @@ understanding of the free choice spectrum of our teachers. **see Reporting secti
     -   Facilitator or Event vs Confidence
 
 
-<a id="org30fc56a"></a>
+<a id="orgb339792"></a>
 
 ### Factors toward implementation
 
@@ -396,7 +1266,7 @@ bringing Bootstrap into the classroom include:
     student achievement on the exam is not as predictably guaranteed.
 
 
-<a id="org19d2788"></a>
+<a id="org6a00589"></a>
 
 ## Reporting
 
@@ -413,7 +1283,7 @@ achievement. Bootstrap's niche is supporting student learning in traditional
 core subjects such as Algebra.
 
 
-<a id="orgba6417b"></a>
+<a id="org63ea5b5"></a>
 
 ### Attendance Reports
 
@@ -421,7 +1291,7 @@ core subjects such as Algebra.
 -   
 
 
-<a id="org1ff1923"></a>
+<a id="orgde247ce"></a>
 
 ### Pre Post Diagnostic Results Analysis
 
@@ -430,12 +1300,12 @@ core subjects such as Algebra.
 -   pre/post diagnostics from classroom final exam
 
 
-<a id="orge8506e7"></a>
+<a id="orge6f8bee"></a>
 
 ### Implementation Reports
 
 
-<a id="org222f5fe"></a>
+<a id="orgea8454f"></a>
 
 ### Standardized Achievement
 
@@ -443,12 +1313,12 @@ Are students achieving higher outcomes on standardized exams that they would alr
 Some teachers administer their own diagnostics, and this practice is increasingly more common in administrative mandates.
 
 
-<a id="org782bb83"></a>
+<a id="org6bfd677"></a>
 
 # Data Model
 
 
-<a id="orgc6314bf"></a>
+<a id="orge523e75"></a>
 
 ## Grain
 
@@ -462,22 +1332,22 @@ data stops at the teacher level. We do not track students as entities
 or store any individual student data.
 
 
-<a id="org4e0cad1"></a>
+<a id="org4b85f0f"></a>
 
 ## Definitions
 
 
-<a id="org3d6ae87"></a>
+<a id="orgf400c12"></a>
 
 ### Contact
 
 
-<a id="org1e0a574"></a>
+<a id="org82328de"></a>
 
 ### User
 
 
-<a id="org5d16106"></a>
+<a id="orgf52ecf3"></a>
 
 ### Educator
 
@@ -500,7 +1370,7 @@ professional enrichment setting.
 -   Learning Coach
 
 
-<a id="orgb7d3c94"></a>
+<a id="org0f6fd54"></a>
 
 ### Participant
 
@@ -508,7 +1378,7 @@ Is enrolled in a training event in order to learning skills and
 content. Not facilitating, observing, or supervising.
 
 
-<a id="org2bdeaca"></a>
+<a id="org0413c62"></a>
 
 ### Teacher
 
@@ -519,7 +1389,7 @@ largest and most direct role in affecting student outcomes and the
 quality of the Bootstrap implementation.
 
 
-<a id="orgf504026"></a>
+<a id="org09f6af0"></a>
 
 ### Student
 
@@ -527,7 +1397,7 @@ Bootstrap students are 10-17 years old, live primarily in the lower 48
 states, and attend school in grades 5-12.
 
 
-<a id="org5b73386"></a>
+<a id="org669ff87"></a>
 
 ### Partner
 
@@ -540,12 +1410,12 @@ schools. Individual teachers also join open
 enrollment events and may be paying out of pocket.
 
 
-<a id="orgbb7d481"></a>
+<a id="orgc614bf8"></a>
 
 ### Contract
 
 
-<a id="org4f9a601"></a>
+<a id="orga39af7f"></a>
 
 ### Stipend
 
@@ -554,7 +1424,7 @@ from their school, district, or supporting
 organization.
 
 
-<a id="orgec01313"></a>
+<a id="org3f9b340"></a>
 
 ### Administrator
 
@@ -566,7 +1436,7 @@ administrators who are not directly connected to Bootstrap, but who
 may have a large role in the teacher's implementation.
 
 
-<a id="orgda1168c"></a>
+<a id="org18770d1"></a>
 
 ### Implementation
 
@@ -580,7 +1450,7 @@ available. Implementation is a description of the context in which a
 teacher is using Boostrap, to what depth and what breadth.
 
 
-<a id="org60bdfab"></a>
+<a id="orgea48237"></a>
 
 ### Student achievement
 
@@ -593,7 +1463,7 @@ high quality curriculum and high quality
 deployment by the teacher.
 
 
-<a id="orgc30f0a7"></a>
+<a id="org0b86c7d"></a>
 
 ### Curriculum End User
 
@@ -601,7 +1471,7 @@ The end users of Bootstrap curriculum are students, who will be using tools like
 the Pyret or CODAP to build projects.
 
 
-<a id="org25b9690"></a>
+<a id="org7765808"></a>
 
 ### Participant Life Cycle
 
@@ -616,7 +1486,7 @@ the Pyret or CODAP to build projects.
 -   Master Teacher
 
 
-<a id="orgdf1fa05"></a>
+<a id="orgd6fe4f4"></a>
 
 ### Training End User
 
@@ -627,22 +1497,22 @@ and curriculum back to students in their
 classroom.
 
 
-<a id="org36b1148"></a>
+<a id="org2feb771"></a>
 
 ### Year Cohort
 
 
-<a id="orga95dd26"></a>
+<a id="orga0ea0a1"></a>
 
 ### Partner Cohort
 
 
-<a id="org66e15a5"></a>
+<a id="org597135b"></a>
 
 ### Curriculum Cohort
 
 
-<a id="orgf990609"></a>
+<a id="org991cf80"></a>
 
 ### State Cohort
 
@@ -650,7 +1520,7 @@ A partner cohort is a group of teachers supported by a particular
 contract. Cohorts begin with a training event and end at a certain date. 
 
 
-<a id="orgb804eb7"></a>
+<a id="orga741e94"></a>
 
 ### Cohort Admin
 
@@ -661,21 +1531,21 @@ attendance at training events and may disperse stipends to teachers
 based on deliverables.
 
 
-<a id="orgbdff7b0"></a>
+<a id="orgcaf7753"></a>
 
 ### Master Teacher in Training
 
 Has been in trainings for several years and demonstrated proficiency across the concept map
 
 
-<a id="org492a7cb"></a>
+<a id="org01fd8f6"></a>
 
 ### Master Teacher
 
 Can co-lead a professional development, run coaching sessions, and moderate on the question forum.
 
 
-<a id="orgc25935a"></a>
+<a id="org07c2ebc"></a>
 
 ### Facilitator
 
@@ -686,7 +1556,7 @@ facilitator is the primary point person for training participants
 during and immediately after the training event.
 
 
-<a id="orgc32b02a"></a>
+<a id="orge5594dc"></a>
 
 ### Coach
 
@@ -696,7 +1566,7 @@ the questions and needs of teachers in the process of using Bootstrap
 curriculum in their classrooms.
 
 
-<a id="org883fdad"></a>
+<a id="orgaed9955"></a>
 
 ### Professional Development
 
@@ -706,7 +1576,7 @@ events are trained as both student and teacher. They must understand
 the curriculum and the pedagogy behind key point in the curriculum.
 
 
-<a id="org4de387e"></a>
+<a id="org0e73795"></a>
 
 ### Partner Reports
 
@@ -724,7 +1594,7 @@ Reports for partners include
 -   cohort aggregations
 
 
-<a id="orgfecfd69"></a>
+<a id="org6dae797"></a>
 
 ### Internal Reports
 
@@ -734,7 +1604,7 @@ Reports for partners include
 -   Teaching context vs implementation
 
 
-<a id="org65e769e"></a>
+<a id="org131d7fe"></a>
 
 ## Dimensions
 
@@ -743,7 +1613,7 @@ organizations build contracts with Bootstrap to train cohorts of educators. A
 partner organization may or may not be a district.
 
 
-<a id="orga16b460"></a>
+<a id="orgbc43a4d"></a>
 
 ### Dimension Hierarchy
 
@@ -797,7 +1667,7 @@ partner organization may or may not be a district.
         -   Website
 
 
-<a id="org7cce18b"></a>
+<a id="org48f9d76"></a>
 
 ### Dimension Tables and Attributes
 
@@ -879,7 +1749,7 @@ partner organization may or may not be a district.
 -   Standard
 
 
-<a id="orgddb45c9"></a>
+<a id="org497a7d3"></a>
 
 ### Data Tables
 
@@ -888,7 +1758,7 @@ partner organization may or may not be a district.
     --------------------------------------------------------------------------
 
 
-<a id="org47c0522"></a>
+<a id="org6c3c256"></a>
 
 ### Curricula
 
@@ -900,7 +1770,7 @@ partner organization may or may not be a district.
     );
 
 
-<a id="orgd56e5ad"></a>
+<a id="org8f9f09c"></a>
 
 ### Event Types
 
@@ -912,7 +1782,7 @@ partner organization may or may not be a district.
     );
 
 
-<a id="org68e360a"></a>
+<a id="orgbb4b16e"></a>
 
 ### Event Formats
 
@@ -924,7 +1794,7 @@ partner organization may or may not be a district.
     );
 
 
-<a id="org51d0991"></a>
+<a id="orgc45cf19"></a>
 
 ### Event Roles
 
@@ -938,7 +1808,7 @@ grow as the type and complexity of event planning changes.
     );
 
 
-<a id="org054ee9e"></a>
+<a id="orgde892b2"></a>
 
 ### Race and Ethnicity
 
@@ -954,7 +1824,7 @@ grow as the type and complexity of event planning changes.
     );
 
 
-<a id="orgd664580"></a>
+<a id="org5911e9b"></a>
 
 ### Gender
 
@@ -965,7 +1835,7 @@ grow as the type and complexity of event planning changes.
     );
 
 
-<a id="org6550dd7"></a>
+<a id="org966dcee"></a>
 
 ### Teacher License Area
 
@@ -1009,7 +1879,7 @@ grow as the type and complexity of event planning changes.
     );
 
 
-<a id="org2045683"></a>
+<a id="orgb4638b2"></a>
 
 ### Organization Types
 
@@ -1026,7 +1896,7 @@ grow as the type and complexity of event planning changes.
     );
 
 
-<a id="org90bb936"></a>
+<a id="org22e521b"></a>
 
 ### Subjects
 
@@ -1044,7 +1914,7 @@ grow as the type and complexity of event planning changes.
     );
 
 
-<a id="org151d916"></a>
+<a id="orgdc126b1"></a>
 
 ### Grades
 
@@ -1068,7 +1938,7 @@ grow as the type and complexity of event planning changes.
     );
 
 
-<a id="orgea4967c"></a>
+<a id="org90ede18"></a>
 
 ### Skills
 
@@ -1083,7 +1953,7 @@ grow as the type and complexity of event planning changes.
     );
 
 
-<a id="org9ea209b"></a>
+<a id="org0c8b121"></a>
 
 ### Attendance Values
 
@@ -1099,7 +1969,7 @@ grow as the type and complexity of event planning changes.
     );
 
 
-<a id="orgd7aef0a"></a>
+<a id="orgaccb9cb"></a>
 
 ### Assessment Values
 
@@ -1122,7 +1992,7 @@ system. They represent everything we know about the people, organizations, and
 events in our facilitation ecosystem.
 
 
-<a id="org88db11e"></a>
+<a id="orgf073034"></a>
 
 ### States
 
@@ -1133,7 +2003,7 @@ events in our facilitation ecosystem.
     );
 
 
-<a id="org2a273d4"></a>
+<a id="orgfe5a163"></a>
 
 ### Locations
 
@@ -1147,7 +2017,7 @@ events in our facilitation ecosystem.
     );
 
 
-<a id="org8c6d3e4"></a>
+<a id="org78d5191"></a>
 
 ### Districts
 
@@ -1191,7 +2061,7 @@ events in our facilitation ecosystem.
     );
 
 
-<a id="orgf62cade"></a>
+<a id="org6185fd0"></a>
 
 ### Schools
 
@@ -1224,7 +2094,7 @@ events in our facilitation ecosystem.
     );
 
 
-<a id="orgfa4a2b7"></a>
+<a id="org4962853"></a>
 
 ### Textbooks
 
@@ -1236,7 +2106,7 @@ events in our facilitation ecosystem.
       );
 
 
-<a id="orgbf3ae68"></a>
+<a id="org7bf2a79"></a>
 
 ### Assessment Instruments
 
@@ -1248,7 +2118,7 @@ events in our facilitation ecosystem.
     );
 
 
-<a id="org95a2002"></a>
+<a id="orgb2d5be2"></a>
 
 ### Feedback Instruments
 
@@ -1260,7 +2130,7 @@ events in our facilitation ecosystem.
     );
 
 
-<a id="org1554c2b"></a>
+<a id="org0acd533"></a>
 
 ### Partner Organizations
 
@@ -1280,7 +2150,7 @@ philanthropic foundations, individuals, or Bootstrap itself.
     );
 
 
-<a id="orge46b116"></a>
+<a id="org897aa92"></a>
 
 ## User & Event Data
 
@@ -1289,7 +2159,7 @@ philanthropic foundations, individuals, or Bootstrap itself.
     --------------------------------------------------------------------------------
 
 
-<a id="orga1916c9"></a>
+<a id="org6d12fdf"></a>
 
 ### Users
 
@@ -1317,7 +2187,7 @@ answer keys, or joined Discourse.
     );
 
 
-<a id="org1a304ad"></a>
+<a id="orgb367979"></a>
 
 ### Events
 
@@ -1338,7 +2208,7 @@ the conceptual understanding and implementation of Bootstrap curriculum.
     );
 
 
-<a id="org006ce20"></a>
+<a id="orgba370f7"></a>
 
 ## Facts
 
@@ -1347,7 +2217,7 @@ the conceptual understanding and implementation of Bootstrap curriculum.
     --------------------------------------------------------------------------------
 
 
-<a id="orgcd7c8f7"></a>
+<a id="org2a6a93f"></a>
 
 ### Implementation
 
@@ -1356,7 +2226,7 @@ the conceptual understanding and implementation of Bootstrap curriculum.
 -   Class
 
 
-<a id="orgaec4be8"></a>
+<a id="org66e86d5"></a>
 
 ### Class
 
@@ -1402,7 +2272,7 @@ the conceptual understanding and implementation of Bootstrap curriculum.
     -   date
 
 
-<a id="org9b43613"></a>
+<a id="org9ece295"></a>
 
 ### Communication Preferences (Opt In/Out)
 
@@ -1414,7 +2284,7 @@ the conceptual understanding and implementation of Bootstrap curriculum.
     );
 
 
-<a id="org3902660"></a>
+<a id="orgb7e80a4"></a>
 
 ### Teaching programs (schedule of classes)
 
@@ -1448,7 +2318,7 @@ the conceptual understanding and implementation of Bootstrap curriculum.
     );
 
 
-<a id="org125271d"></a>
+<a id="org8380787"></a>
 
 ### Roles
 
@@ -1464,7 +2334,7 @@ the conceptual understanding and implementation of Bootstrap curriculum.
       );
 
 
-<a id="org57eb318"></a>
+<a id="orgf443e0e"></a>
 
 ### Licences
 
@@ -1476,7 +2346,7 @@ the conceptual understanding and implementation of Bootstrap curriculum.
     );
 
 
-<a id="orgaa38b2b"></a>
+<a id="orgb350ce4"></a>
 
 ### Enrollments
 
@@ -1491,7 +2361,7 @@ the conceptual understanding and implementation of Bootstrap curriculum.
     );
 
 
-<a id="orgdea643e"></a>
+<a id="org5574f06"></a>
 
 ### Comments
 
@@ -1508,7 +2378,7 @@ the conceptual understanding and implementation of Bootstrap curriculum.
     );
 
 
-<a id="org98010a6"></a>
+<a id="orgca32eca"></a>
 
 ### User-Event-Attendance (Attendance)
 
@@ -1524,7 +2394,7 @@ the conceptual understanding and implementation of Bootstrap curriculum.
     );
 
 
-<a id="org0f7c20e"></a>
+<a id="org69c3a8f"></a>
 
 ### Contracts
 
@@ -1537,7 +2407,7 @@ the conceptual understanding and implementation of Bootstrap curriculum.
     );
 
 
-<a id="org909d731"></a>
+<a id="org7c06aac"></a>
 
 ### Coaching
 
@@ -1557,7 +2427,7 @@ same calendar year.
     );
 
 
-<a id="org1dfbf7a"></a>
+<a id="orgedf8797"></a>
 
 ### Assessment Instrument Data
 
