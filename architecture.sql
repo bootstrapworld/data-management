@@ -1,3 +1,36 @@
+--------------------------------------------------------------------------------
+-- Dimensional Data
+--------------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS "user" (
+  "id"                 SERIAL PRIMARY KEY, --TEXT,
+  "name_first"         TEXT, -- the legal first name, i.e. would appear on DL
+  "name_last"          TEXT,
+  "name_first_alt"     TEXT, -- usually shortened nick name, e.g. David -> Dave
+  "name_last_alt"      TEXT, -- usually for married name change
+  "email_personal"     TEXT, -- email that persists after job change
+  "email_professional" TEXT, -- email that changes with job change
+  "home_location"      INTEGER REFERENCES "location",
+  "home_phone"         varchar(15),
+  "cell_phone"         varchar(15),
+  "work_phone"         varchar(15),
+  "user_gender"             GENDER,
+  "user_race"               RACE
+);
+
+--   
+CREATE TABLE IF NOT EXISTS "event" (
+  "id"            TEXT PRIMARY KEY,
+  "event_name"    TEXT NOT NULL,
+  "location_id"   INTEGER,
+  "event_days"    INTEGER CONSTRAINT "positive_days" GENERATED ALWAYS AS ("end_date" - "start_date") STORED CHECK (event_days > 0),
+  --length in days
+  "end_date"      INTEGER,
+  "start_date"    INTEGER,
+  "type"          INTEGER REFERENCES "event_type",
+  "format"        INTEGER REFERENCES "event_type"
+);
+
 --------------------------------------------------------------------------
 -- Dimensional Data
 --------------------------------------------------------------------------
@@ -274,149 +307,4 @@ CREATE TABLE IF NOT EXISTS "organization" (
   "district_id"  TEXT,
   CONSTRAINT "fk_location" FOREIGN KEY ("location_id") REFERENCES "location",
   CONSTRAINT "fk_district" FOREIGN KEY ("district_id") REFERENCES "district"
-);
-
---------------------------------------------------------------------------------
--- User & Event Data
---------------------------------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS "user" (
-  "id"                 SERIAL PRIMARY KEY, --TEXT,
-  "name_first"         TEXT, -- the legal first name, i.e. would appear on DL
-  "name_last"          TEXT,
-  "name_first_alt"     TEXT, -- usually shortened nick name, e.g. David -> Dave
-  "name_last_alt"      TEXT, -- usually for married name change
-  "email_personal"     TEXT, -- email that persists after job change
-  "email_professional" TEXT, -- email that changes with job change
-  "home_location"      INTEGER REFERENCES "location",
-  "home_phone"         varchar(15),
-  "cell_phone"         varchar(15),
-  "work_phone"         varchar(15),
-  "user_gender"             GENDER,
-  "user_race"               RACE
-);
-
---   
-CREATE TABLE IF NOT EXISTS "event" (
-  "id"            TEXT PRIMARY KEY,
-  "event_name"    TEXT NOT NULL,
-  "location_id"   INTEGER,
-  "event_days"    INTEGER CONSTRAINT "positive_days" GENERATED ALWAYS AS ("end_date" - "start_date") STORED CHECK (event_days > 0),
-  --length in days
-  "end_date"      INTEGER,
-  "start_date"    INTEGER,
-  "type"          INTEGER REFERENCES "event_type",
-  "format"        INTEGER REFERENCES "event_type"
-);
-
---------------------------------------------------------------------------------
--- Fact Tables
---------------------------------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS "comm_preference" (
-  "user_id"    SERIAL PRIMARY KEY,
-  "preference" TEXT,
-  CONSTRAINT "comm_id" FOREIGN KEY ("user_id") REFERENCES "user"
-);
-
--- a class in a teachers program tells us the subject and grade level where the teacher will be interacticng with students
-CREATE TABLE IF NOT EXISTS "class" (
-  "id" SERIAL PRIMARY KEY,
-  "teacher_id" INTEGER,
-  "name" TEXT NOT NULL,
-  "subject" SUBJECT,
-  "grade_level" TEXT,
-  "start_date" DATE,
-  "end_date"   DATE,
-  "students"   INTEGER, -- the number of students enrolled in this class
-  "pct_disability" NUMERIC,
-  "pct_african_american" NUMERIC, --  Black or African American
-  "pct_asian" NUMERIC, -- Percent Asian
-  "pct_white" NUMERIC, -- Percent White
-  "pct_american_indian" NUMERIC, -- American Indian or Alaska Native
-  "pct_native_hawaiian" NUMERIC, -- Native Hawaiian or Other Pacific Islander
-  CONSTRAINT "fk_teacher" FOREIGN KEY ("teacher_id") REFERENCES "user"
-);
-
-CREATE TABLE IF NOT EXISTS "certification" (
-  -- tracks the certifications relative to state wide professional educators
-  "teacher_id"   INTEGER,
-  "cert_id"      TEXT,
-  "state_ab"     varchar(2) REFERENCES "state",
-  "title"        TEXT,
-  "license_area" INTEGER REFERENCES "license_area",
-  CONSTRAINT "fk_teacher" FOREIGN KEY ("teacher_id") REFERENCES "user"
-);
-
--- One row per user organization relationship
-CREATE TABLE IF NOT EXISTS "role" (
-    "id"        SERIAL PRIMARY KEY,
-    "user_id"   INTEGER REFERENCES "user",
-    "org_id"    INTEGER REFERENCES "organization",
-    "title"     TEXT,
-    "start_date" DATE,
-    "end_date"   DATE,
-    "is_teacher" BOOLEAN
-  );
-
-CREATE TABLE IF NOT EXISTS "license" (
-  "id"      SERIAL PRIMARY KEY,
-  "user_id" INTEGER REFERENCES "user",
-  "license" INTEGER REFERENCES "license_area",
-  "state"   varchar(2) REFERENCES "state"
-);
-
-CREATE TABLE IF NOT EXISTS "enrollment" (
-  "id"          SERIAL PRIMARY KEY,
-  "user_id"     INTEGER,
-  "event_id"    TEXT,
-  "role"        INTEGER REFERENCES "event_role",
-  "is_enrolled" BOOLEAN NOT NULL DEFAULT TRUE,
-  CONSTRAINT "fk_user"  FOREIGN KEY ("user_id")  REFERENCES "user",
-  CONSTRAINT "fk_event" FOREIGN KEY ("event_id") REFERENCES "event"
-);
-
-CREATE TABLE IF NOT EXISTS "comments" (
-  "id" SERIAL PRIMARY KEY,
-  "comment_target" INTEGER, -- the user about which the comment refers
-  "date" DATE, -- the date the comment was authored
-  "comment_author" INTEGER,
-  "tag_id" INTEGER[], -- the ids of any users who should track or follow up on the comment
-  "comment_text" TEXT,
-  CONSTRAINT "fk_user"   FOREIGN KEY ("comment_target") REFERENCES "user",
-  CONSTRAINT "fk_author" FOREIGN KEY ("comment_author") REFERENCES "user"
-);
-
-CREATE TABLE IF NOT EXISTS "attendance" (
-  "id" SERIAL PRIMARY KEY,
-  "event_id"  TEXT NOT NULL,
-  "user_id"   INTEGER NOT NULL,
-  "date"      DATE    NOT NULL,
-  "attendance_value" INTEGER REFERENCES "attendance_value",
-  CONSTRAINT "fk_event" FOREIGN KEY ("event_id") REFERENCES "event",
-  CONSTRAINT "fk_user"  FOREIGN KEY ("user_id")  REFERENCES "users"
-);
-
-CREATE TABLE IF NOT EXISTS "contract" (
-  "id"  SERIAL PRIMARY KEY,
-  "partner_id" INTEGER,
-  "event_id"   TEXT,
-  CONSTRAINT "fk_partner" FOREIGN KEY ("partner_id") REFERENCES "organization",
-  CONSTRAINT "fk_event"   FOREIGN KEY ("event_id")   REFERENCES "event"
-);
-
-CREATE TABLE IF NOT EXISTS "coaching" (
-  "user_id"    INTEGER REFERENCES "user", -- Coaching is a postive entry table. A user found in this table has -- coaching included in their contract
-  "start_date" DATE,
-  "end_date"   DATE GENERATED ALWAYS AS ("start_date" + 365) STORED
-);
-
-CREATE TABLE IF NOT EXISTS "assessment" (
-  "id"             SERIAL PRIMARY KEY,
-  "assessment_id"  INTEGER,
-  "user_id"        INTEGER,
-  "assessment_value" INTEGER REFERENCES "assessment_value",
-  "data"           TEXT,
-  CONSTRAINT "fk_assessment" FOREIGN KEY ("assessment_id") REFERENCES "assessment_instrument",
-  CONSTRAINT "fk_user"       FOREIGN KEY ("user_id")       REFERENCES "user"
 );
