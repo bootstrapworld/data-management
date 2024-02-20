@@ -31,10 +31,6 @@ CREATE TABLE IF NOT EXISTS "event" (
   "format"        INTEGER REFERENCES "event_type"
 );
 
---------------------------------------------------------------------------
--- Dimensional Data
---------------------------------------------------------------------------
-
 -- These are internal curricula used in trainings. Participants are associated with their most recent training enrollment curricula.
   -- Currently a training is based on a single curriculum.
 CREATE TABLE IF NOT EXISTS "curricula" (
