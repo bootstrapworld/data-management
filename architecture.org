@@ -335,8 +335,179 @@ Bootstrap curriculum into the classroom. Pre and post test student
 data stops at the teacher level. We do not track students as entities
 or store any individual student data.
 ** Definitions
+#+begin_src sql
+  --------------------------------------------------------------------------------
+  -- User & Event Data
+  --------------------------------------------------------------------------------
+#+end_src
 *** Contact
-*** User
+Not an actual table entity. Contact is a notion from Insightly. We
+have approximately ten years of "contacts". A contact in this system
+is a user who has not been enrolled in an event.
+*** Users
+One row per person. Anyone who has interacted with Bootstrap, who ever
+signed up for an event, even if they did not
+attend. Anyone who joined the mailing list through
+a web form, reached out directly to Bootstrap
+staff, messaged through social media, requested
+answer keys, or joined Discourse.
+
+#+begin_src sql
+  CREATE TABLE IF NOT EXISTS "user" (
+    "id"                 SERIAL PRIMARY KEY, --TEXT,
+    "name_first"         TEXT, -- the legal first name, i.e. would appear on DL
+    "name_last"          TEXT,
+    "name_first_alt"     TEXT, -- usually shortened nick name, e.g. David -> Dave
+    "name_last_alt"      TEXT, -- usually for married name change
+    "email_personal"     TEXT, -- email that persists after job change
+    "email_professional" TEXT, -- email that changes with job change
+    "home_location"      INTEGER REFERENCES "location",
+    "home_phone"         varchar(15),
+    "cell_phone"         varchar(15),
+    "work_phone"         varchar(15),
+    "user_gender"             GENDER,
+    "user_race"               RACE
+  );
+
+#+end_src
+*** Events
+Bootstrap facilitates events for professional educators. These events focus on
+the conceptual understanding and implementation of Bootstrap curriculum.
+
+#+begin_src sql
+  --   
+  CREATE TABLE IF NOT EXISTS "event" (
+    "id"            TEXT PRIMARY KEY,
+    "event_name"    TEXT NOT NULL,
+    "location_id"   INTEGER,
+    "event_days"    INTEGER CONSTRAINT "positive_days" GENERATED ALWAYS AS ("end_date" - "start_date") STORED CHECK (event_days > 0),
+    --length in days
+    "end_date"      INTEGER,
+    "start_date"    INTEGER,
+    "type"          INTEGER REFERENCES "event_type",
+    "format"        INTEGER REFERENCES "event_type"
+  );
+
+#+end_src
+
+*** Dimension Tables and Attributes
+- Contact
+  - id
+  - name
+  - email
+  - phone
+  - where from?
+  - opt in list #how/where to track email opt-in?
+- User
+  - contact_id
+  - date_added
+- Partner Org #could this be a district?
+  - id
+  - Name
+  - Type ('non-profit', 'government', 'private')
+  - Admins
+- School
+  - school_id
+  - Name
+  - Location #what is location?
+  - Grade band (e.g. '9-12')
+  - Demographic #what is demographic?
+  - District REFERENCES ("District") "district_id"
+  - Address #what is an address 
+- District #this is a school umbrella or support organization
+  - district_id
+  - State
+- Facilitator
+- Contract
+- Event
+- Year
+- Curriculum (Data Science, Data Science CODAP, Early Math, Algebra, Algebra 2)
+- Learning Model #what is a learning model
+- Skill #breaking down Bootstrap curriculum to the skill level. this
+  is our product.
+- Location
+  - Street Address
+  - City
+  - State
+  - Zipcode
+  - Country
+- Demographic
+  - race ('American Indian or Alaska Native', 'Asian', 'Black or African American', 'Native Hawaiian or Other Pacific Islander', 'White' )
+  - ethnicity ('Hispanic or Latino', 'Not Hispanic or Latino')
+  - grade_band
+  - setting ('urban', 'rural', 'suburban')
+  - socio-economic status
+- Type
+- Certification
+  - teacher_id
+  - state
+  - subject
+  - grade_band
+  - type #what is this?
+- Class
+  - teacher_id
+  - subject
+  - student_demographics #what is this?
+  - start_date
+  - end_date
+- Role
+  - teacher_id
+  - school_id
+  - role ('teacher', 'paraprofessional', 'supervisor', 'coach',
+    'coordinator')
+  - start date
+  - end date
+- Coaching
+- Stipend
+- Partner report request
+- Admin support #capture the relationship between
+  this teacher and the surrounding professional
+  environment
+- Student achievement
+- Subject
+- Course
+- Standard
+
+- Skills
+  - Curricula
+
+- Partner
+  - Contract
+- Cohort
+  - Participant
+- Event
+  - User
+  - Enrollments
+    - Role
+      - Facilitator
+      - Participant
+      - Admin
+      - Master teacher in training
+      - Ambassador #not really an enrollment role
+- States
+  - Districts
+    - Schools
+      - Classes
+	- Teachers
+	  - Implementations
+- School
+  - Name
+  - District/Org
+  - Student Age or Grade Range
+  - City
+  - State
+  - Address
+  - Principal
+  - Website
+  - Gradebook/LMS Software
+  - Tech Affiliation, Google, MSFT, etc.
+  - CS Affiliation, Code.org, PLTW, etc.
+- District
+  - Name
+  - State
+  - Serving Zip Codes
+  - Website
+
 *** Educator
 are often teachers or have had experience in the classroom, but can
 also be administrators, paraprofessionals, learning coaches, or
@@ -488,131 +659,6 @@ Reports for partners include
 - Types of facilitation experience vs implementation
 - Teaching context vs implementation
   
-** Dimensions
-Most schools are members of districts or other support organizations.  Partner
-organizations build contracts with Bootstrap to train cohorts of educators. A
-partner organization may or may not be a district.
-*** Dimension Hierarchy
-**** Contact
-- Enrollment
-**** Curricula
-  - Skills
-**** Partner
-  - Contract
-**** Cohort
-  - Participant
-- Event
-  - User
-  - Enrollments
-    - Role
-      - Facilitator
-      - Participant
-      - Admin
-      - Master teacher in training
-      - Ambassador #not really an enrollment role
-- States
-  - Districts
-    - Schools
-      - Classes
-	- Teachers
-	  - Implementations
-- School
-  - Name
-  - District/Org
-  - Student Age or Grade Range
-  - City
-  - State
-  - Address
-  - Principal
-  - Website
-  - Gradebook/LMS Software
-  - Tech Affiliation, Google, MSFT, etc.
-  - CS Affiliation, Code.org, PLTW, etc.
-- District
-  - Name
-  - State
-  - Serving Zip Codes
-  - Website
-
-*** Dimension Tables and Attributes
-- Contact
-  - id
-  - name
-  - email
-  - phone
-  - where from?
-  - opt in list #how/where to track email opt-in?
-- User
-  - contact_id
-  - date_added
-- Partner Org #could this be a district?
-  - id
-  - Name
-  - Type ('non-profit', 'government', 'private')
-  - Admins
-- School
-  - school_id
-  - Name
-  - Location #what is location?
-  - Grade band (e.g. '9-12')
-  - Demographic #what is demographic?
-  - District REFERENCES ("District") "district_id"
-  - Address #what is an address 
-- District #this is a school umbrella or support organization
-  - district_id
-  - State
-- Facilitator
-- Contract
-- Event
-- Year
-- Curriculum (Data Science, Data Science CODAP, Early Math, Algebra, Algebra 2)
-- Learning Model #what is a learning model
-- Skill #breaking down Bootstrap curriculum to the skill level. this
-  is our product.
-- Location
-  - Street Address
-  - City
-  - State
-  - Zipcode
-  - Country
-- Demographic
-  - race ('American Indian or Alaska Native', 'Asian', 'Black or African American', 'Native Hawaiian or Other Pacific Islander', 'White' )
-  - ethnicity ('Hispanic or Latino', 'Not Hispanic or Latino')
-  - grade_band
-  - setting ('urban', 'rural', 'suburban')
-  - socio-economic status
-- Type
-- Certification
-  - teacher_id
-  - state
-  - subject
-  - grade_band
-  - type #what is this?
-- Class
-  - teacher_id
-  - subject
-  - student_demographics #what is this?
-  - start_date
-  - end_date
-- Role
-  - teacher_id
-  - school_id
-  - role ('teacher', 'paraprofessional', 'supervisor', 'coach',
-    'coordinator')
-  - start date
-  - end date
-- Coaching
-- Stipend
-- Partner report request
-- Admin support #capture the relationship between
-  this teacher and the surrounding professional
-  environment
-- Student achievement
-- Subject
-- Course
-- Standard
-
-*** Data Tables
 #+begin_src sql
   --------------------------------------------------------------------------
   -- Dimensional Data
@@ -856,6 +902,9 @@ events in our facilitation ecosystem.
 
 #+end_src
 *** Districts
+Most schools are members of districts or other support organizations.  Partner
+organizations build contracts with Bootstrap to train cohorts of educators. A
+partner organization may or may not be a district.
 
 #+begin_src sql
   CREATE TABLE IF NOT EXISTS "district" (
@@ -980,58 +1029,6 @@ philanthropic foundations, individuals, or Bootstrap itself.
     "district_id"  TEXT,
     CONSTRAINT "fk_location" FOREIGN KEY ("location_id") REFERENCES "location",
     CONSTRAINT "fk_district" FOREIGN KEY ("district_id") REFERENCES "district"
-  );
-
-#+end_src
-
-** User & Event Data
-#+begin_src sql
-  --------------------------------------------------------------------------------
-  -- User & Event Data
-  --------------------------------------------------------------------------------
-#+end_src
-*** Users
-One row per person. Anyone who has interacted with Bootstrap, who ever
-signed up for an event, even if they did not
-attend. Anyone who joined the mailing list through
-a web form, reached out directly to Bootstrap
-staff, messaged through social media, requested
-answer keys, or joined Discourse.
-
-#+begin_src sql
-  CREATE TABLE IF NOT EXISTS "user" (
-    "id"                 SERIAL PRIMARY KEY, --TEXT,
-    "name_first"         TEXT, -- the legal first name, i.e. would appear on DL
-    "name_last"          TEXT,
-    "name_first_alt"     TEXT, -- usually shortened nick name, e.g. David -> Dave
-    "name_last_alt"      TEXT, -- usually for married name change
-    "email_personal"     TEXT, -- email that persists after job change
-    "email_professional" TEXT, -- email that changes with job change
-    "home_location"      INTEGER REFERENCES "location",
-    "home_phone"         varchar(15),
-    "cell_phone"         varchar(15),
-    "work_phone"         varchar(15),
-    "user_gender"             GENDER,
-    "user_race"               RACE
-  );
-
-#+end_src
-*** Events
-Bootstrap facilitates events for professional educators. These events focus on
-the conceptual understanding and implementation of Bootstrap curriculum.
-
-#+begin_src sql
-  --   
-  CREATE TABLE IF NOT EXISTS "event" (
-    "id"            TEXT PRIMARY KEY,
-    "event_name"    TEXT NOT NULL,
-    "location_id"   INTEGER,
-    "event_days"    INTEGER CONSTRAINT "positive_days" GENERATED ALWAYS AS ("end_date" - "start_date") STORED CHECK (event_days > 0),
-    --length in days
-    "end_date"      INTEGER,
-    "start_date"    INTEGER,
-    "type"          INTEGER REFERENCES "event_type",
-    "format"        INTEGER REFERENCES "event_type"
   );
 
 #+end_src
@@ -1254,8 +1251,10 @@ same calendar year.
 
 #+end_src
 
-
-
-
+* Interactions
+** Event Add
+- Name event
+- Locate event
+- Generate ID
 
 
