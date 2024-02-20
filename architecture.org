@@ -663,11 +663,6 @@ Reports for partners include
 - Types of facilitation experience vs implementation
 - Teaching context vs implementation
   
-#+begin_src sql
-  --------------------------------------------------------------------------
-  -- Dimensional Data
-  --------------------------------------------------------------------------
-#+end_src
 *** Curricula
 #+begin_src sql
     -- These are internal curricula used in trainings. Participants are associated with their most recent training enrollment curricula.
