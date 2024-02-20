@@ -104,6 +104,10 @@ other aspects such as pathway could be stored here as well.  Contracts
 (in the business sense) are represented for the purpose of turning on
 services (e.g. workbooks, coaching) for client cohorts and for
 reporting back to stakeholders.
+** Operations
+*** Email Communication
+*** Collecting Enrollment Data
+*** Collecting Attendance Data
 ** Measures of Success
 | SUCCESS DEFINITION                                                                                        | METRICS (QUANTITATIVE)                                                                             | METRICS (ANECDOTAL)                               |
 |-----------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+---------------------------------------------------|
@@ -334,10 +338,10 @@ followup for a period of time as the teacher attempts to bring
 Bootstrap curriculum into the classroom. Pre and post test student
 data stops at the teacher level. We do not track students as entities
 or store any individual student data.
-** Definitions
+** Dimensions
 #+begin_src sql
   --------------------------------------------------------------------------------
-  -- User & Event Data
+  -- Dimensional Data
   --------------------------------------------------------------------------------
 #+end_src
 *** Contact
@@ -346,11 +350,11 @@ have approximately ten years of "contacts". A contact in this system
 is a user who has not been enrolled in an event.
 *** Users
 One row per person. Anyone who has interacted with Bootstrap, who ever
-signed up for an event, even if they did not
-attend. Anyone who joined the mailing list through
-a web form, reached out directly to Bootstrap
-staff, messaged through social media, requested
-answer keys, or joined Discourse.
+signed up for an event, even if they did not attend. Anyone who joined
+the mailing list through a web form, reached out directly to Bootstrap
+staff, messaged through social media, requested answer keys, or joined
+Discourse. All facilitators are users and anyone who would be sent an
+email is a user.
 
 #+begin_src sql
   CREATE TABLE IF NOT EXISTS "user" (
