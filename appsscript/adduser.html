@@ -2,10 +2,26 @@
 <html>
   <head>
     <base target="_top">
-  </head>
+    <script>
+      function submitForm() {
+	  google.script.run.appendRowFromFormSubmit(document.getElementById("userAddForm"));
+	  // google.script.run.test(document.getElementById("userAddForm"));
+      }
+      </script>
+   </head>
   <body>
-    Hello, World!
-    <input type="button" value="Close"
-	   onclick="google.script.host.close()" />
+    <h1>Add user</h1>
+    <form id="userAddForm" onsubmit="submitForm();">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" /><br><br>
+      <label for="firstName">First name</label>
+      <input type="text" id="firstName" name="firstName" /><br><br>
+      <label for="lastName">Last name</label>
+      <input type="text" id="lastName" name="lastName" /><br><br>
+      <input type="button" value="Close"
+	     onclick="google.script.host.close()" />
+      <input type="button" value="Submit" onclick="submitForm();" />
+      <input type="submit" value="Submit Form" />
+    </form>
   </body>
 </html>
