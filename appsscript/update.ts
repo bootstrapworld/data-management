@@ -8,23 +8,22 @@ function onOpen() {
         .addToUi();
 }
 
-
-
 const addUser_ = function() {
-    var html = HtmlService.createHtmlOutputFromFile('adduser');
-    SpreadsheetApp.getUi().showSidebar(html);
+    try {
+        var html = HtmlService.createHtmlOutputFromFile('adduser');
+        SpreadsheetApp.getUi().showSidebar(html);
+    } catch (e) {
+        console.log('Failed with error: %s', e.error);
+    }
 }
 
 const addEvent_ = function() {
-    var html = HtmlService.createHtmlOutputFromFile('addevent');
-    SpreadsheetApp.getUi().showSidebar(html);
-}
-
-const appendUserRow = function() {
-    var ss = SpreadsheetApp.getActive();
-    var userSheet = ss.getSheetByName('users');
-    //    userSheet.appendRow([email, firstName, lastName]);
-    //    console.log(firstName, lastName, email);
+    try {
+        var html = HtmlService.createHtmlOutputFromFile('addevent');
+        SpreadsheetApp.getUi().showSidebar(html);
+    } catch (e) {
+        console.log('Failed with error: %s', e.error);
+    }
 }
 
 const openDialog = function() {
