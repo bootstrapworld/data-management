@@ -1,5 +1,4 @@
-anObject = { a: 2, b: 4, c: 5 };
-
+const anObject: object = { a: 2, b: 4, c: 5 };
 
 function Container(param, y) {
     this.member = param;
@@ -10,11 +9,10 @@ function Container(param, y) {
 
 var myContainer = new Container('abc', 14);
 
-console.log(myContainer.name + ' is ' + myContainer.months() + ' old.');
-console.log(anObject.b);
+//console.log(myContainer.name + ' is ' + myContainer.months() + ' old.');
+//console.log(anObject.b);
 var spanish = LanguageApp.translate('This is a test', 'en', 'es');
-Logger.log(spanish);
-
+//Logger.log(spanish);
 
 var array_of_objects =
     [
@@ -105,14 +103,3 @@ function htmlFromData(arr) {
 
 //$("body").append(htmlFromData(array_of_objects));
 
-function User(email, firstName, lastName) {
-    this.email = email;
-    this.firstName = firstName;
-    this.lastName = lastName;
-}
-
-function userHeader() {
-    for (const property in User) {
-        console.log(`${property}`);
-    }
-}
