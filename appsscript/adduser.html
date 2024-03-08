@@ -7,9 +7,35 @@
 	  google.script.run.appendRowFromFormSubmit(document.getElementById("userAddForm"));
 	  // google.script.run.test(document.getElementById("userAddForm"));
       }
-      </script>
+
+      function onFailure(error) {
+	  var div = document.getElementById('output');
+	  div.innerHTML = "Error: " + error.message;
+      }
+
+      var fields;
+      function onSuccess(returnValue) {
+	  var div = document.getElementById('output');
+	  fields = returnValue;
+	  div.innerHTML = fields;
+      }
+
+      function getFields() {
+	  google.script.run.withFailureHandler(onFailure).withSuccessHandler(onSuccess)
+	      .userFields();
+      }
+
+      // const fields = getFields();
+      // for (i=0; i<fields.length; i++) {
+      // 	  var field = fields[i];
+      // 	  const newLabel = document.createElement("label");
+      // 	  newLabel.textContent = field;
+      // 	  testForm.appendChild(newLabel);
+      // }
+    </script>
    </head>
   <body>
+    <div id="output"></div>
     <h1>Add user</h1>
     <form id="userAddForm" onsubmit="submitForm();">
       <label for="email">Email</label>
@@ -23,5 +49,19 @@
       <input type="button" value="Submit" onclick="submitForm();" />
       <input type="submit" value="Submit Form" />
     </form>
+
+    <form id="testForm"></form>
+
+    
+    <p id="example_element1"></p>
+    <p id="example_element2"></p>
+    <script>
+      var testForm = document.querySelector("#testForm");
+      var para = document.createElement("p");
+      para.textContent = 'hello world';
+      testForm.appendChild(para);
+      getFields();
+      console.log(fields);
+    </script>
   </body>
 </html>
