@@ -1,0 +1,30 @@
+#+ Data collection plan
+* Purpose
+To define the data collected from participants in the Bootstrap
+community during the course of enrolling and participating in
+facilitated events and implementation support. Any data group below
+marked with a (d) is considered draft and may be dropped or included
+in a later year. Data groups marked with two dollar signs ($$) are
+requirements for enrollment.
+* Data Outline
+** User
+- $$ Name, first and last, alternate first and last name (nickname or name change)
+- Race/Ethnicity, gender
+- $$ Employer, employer address, role title, date started or years in position
+- $$ is-Teacher? (whether or not participant spends majority of working hours supervising students)
+  - Yes :: Teaching license, years teaching, computer science experience (anecdotal),
+  - No :: Describe education role and/or relationship to teachers and classrooms.
+- Professional affiliation
+- Classroom tools used (Desmos, Geogebra, code.org, etc.) (d)
+- How did you hear about Bootstrap? and/or Why are you taking this workshop?
+- $$ Supporting partner organization or self pay.
+** Class
+- Subject, start/end dates, course title, grade level or student age
+- School, district, state
+- Context (anecdotal), [remedial/grade-level/advanced, prerequisite]
+- Technology in the classroom [computer lab/1-1 laptops/chromebooks] (d), school domain google accounts? (d)
+** Implementation
+- Class, lesons used, administrative support, 
+* Narrative
+User information is must have
+
