@@ -1,4 +1,5 @@
-#+ Data collection plan
+#+TITLE: Data collection plan
+#+EXPORT_FILE_NAME: ../dataplan.odt
 * Purpose
 To define the data collected from participants in the Bootstrap
 community during the course of enrolling and participating in
