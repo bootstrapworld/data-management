@@ -2,7 +2,7 @@
 #+EXPORT_FILE_NAME: ../dataplan.odt
 * Purpose
 To define the data collected /from/ participants in the Bootstrap
-community during the course of enrolling and participating in
+community during enrollment and participation of
 facilitated events and implementation support. Additional data
 internal to Bootstrap or particular to events, e.g. whether the
 participant receives coaching is not included, neither is event
@@ -26,17 +26,27 @@ dollar signs *($$)* are requirements for enrollment.
 ** Class
 - Subject, start/end dates, course title, grade level or student age
 - School, district, state
-- Student demographics (percent_race/ethnicity,percent_gender,percent_disability)
+- Student demographics (percent race/ethnicity, percent gender, percent disability)
 - (d) Context (anecdotal), [remedial/grade-level/advanced, prerequisite]
 - (d) Technology in the classroom
-  [computer_lab/1-1_laptops/chromebooks], school domain google
+  [computer lab/1-1 laptops/chromebooks], school domain google
   accounts
 ** Implementation
 - Class id (always references a Class, see above)
 - Bootstrap lessons used, coaching attended, received support (anecdotal)
-- administrative support (anecdotal),
+- administrative support (anecdotal)
 ** Skills
 Skills are currently assessed in aggregate with anonymous pre and post diagnostics administered during a training.
 # Diagnostic is a misnomer: we don't use this data to craft instruction. Rather, we use pre and post data to investigate growth in knowledge at the end of the training event.
 
 Individual skills assessment data aligned to a curriculum specific skills framework wait for future planning.
+* Narrative
+User data includes aspects of personal and professional information
+that are not often subject to change. Requirement for enrollment
+include name, employer, and basic aspects of the participant as a
+teacher.
+
+Class data can be collected once -- requesting the teacher submit a
+/typical/ class -- or for each class in a teachers schedule. An
+implementation is first entered as a class and then the class is
+linked to the implementation data.
