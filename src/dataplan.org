@@ -34,7 +34,9 @@ dollar signs *($$)* are requirements for enrollment.
 ** Implementation
 - Class id (always references a Class, see above)
 - Bootstrap lessons used, coaching attended, received support (anecdotal)
-- administrative support (anecdotal)
+- *(d)* Student achievement, class pre-post, student project samples
+- *(d)* Administrative support (anecdotal), compelled or self choice,
+  teacher evaluation
 ** Skills
 Skills are currently assessed in aggregate with anonymous pre and post
 diagnostics administered during a training.
