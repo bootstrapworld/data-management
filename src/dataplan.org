@@ -13,22 +13,22 @@ dropped or included in a later year. Data groups marked with two
 dollar signs *($$)* are requirements for enrollment.
 * Data Outline
 ** User
-- $$ Name, first and last, alternate first and last name (nickname or name change)
+- *$$* Name, first and last, alternate first and last name (nickname or name change)
 - Race/Ethnicity, gender
-- $$ Employer, employer address, role title, date started or years in position
-- $$ is-Teacher? (whether or not participant spends majority of working hours supervising students)
+- *$$* Employer, employer address, role title, date started or years in position
+- *$$* is-Teacher? (whether or not participant spends majority of working hours supervising students)
   - Yes :: Teaching license, years teaching, computer science experience (anecdotal),
   - No :: Describe education role and/or relationship to teachers and classrooms.
 - Professional affiliation
 - Classroom tools used (Desmos, Geogebra, code.org, etc.) (d)
 - How did you hear about Bootstrap and/or Why are you taking this workshop?
-- $$ Supporting partner organization or self pay.
+- *$$* Supporting partner organization or self pay.
 ** Class
 - Subject, start/end dates, course title, grade level or student age
 - School, district, state
 - Student demographics (percent race/ethnicity, percent gender, percent disability)
-- (d) Context (anecdotal), [remedial/grade-level/advanced, prerequisite]
-- (d) Technology in the classroom
+- *(d)* Context (anecdotal), [remedial/grade-level/advanced, prerequisite]
+- *(d)* Technology in the classroom
   [computer lab/1-1 laptops/chromebooks], school domain google
   accounts
 ** Implementation
@@ -36,10 +36,12 @@ dollar signs *($$)* are requirements for enrollment.
 - Bootstrap lessons used, coaching attended, received support (anecdotal)
 - administrative support (anecdotal)
 ** Skills
-Skills are currently assessed in aggregate with anonymous pre and post diagnostics administered during a training.
+Skills are currently assessed in aggregate with anonymous pre and post
+diagnostics administered during a training.
 # Diagnostic is a misnomer: we don't use this data to craft instruction. Rather, we use pre and post data to investigate growth in knowledge at the end of the training event.
 
-Individual skills assessment data aligned to a curriculum specific skills framework wait for future planning.
+Individual skills assessment data aligned to a curriculum specific
+skills framework wait for future planning.
 * Narrative
 User data includes aspects of personal and professional information
 that are not often subject to change. Requirement for enrollment
