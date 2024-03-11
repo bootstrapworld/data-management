@@ -12,12 +12,15 @@
 	  var div = document.getElementById('output');
 	  div.innerHTML = "Error: " + error.message;
       }
+      var test = "hello world";
 
       var fields;
+      
       function onSuccess(returnValue) {
 	  var div = document.getElementById('output');
 	  fields = returnValue;
 	  div.innerHTML = fields;
+	  console.log(fields);
       }
 
       function getFields() {
@@ -58,7 +61,7 @@
     <script>
       var testForm = document.querySelector("#testForm");
       var para = document.createElement("p");
-      para.textContent = 'hello world';
+      para.textContent = test;
       testForm.appendChild(para);
       getFields();
       console.log(fields);

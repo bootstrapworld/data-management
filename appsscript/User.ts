@@ -1,7 +1,7 @@
 
 const User = (function() {
     function User(
-        id: number,                  //SERIAL PRIMARY KEY, --TEXT
+        user_id: number,                  //SERIAL PRIMARY KEY, --TEXT
         name_first: string,          //TEXT -- the legal first name, i.e. would appear on DL
         name_last: string,           //TEXT
         name_first_alt: string,      //TEXT, -- usually shortened nick name, e.g. David -> Dave
@@ -15,7 +15,7 @@ const User = (function() {
         user_gender: string,         //     GENDER
         user_race: string,            //     RACE
         user_employer: string) {
-        this.id = id,
+            this.user_id = user_id,
             this.name_first = name_first,
             this.name_last = name_last,
             this.name_first_alt = name_first_alt,
