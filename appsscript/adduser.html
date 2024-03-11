@@ -12,29 +12,31 @@
 	  var div = document.getElementById('output');
 	  div.innerHTML = "Error: " + error.message;
       }
-      var test = "hello world";
-
-      var fields;
       
       function onSuccess(returnValue) {
-	  var div = document.getElementById('output');
-	  fields = returnValue;
-	  div.innerHTML = fields;
-	  console.log(fields);
+	  var testForm = document.querySelector("#testForm");
+	  var para = document.createElement("p");
+	  for (i=0; i<returnValue.length; i++) {
+ 	      var field = returnValue[i];
+	      var newInput = document.createElement("input");
+	      var newLabel = document.createElement("label");
+	      newInput.setAttribute("name",returnValue[i]);
+ 	      newLabel.textContent = field;
+ 	      testForm.appendChild(newLabel);
+	      testForm.appendChild(newInput);
+	  }
+	  // para.textContent = returnValue;
+	  // testForm.appendChild(para);
       }
 
       function getFields() {
-	  google.script.run.withFailureHandler(onFailure).withSuccessHandler(onSuccess)
+	  google.script.run
+	      .withFailureHandler(onFailure)
+	      .withSuccessHandler(onSuccess)
 	      .userFields();
       }
 
-      // const fields = getFields();
-      // for (i=0; i<fields.length; i++) {
-      // 	  var field = fields[i];
-      // 	  const newLabel = document.createElement("label");
-      // 	  newLabel.textContent = field;
-      // 	  testForm.appendChild(newLabel);
-      // }
+    
     </script>
    </head>
   <body>
@@ -59,12 +61,7 @@
     <p id="example_element1"></p>
     <p id="example_element2"></p>
     <script>
-      var testForm = document.querySelector("#testForm");
-      var para = document.createElement("p");
-      para.textContent = test;
-      testForm.appendChild(para);
       getFields();
-      console.log(fields);
     </script>
   </body>
 </html>

@@ -15,7 +15,7 @@ const User = (function() {
         user_gender: string,         //     GENDER
         user_race: string,            //     RACE
         user_employer: string) {
-            this.user_id = user_id,
+        this.user_id = user_id,
             this.name_first = name_first,
             this.name_last = name_last,
             this.name_first_alt = name_first_alt,
@@ -38,14 +38,14 @@ function test() {
 }
 
 function userFields() {
-    //    var fieldsArr = Object.getOwnPropertyNames(new User);
-    var parsed = ""
-    for (var property in new User) {
-        parsed += property + ', ' + '\n';
-    }
-    console.log(parsed);
-    return parsed;
-    //    return fieldsArr;
+    var fieldsArr = Object.getOwnPropertyNames(new User);
+    // var parsed = ""
+    // for (var property in new User) {
+    //     parsed += property + ', ' + '\n';
+    // }
+    // console.log(parsed);
+    // return parsed;
+    return fieldsArr;
 }
 
 // create element from array https://stackoverflow.com/a/3231500
