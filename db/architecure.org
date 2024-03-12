@@ -1,0 +1,1259 @@
+#+PROPERTY: header-args :engine postgresql
+#+PROPERTY: header-args :exports code
+#+PROPERTY: header-args :tangle yes
+#+STARTUP: content
+* Overview
+:PROPERTIES:
+:VISIBILITY: folded
+:END:
+** This file
+This is the data definition and architecture expressed in POSTGRESQL
+for Bootstrap facilitated training events and participant
+tracking. This is a literate file written in Orgmode and tangled using
+org-babel.
+
+** Bootstrap
+Bootstrap develops curriculum and facilitates training for
+professional educators and the organizations that support
+them. Bootstrap delivers pedagogical strategies to participant
+educators through in-person or virtual learning sessions. Bootstrap
+seeks to support teachers from novice learners until they can
+confidently implement Bootstrap curriculum in their
+classrooms. Bootstrap trainings prepare teachers to deliver the
+curriculum such that their students can demonstrate certain skills
+evidenced through the curriculum's learning products.
+
+The overarching goal of Bootstrap curricula and trainings is to
+support student learning in core academic skills, especially
+mathematical reasoning. Teachers are the professionals who deploy
+Bootstrap content. The quality of that deployment directly correlates
+to student achievement with Bootstrap.  Whether Bootstrap curricula
+meets its aim to boost standardized achievement relies on the quality
+of a teacher's deployment.
+
+Some of Bootstrap's activities can be accessed by the student
+directly. However, the primary market for Bootstrap products and
+services is the teacher-student classroom where one teacher will
+typically work with a groups of fifteen to thirty students. Bootstrap
+teachers must deliver the curriculum. There is no mechanism for
+student to work in an entirely self guided environment. Bootstrap
+students are typically 10 to 17 years old.
+
+Classrooms vary widely across the United States, and if we consider
+international usage, there are many possibilities for the classroom
+conditions in which Bootstrap curriculum may be deployed. To capture
+some of this variety we look at classroom size, location, subject,
+grade level, school schedule model (annual, semeseter, trimester,
+block, etc.), student socioeconomic and race/ethnicity demographics,
+teacher license and background, admin support, mandate vs teacher
+choice, stipend received?, pre post student, pre post teacher,
+deployment model (asynchronous, cherry picked, end-to-end, etc.).
+
+Training participants are most often teachers, but are also teacher
+assistants and para professionals on the one hand and teacher
+supervisors, administrators, and coaches on the other. We track
+participant attendance at training events and engagement across our
+various systems. We also delineate between participants and observers
+who do not interact with classrooms in their daily work, but are
+otherwise connected to Bootstrap and may attend training events.
+
+The Bootstrap data model collects data for improving the curriculum,
+tracking student academic achievement, and analyzing the relationship
+between curriculum, training, and on-going teacher supports and the
+experience of teachers in the classroom. We hope to facilitate
+analysis and lead to improvements in training and curriculum, which
+become measurably better suited to the needs of teachers and student
+achievement over time.
+
+Relationships between users and outside organizations are orthogonal
+to the relationships between users and Bootstrap. A principal could be
+a participant learning Data Science. However, the relationship to the
+outside organization affects how the user receives and deploys the
+learning and our expectations of them.
+
+** Goals
+*** What am I doing?
+I am trying to capture the ways Bootstrap is working to grow through a
+relational data model.  This model should enable facilitation of
+training events, particularly the communication required of
+facilitation.  This model should answer key question for the Bootstrap
+organization such as whether it is meeting teacher and partner goals
+and succeeding in its own growth or how should it grow its trainee
+support offerings. This model should hold rolling data for years and
+facilitate slicing by year, partner cohort, curriculum, etc.
+
+*** This data model
+The primary goal of this data model is to track and analyze the
+efficacy of learning supports created by Bootstrap: curriculum
+materials and facilitated trainings events.  Bootstrap hopes to
+improve the learning model for professional educators, build support
+for educators such that they are successful, and works toward
+educators feeling confident enough to actually bring a set of
+Bootstrap lessons into their classrooms. Bootstrap further measures
+success through the achievement of students who received Bootstrap
+curriculum. To what extent we can track individual student learning is
+on open and complex question.
+** Non-goals
+It is not a goal at this time to hold curriculum and financial change
+records, nor to track contracts facilitators performance, though
+information contained here will support a variety of analysis
+regarding training efficacy.  Certain aspects of curriculum are
+represented here in the assessment model, such as skill groups, lesson
+and assessment titles, and curriculum are here and one can imagine
+other aspects such as pathway could be stored here as well.  Contracts
+(in the business sense) are represented for the purpose of turning on
+services (e.g. workbooks, coaching) for client cohorts and for
+reporting back to stakeholders.
+** Operations
+*** Email Communication
+*** Collecting Enrollment Data
+*** Collecting Attendance Data
+** Measures of Success
+| SUCCESS DEFINITION                                                                                        | METRICS (QUANTITATIVE)                                                                             | METRICS (ANECDOTAL)                               |
+|-----------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+---------------------------------------------------|
+| <50>                                                                                                      | <50>                                                                                               | <40>                                              |
+| We help teachers achieve their goals                                                                      | Teacher:  Are we helping teachers learn, grow, and achieve their teaching goals?                   | -                                                 |
+| More teachers are using more Bootstrap with their students for multiple years (more: users, depth, years) | How wide is our reach and how great is our potential could it be based on the teachers we trained? | -                                                 |
+| -                                                                                                         | What is our conversion rate from PD to classroom implementation?                                   | -                                                 |
+| -                                                                                                         | How far are Bootstrap students going?                                                              | -                                                 |
+| -                                                                                                         | How many students are we reaching, and are we reaching the ones we want?                           | -                                                 |
+| -                                                                                                         | How far are Bootstrap students going, by type of implementation and curriculum?                    | -                                                 |
+| -                                                                                                         | How many teachers do we lose each year?                                                            | -                                                 |
+| -                                                                                                         | How long do teachers teach Bootstrap?                                                              | -                                                 |
+| Educators use everything we make (i.e., we make things educators use), including updated materials        | How well are teachers able to support student inquiry?                                             | -                                                 |
+| -                                                                                                         | How well do our printed and online materials meet teachers' needs?                                 | -                                                 |
+| -                                                                                                         | How do our teachers' skills progress over time?                                                    | -                                                 |
+| -                                                                                                         | How well do our offerings meet teachers' needs?                                                    | -                                                 |
+| Students are learning more                                                                                | How much are students learning?                                                                    | -                                                 |
+| -                                                                                                         | Are students achieving learning goals for their courses through our materials?                   | -                                                 |
+| -                                                                                                         | Are students excited and empowered by our materials?                                             | -                                                 |
+| Teachers are so happy they are brand evangelists and refer other teachers to Bootstrap                    | -                                                                                                  | Are teachers evangelizing Bootstrap?              |
+| We help partners achieve their goals                                                                      | Partner: Are we helping partners achieve their goals?                                              | -                                                 |
+| Partners are happy with our work and show appreciation (e.g., to us directly, recommend us to others)     | How satisfied are our partners?                                                                    | Are partners expressing gratitutude/appreciation? |
+| Partners engage us year over year                                                                         | How long do partners work with us?                                                                 | -                                                 |
+| -                                                                                                         | How many partners renew?                                                                           | -                                                 |
+| -                                                                                                         | How many partners do not renew?                                                                    | -                                                 |
+| We are poised to grow sustainably                                                                         | Bootstrap: Is Bootstrap is growing sustainably?                                                    | -                                                 |
+| Growing team who is satisfied with their jobs                                                             | How quickly is our organization growing?                                                           | -                                                 |
+| -                                                                                                         | How satisfied is our team?                                                                         | -                                                 |
+| We are financially stable and growing                                                                     | How quickly is our organization growing financially?                                               | -                                                 |
+| We establish new clients each year in more geographies (more schools and more geographies)                | How quickly is our partner bench growing?                                                          | -                                                 |
+| -                                                                                                         | How well are we poised for growth from a marketing and sales perspective?                          | -                                                 |
+| -                                                                                                         | How well are we poised for growth and sustainability?                                              | -                                                 |
+| OTHER Success Definition Points to Consider                                                               | -                                                                                                  | -                                                 |
+| We reach threshold where we are ingrained in the system.                                                  | -                                                                                                  | -                                                 |
+| Administrators support excited educators (bottom up / top down expansion)                                 | -                                                                                                  | Are admins promoting expansion?                   |
+
+| Major Question/Metric                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Proxy Metric                               | How it's Measured                                                                                                                                   | How it's Displayed                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Frequency of Reporting | Target/Goal | Comment                                                                                                                                                                                                                                                                                                                                                                                                                              | Action Implications                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <20>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | <20>                                       | <20>                                                                                                                                                | <20>                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | <20>                   | <20>        | <20>                                                                                                                                                                                                                                                                                                                                                                                                                                 | <20>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Teacher:  Are we helping teachers learn, grow, and achieve their teaching goals?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | -                                          | -                                                                                                                                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| How wide is our reach and how great is our potential could it be based on the teachers we trained?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Geographic Reach Score                     | % of US map shaded in, representing where we have teachers using Bootstrap.                                                                         | US Map:  Shade in districts where teachers we trained are using Bootstrap. Darker shading = more teachers. In different color, shade in districts where teachers we trained aren't implementing.  Be able to toggle by year.  Summary table at bottom: #teachers implementing, #teachers trained but not implementing, #teachers trained total, # school districts represented by each (trained v implementing)  Bar chart displaying summary table numbers by year. | -                      | -           | # teachers who implement is found via surveys, interactions, wb orders, attendance at events                                                                                                                                                                                                                                                                                                                                         | 1) Sales: Establish partnerships in regions where we have no/low representation 2) Success: Understand why/not those who are implementing are/not doing so. Increase conversion rate of teachers, if/where applicable.  3) Curric: Develop curric (e.g., datasets) that are more attractive to educators in underreepresented regions                                                                                                                                                                          |
+| What is our conversion rate from PD to classroom implementation?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Teacher Conversion Rate                    | # teachers implementing / # teachers trained by year                                                                                                | Bar chart showing conversion rate by year.                                                                                                                                                                                                                                                                                                                                                                                                                           | -                      | -           | if someone added mid-year, and never received formal/full PD, add them to both numerator and denomenator                                                                                                                                                                                                                                                                                                                             | 1) Partnerships/Sales: Make sure we train teachers who will be able to implement 2) Success: understand why/not teachers are/not implementing to provide feedback to upstream activities (e.g., curric writing, recruiting, PD). Help teachers who aren't implementing to use Bootstrap in class                                                                                                                                                                                                               |
+| How far are Bootstrap students going?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Student Exposure Depth                     | # copies made of shared files by file by geography                                                                                                  | US Map Bubble Graph:  color = deep (red) v shallow (blue) implementation.  size of bubble = # copies  Summary table at bottom: #shared files copied by state or major US region  Bar chart displaying summary table numbers by year.  By able to toggle by curriculum, or choose "All"                                                                                                                                                                               | -                      | -           | TODO:  Sort starter files into "shallow" v "deep", to determine how far along in the curriculum a student would be when encountering.   **JOE: Is it possible to tie a login from bsw.org to pyret AND know which teachers are using which lessons?                                                                                                                                                                                  | 1) Success: Research if there is circumstantial reason for this (e.g., something to do with policy, restrictions, etc) 2) Success: Work with teachers in regions to increase depth. Adapt success approach, if applicable, in those regions to better support teachers moving farther. 3) Curric: Update curric/workshops to attract more teachers in these regions (e.g., datasets that are more attractive to students in particular regions, adapt workshops in those regions). Update lesser-uesd lessons. |
+| How many students are we reaching, and are we reaching the ones we want?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Student Reach                              | avg # students / teacher * # teachers implementing                                                                                                  | In total and by subgroups (e.g., F/R lunch, girls)                                                                                                                                                                                                                                                                                                                                                                                                                   | -                      | -           | Supports triangulation of # students reached when used with Student Learning Depth Distribution                                                                                                                                                                                                                                                                                                                                      | 1) Partnerships/Sales: Make sure we train teachers who will be able to implement. Bring on more partners. 2) Success: understand why/not teachers are/not implementing to provide feedback to upstream activities (e.g., curric writing, recruiting, PD). Help teachers who aren't implementing to use Bootstrap in class                                                                                                                                                                                      |
+| How far are Bootstrap students going, by type of implementation and curriculum?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Implementation Depth Score                 | %lessons taught by teacher by curriculum by teaching format                                                                                         | By curriculum and by teaching format (integration vs standalone class): HIstogram showing the number of teachers who teach a particular lesson Histogram showing the average number of lessons a teacher teachers Summary table showing total and average stats                                                                                                                                                                                                      | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| How many teachers do we lose each year?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Teacher Churn Rate                         | %  teachers who stop teaching Bootstrap each year                                                                                                   | mutilbargraph by year showing: teaachers who stop for "good reason", "bad reason", "unknown"                                                                                                                                                                                                                                                                                                                                                                         | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| How long do teachers teach Bootstrap?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Teacher Longevity Score                    | avg # years a teacher uses Bootstrap in their classroom by year                                                                                     | Histogram (bucketed by year)                                                                                                                                                                                                                                                                                                                                                                                                                                         | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | 1) Success: Work with teachers to increase longevity. 2) Curric: Consider product offerings to support longevity.                                                                                                                                                                                                                                                                                                                                                                                              |
+| How well are teachers able to support student inquiry?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Teacher Ability to Support Student Inquiry | Teacher Rating Scale 1-5 1 = Novice 5 = Master Teacher                                                                                              | Teacher ability to support student inquiry distributed by # years teaching                                                                                                                                                                                                                                                                                                                                                                                           | -                      | -           | Flannery question: Are we giving teachers what they need to have the confidence to give students space to explore and be curious and potentially surface questions teachers won’t have answers to? (Includes: are we providing them w support in the answer-key world to make it clear there’s space for open-ended discussions and to catch misconceptions?)                                                                        | 1) Curric: Update materials and PD to promote desired behavior.  2) Success: Update coaching and other support to promote desired behavior.                                                                                                                                                                                                                                                                                                                                                                    |
+| How well do our printed and online materials meet teachers' needs?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Materials Score                            | Teacher Rating Scale 1-5 1 = Not useful at all 5 = Very useful  + open ended comments (qualitative)                                                 | multibarchart: goals (with material subgroups)  cluster represents goals  colors represent Lesson plans / Datasets / Starterfiles / Slides / Workbooks / Discourse                                                                                                                                                                                                                                                                                                   | -                      | -           | Do teachers feel like our materials are ready to go for them? Do teachers see our materials as meeting and supporting the learning goals of their courses? Lesson plans? Datasets? Starterfiles? Slides? Workbooks? Discourse?  Survey teachers - in addition to rating scale, give them space to let us know what needs we are not addressing with our materials Also ask if they're open to talking with us about their experience | 1) Curric: Update materials to promote desired behavior.                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| How do our teachers' skills progress over time?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Teacher Skill Level over Time              | Teacher Rating Scale 1-5 1 = Novice 5 = Master Teacher                                                                                              | Bar chart showing Average Teacher skill level at beginning of PD, end of PD, and periodically thereafter  Toggle by facilitator (?)                                                                                                                                                                                                                                                                                                                                  | -                      | -           | Use pre/post diagnostics + observations checklist* at PD, student pre/post and something else (surveys/self-assessment?) thereafter  *Eric has checklist idea                                                                                                                                                                                                                                                                        | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| How well do our offerings meet teachers' needs?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Offering Usage Score                       | By offering (e.g., coaching, PD, 1x1s), # teachers who use an offering / # teachers eligible to use an offering                                     | Bar chart showing offering value for each offering over time (e.g., each monthly coaching session = 1 bar)                                                                                                                                                                                                                                                                                                                                                           | -                      | -           | Offerings: events, discourse, email, 1x1s, website, social  Need to account for impact of these offerings (i.e., this is about quality of interaction, not just quantity).                                                                                                                                                                                                                                                           | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| How much are students learning?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Student Learning Gains                     | Average student improvement from pre to post test by curriculum by teaching format                                                                  | By curriculum and by teaching format (integration vs standalone class): Histogram showing student improvement from pre to post test  Bar chart showing improvement from pre to post test by question  Summary: show #students included in results                                                                                                                                                                                                                    | -                      | -           | At student level or classroom level? Collect demographic data?  Can use student deliverables to augment score? Something else?                                                                                                                                                                                                                                                                                                       | 1) Curric: Update materials and PD to promote desired behavior.  2) Success: Update coaching and other support to promote desired behavior.                                                                                                                                                                                                                                                                                                                                                                    |
+| Are students achieving learning goals for their courses through our materials?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Student Learning Gains                     | pre and post test at student level - each learning goal with its own rating scale, perhaps just 0-1, perhaps 0-3... like what Paul Zachos showed us | Stacked bar chart before and after for each learning goal we assess                                                                                                                                                                                                                                                                                                                                                                                                  | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | 1) Curric: Update materials and PD to promote desired behavior.  2) Success: Update coaching and other support to promote desired behavior.                                                                                                                                                                                                                                                                                                                                                                    |
+| Are students excited and empowered by our materials?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Student Engagement Score                   | Teacher Rating 1 - 5  1= least  5= most engaged I've ever seen my students                                                                          | pie chart                                                                                                                                                                                                                                                                                                                                                                                                                                                            | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | 1) Curric: Update materials and PD to promote desired behavior.  2) Success: Update coaching and other support to promote desired behavior.                                                                                                                                                                                                                                                                                                                                                                    |
+| -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | -                                          | -                                                                                                                                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Partner: Are we helping partners achieve their goals?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | -                                          | -                                                                                                                                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| How satisfied are our partners?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Partner NPS                                | Rating 1 - 5 1 = I would not recommend Bootstrap 5 = I would definitely recommend Bootstrap                                                         | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| How long do partners work with us?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Partner Longevity                          | avg # years a partner works with us                                                                                                                 | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| How many partners renew?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Partner Renewals                           | # renewals                                                                                                                                          | Bar chart: # renewals by year                                                                                                                                                                                                                                                                                                                                                                                                                                        | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| How many partners do not renew?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Partner Churn                              | %partners who do not renew YoY                                                                                                                      | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | -                                          | -                                                                                                                                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Bootstrap: Is Bootstrap is growing sustainably?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | -                                          | -                                                                                                                                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| How quickly is our organization growing?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Team Growth                                | # FTEs                                                                                                                                              | Bar chart showing total core team headcount + FTEs by year MT headcount                                                                                                                                                                                                                                                                                                                                                                                              | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| How satisfied is our team?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Team Sentiment                             | team survey results from core team, MTs, MTiTs                                                                                                      | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| How quickly is our organization growing financially?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Revenue Growth                             | Annual total sales and sales by product, broken out by new v renewing partner                                                                       | Bar chart: Rev YoY (overall + by product) split by new vs renewal Summary chart                                                                                                                                                                                                                                                                                                                                                                                      | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| How quickly is our partner bench growing?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Partner Growth                             | #new partners %new partners                                                                                                                         | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| How well are we poised for growth from a marketing and sales perspective?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Size of Funnel                             | #leads, #pursuits by stage                                                                                                                          | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| How well are we poised for growth and sustainability?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Size of Audience                           | # followers on socials, # presentations made, # ppl who attended presentations, # ppl on mailing list                                               | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | can wait on this one                                                                                                                                                                                                                                                                                                                                                                                                                 | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | -                                          | -                                                                                                                                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Other data to collect to support growth of top-level metrics                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | -                                          | -                                                                                                                                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | -                                          | -                                                                                                                                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Why aren’t partners renewing?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | -                                          | -                                                                                                                                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Something around research (we claim we are research-based)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | -                                          | -                                                                                                                                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| who is implementing? What percentage? How many lessons? WHY / why not?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | -                                          | -                                                                                                                                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Why aren’t teachers showing up (coaching, office hours, etc)? Why aren’t they implementing?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | -                                          | -                                                                                                                                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Teacher enjoyment of lessons                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | -                                          | -                                                                                                                                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Lesson’s impact on students: enjoyment, learning outcomes, interest in CS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                          | -                                                                                                                                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | -                                          | -                                                                                                                                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Workbook orders                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | -                                          | -                                                                                                                                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Self Assessment                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | -                                          | -                                                                                                                                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Pathway Creation                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | -                                          | -                                                                                                                                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Sentiment                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                          | -                                                                                                                                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | -                                          | -                                                                                                                                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Are teachers learning and succeeding? DO they feel they are part of something bigger?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |                                            | -                                                                                                                                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |                                            | -                                                                                                                                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Does teacher have a partner / collaborator? (from conversation)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |                                            | -                                                                                                                                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |                                            | -                                                                                                                                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Before School Year - Data Needed When does the teacher plan to begin using the curriculum?  In which course will the work be used?  To what extent will the teacher implement: full course or integrate a few lessons?  How many students will they be teaching?  During School Year - Metrics 1) Which lessons has the teacher tried so far? Rate each on how it has gone? 2) What topics would be most helpful to review in coaching sessions? 3) How many coaching sessions has the teacher attended?  4) What is the percentage of attendance at coaching/AYW sessions by cohort? 5) Which date/time/format of coaching resulted in the most attendance? |                                            | -                                                                                                                                                   | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                      | -           | -                                                                                                                                                                                                                                                                                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+
+``Success is when a deliberate change has an intended effect.''
+
+We are successful when students produce learning products with our
+curriculum. Student have access to learning activities through
+classrooms they are mandated to attend. Teachers facilitate those
+classrooms and make choices about what learning happens in the
+room. Teachers are supervised and function in a system of standards and
+measures. Hence, Bootstrap aims to influence both students and
+supervisors (at multiple levels) to bring Bootstrap into more
+classrooms.
+
+- Evidence of student learning
+- Implementation (growth of this table is its own measure of success)
+  - Timestamp
+  - Evidence of student product
+  - Which lesson implemented?
+  - Format
+  - Class
+- Attendance at training events and follow up sessions
+  - Event
+  - Date
+  - Value
+- Engagement with the Bootstrap community
+  - Website
+  - Email
+  - Social
+- Workbook orders
+- Self Assessment
+- Pathway Creation
+
+*** Is our org growing?
+**** Are we bringing in more money?
+**** Are more teachers using our stuff?
+*** Are more students teachers growing and gaining?
+**** Are teachers demonstrating growth in skills?
+**** Are teachers reporting growth in confidence?
+*** Are partner goals being met?
+**** Are teachers submitting artifacts?
+**** Are students demonstrating growth on pre and post tests?
+*** Connect a particular change to growth/usage.
+
+*** TODO Include in Bootstrap overview the essential nature of integrate curriculum
+Bootstrap's essential nature invite complexities and constraints. Our
+target audience is much more reluctant to change because their courses
+are standardized and measured. In effect we have chosen the most
+difficult teaching population. This plays directly into our
+understanding of the free choice spectrum of our teachers. *see Reporting section*
+
+** Analysis
+*** Appropriateness (Fitness) of Training to Participant
+- Participant computing background vs implementation
+- Participant subject/license vs implementation
+- Which facilitation techniques are most effective?
+- Which training formats are most appropriate for which participants?
+- How do we track the impact of non-teacher participants? Coaches who may be training others, should we attempt to get those names?
+- How does years of teaching experience affect implementation after training?
+- Which interventions have led to training more teachers to reach more students?
+- Which curriculum is most effective at training teachers to implement?
+*** Confidence, Implementation, Growth Sentiment Analysis
+*** Skills Analysis
+*** Students
+- How many students are we reaching?
+  - How accurate can we get this number?
+  - How can we define a range of students reached?
+  - Can we define an error within which we know a student is reached?
+  - How many students are we reaching per lesson?
+*** Correlation Questions
+**** Curriculum Change vs Teacher Confidence
+Curriculum changes aim to increase efficacy of lesson materials. More teachers would be able to navigate more quickly and more lessons would be delivered to more students.
+- Has a given curriculum change increased the efficacy of the lesson materials in a measurable way?
+- Training Change vs Confidence
+- Facilitator or Event vs Confidence
+*** Factors toward implementation
+In the United States teachers are the primary driver of what lessons
+get taught in their classrooms. However, a wide range of mandates of a
+variety of strengths and types are placed upon teachers as they make
+curricular decisions.  Teachers using Bootstrap curriculum in their
+classroom are influenced by many factors. In some cases teachers are
+required to teach certain lessons. In other cases teachers are
+choosing to use Bootstrap lessons, who otherwise are not required.
+Using Bootstrap can be seen on a teacher-choice spectrum. We seek to
+know as much about the motivations behind teachers bringing Bootstrap
+into their classrooms as possible.  Other factors affecting teachers
+bringing Bootstrap into the classroom include:
+- influence of colleagues
+- desire to learn or grow themselves
+- desire to increase student motivation
+- 
+**** Compelled Implementation
+Teachers may have mandates that compell them to use a certain
+curriculum. Mandates placed on teachers vary in strength, how much of
+the teacher's work is prescribed and type, which aspects of the
+teacher's work are constrained. These mandates include:
+- textbook requirements
+- online learning platform and gradebook requirements
+- technology or computer science requirements (these may include a number of hours or certain standards)
+- or, full curriculum mandates
+**** Free choice implementation
+Some teachers have a great deal of freedom in what or how they teach,
+while others have only some freedom of choice.  Certain subject areas
+are more prescribed than others.  Standardized testing has a large
+impact on teacher freedom even when the teacher is not under a direct
+mandate. The phrase "teaching to the test" describes the common
+phenomenon of modeling curriculum based on the end of the year
+examinations. Curriculum that does not look like the exam is less
+likely to be used. This phenomenon is more likely to be found where
+student achievement on the exam is not as predictably guaranteed.
+** Reporting
+Bootstrap partners are in the business of supporting student
+learning. Additionally partners may have special interest in a particular
+student grouping.
+
+Partners may employ teachers and run schools or they may be an organization or
+foundation that is interested in education, technology, equity, or other special
+interest that overlaps with Bootstrap products and service
+
+Partners are interested in how well the curriculum supports student
+achievement. Bootstrap's niche is supporting student learning in traditional
+core subjects such as Algebra.
+
+*** Attendance Reports
+- Cohort attendance, sent to cohort admins (unified by contract)
+- 
+*** Pre Post Diagnostic Results Analysis
+- teacher/participant pre/post from trainings
+- aggregated classroom pre/post on Bootstrap diagnostics
+- pre/post diagnostics from classroom final exam
+*** Implementation Reports
+*** Standardized Achievement
+Are students achieving higher outcomes on standardized exams that they would already be required to take?
+Some teachers administer their own diagnostics, and this practice is increasingly more common in administrative mandates.
+* Data Model
+** Grain
+The grain in our data model is the professional educator and the
+classrooms they work in. We measure the efficacy of the training
+experience as it relates to various factors in the life of a
+professional educator. We collect reactions to our trainings and
+followup for a period of time as the teacher attempts to bring
+Bootstrap curriculum into the classroom. Pre and post test student
+data stops at the teacher level. We do not track students as entities
+or store any individual student data.
+** Dimensions
+#+begin_src sql
+  --------------------------------------------------------------------------------
+  -- Dimensional Data
+  --------------------------------------------------------------------------------
+#+end_src
+*** Contact
+Not an actual table entity. Contact is a notion from Insightly. We
+have approximately ten years of "contacts". A contact in this system
+is a user who has not been enrolled in an event.
+*** Users
+One row per person. Anyone who has interacted with Bootstrap, who ever
+signed up for an event, even if they did not attend. Anyone who joined
+the mailing list through a web form, reached out directly to Bootstrap
+staff, messaged through social media, requested answer keys, or joined
+Discourse. All facilitators are users and anyone who would be sent an
+email is a user.
+
+#+begin_src sql
+  CREATE TABLE IF NOT EXISTS "user" (
+    "id"                 SERIAL PRIMARY KEY, --TEXT,
+    "name_first"         TEXT, -- the legal first name, i.e. would appear on DL
+    "name_last"          TEXT,
+    "name_first_alt"     TEXT, -- usually shortened nick name, e.g. David -> Dave
+    "name_last_alt"      TEXT, -- usually for married name change
+    "email_personal"     TEXT, -- email that persists after job change
+    "email_professional" TEXT, -- email that changes with job change
+    "home_location"      INTEGER REFERENCES "location",
+    "home_phone"         varchar(15),
+    "cell_phone"         varchar(15),
+    "work_phone"         varchar(15),
+    "user_gender"             GENDER,
+    "user_race"               RACE
+  );
+
+#+end_src
+*** Events
+Bootstrap facilitates events for professional educators. These events focus on
+the conceptual understanding and implementation of Bootstrap curriculum.
+
+#+begin_src sql
+  --   
+  CREATE TABLE IF NOT EXISTS "event" (
+    "id"            TEXT PRIMARY KEY,
+    "event_name"    TEXT NOT NULL,
+    "location_id"   INTEGER,
+    "event_days"    INTEGER CONSTRAINT "positive_days" GENERATED ALWAYS AS ("end_date" - "start_date") STORED CHECK (event_days > 0),
+    --length in days
+    "end_date"      INTEGER,
+    "start_date"    INTEGER,
+    "type"          INTEGER REFERENCES "event_type",
+    "format"        INTEGER REFERENCES "event_type"
+  );
+
+#+end_src
+
+*** Dimension Tables and Attributes
+- Contact
+  - id
+  - name
+  - email
+  - phone
+  - where from?
+  - opt in list #how/where to track email opt-in?
+- User
+  - contact_id
+  - date_added
+- Partner Org #could this be a district?
+  - id
+  - Name
+  - Type ('non-profit', 'government', 'private')
+  - Admins
+- School
+  - school_id
+  - Name
+  - Location #what is location?
+  - Grade band (e.g. '9-12')
+  - Demographic #what is demographic?
+  - District REFERENCES ("District") "district_id"
+  - Address #what is an address 
+- District #this is a school umbrella or support organization
+  - district_id
+  - State
+- Facilitator
+- Contract
+- Event
+- Year
+- Curriculum (Data Science, Data Science CODAP, Early Math, Algebra, Algebra 2)
+- Learning Model #what is a learning model
+- Skill #breaking down Bootstrap curriculum to the skill level. this
+  is our product.
+- Location
+  - Street Address
+  - City
+  - State
+  - Zipcode
+  - Country
+- Demographic
+  - race ('American Indian or Alaska Native', 'Asian', 'Black or African American', 'Native Hawaiian or Other Pacific Islander', 'White' )
+  - ethnicity ('Hispanic or Latino', 'Not Hispanic or Latino')
+  - grade_band
+  - setting ('urban', 'rural', 'suburban')
+  - socio-economic status
+- Type
+- Certification
+  - teacher_id
+  - state
+  - subject
+  - grade_band
+  - type #what is this?
+- Class
+  - teacher_id
+  - subject
+  - student_demographics #what is this?
+  - start_date
+  - end_date
+- Role
+  - teacher_id
+  - school_id
+  - role ('teacher', 'paraprofessional', 'supervisor', 'coach',
+    'coordinator')
+  - start date
+  - end date
+- Coaching
+- Stipend
+- Partner report request
+- Admin support #capture the relationship between
+  this teacher and the surrounding professional
+  environment
+- Student achievement
+- Subject
+- Course
+- Standard
+
+- Skills
+  - Curricula
+
+- Partner
+  - Contract
+- Cohort
+  - Participant
+- Event
+  - User
+  - Enrollments
+    - Role
+      - Facilitator
+      - Participant
+      - Admin
+      - Master teacher in training
+      - Ambassador #not really an enrollment role
+- States
+  - Districts
+    - Schools
+      - Classes
+	- Teachers
+	  - Implementations
+- School
+  - Name
+  - District/Org
+  - Student Age or Grade Range
+  - City
+  - State
+  - Address
+  - Principal
+  - Website
+  - Gradebook/LMS Software
+  - Tech Affiliation, Google, MSFT, etc.
+  - CS Affiliation, Code.org, PLTW, etc.
+- District
+  - Name
+  - State
+  - Serving Zip Codes
+  - Website
+
+*** Educator
+are often teachers or have had experience in the classroom, but can
+also be administrators, paraprofessionals, learning coaches, or
+department coordinators. We wish to track the changing role our
+professional educators have to their profession and employer. We wish
+to know a teachers current schedule and where in that schedule they
+have been able to utilize Bootstrap curricula or pedagogy.
+
+Sometimes the participant works alongside teachers and will take the
+learning from Bootstrap back to their teachers in their own
+professional enrichment setting.
+- Principal
+- Dean
+- Librarian
+- Counselor
+- Paraprofessional
+- Learning Coach
+*** Participant
+Is enrolled in a training event in order to learning skills and
+content. Not facilitating, observing, or supervising.
+*** Teacher
+has a role within their organization that places them in front of
+students for the majority of their day.  Teachers spend the majority
+of their professional time interacting with students, and have the
+largest and most direct role in affecting student outcomes and the
+quality of the Bootstrap implementation.
+
+*** Student
+Bootstrap students are 10-17 years old, live primarily in the lower 48
+states, and attend school in grades 5-12.
+
+*** Partner
+Bootstrap interacts with partners who develop or
+support teacher excellence through continued
+education or "professional development" for
+teachers. Partners include districts, non-profit,
+private foundations, corporations, states, and
+schools. Individual teachers also join open
+enrollment events and may be paying out of pocket.
+
+*** Contract
+*** Stipend
+Teachers often receive some form of compensation
+from their school, district, or supporting
+organization.
+
+*** Administrator
+Administrators have a role to their organization that places them
+supporting teachers for the majority of their day. They are sometimes
+the point persons on the contracts (cohort admin), who create training
+events and build cohorts. More often teachers are beholden to
+administrators who are not directly connected to Bootstrap, but who
+may have a large role in the teacher's implementation.
+
+*** Implementation
+describes a teacher using Bootstrap curriculum with
+their students. Bootstrap curriculum is designed to fit in as a module
+into existing classes with established goals. Teachers using Bootstrap
+in their classes have identified a learning goal or series of goals
+that Bootstrap curriculum covers. Depending on the course objectives
+and grade band of students different swaths of curriculum are
+available. Implementation is a description of the context in which a
+teacher is using Boostrap, to what depth and what breadth.
+
+*** Student achievement
+measures show gains through
+pre and post diagnostics of skills covered by the
+Bootstrap curriculum. These skills overlap between
+Bootstrap curriculum, but have different contexts
+that they support. Student learning requires both
+high quality curriculum and high quality
+deployment by the teacher.
+
+*** Curriculum End User
+The end users of Bootstrap curriculum are students, who will be using tools like
+the Pyret or CODAP to build projects.
+
+*** Participant Life Cycle
+- Intake
+- Onboarding
+- Training
+- Implementation with Support
+- Solo Implementation
+- Repeated training
+- Second curriculum
+- Master Teacher in Training
+- Master Teacher
+
+*** Training End User
+The end users of Bootsrap trainings are
+teachers. In most cases the person in the chair is
+a teacher, who will bring the training, pedagogy,
+and curriculum back to students in their
+classroom.
+
+*** Year Cohort
+*** Partner Cohort
+*** Curriculum Cohort
+*** State Cohort
+A partner cohort is a group of teachers supported by a particular
+contract. Cohorts begin with a training event and end at a certain date. 
+
+*** Cohort Admin
+Within a Bootstrap contract the point persons for the partner
+organization are the admins of the contracted event. Admins receive
+reporting and communication about their cohort. Cohort admins track teacher
+attendance at training events and may disperse stipends to teachers
+based on deliverables.
+
+*** Master Teacher in Training
+Has been in trainings for several years and demonstrated proficiency across the concept map
+
+*** Master Teacher
+Can co-lead a professional development, run coaching sessions, and moderate on the question forum.
+
+*** Facilitator
+Training events are facilitated by Bootstrap Master Teachers who have
+been trained to facilitate events. Typically Master Teachers co-lead
+for a period of time before they facilitate events by themselves. A
+facilitator is the primary point person for training participants
+during and immediately after the training event.
+
+*** Coach
+A coach is a Bootstrap Master teacher supporting groups of teachers
+through short regular sessions. These sessions are largely driven by
+the questions and needs of teachers in the process of using Bootstrap
+curriculum in their classrooms.
+
+*** Professional Development
+A training event that covers an entire curriculum is considered
+professional development. Participants in professional development
+events are trained as both student and teacher. They must understand
+the curriculum and the pedagogy behind key point in the curriculum.
+*** Partner Reports
+Partners often request reports, especially
+attendance, which they use to track participant
+participation and to validate stipends. The
+partner may or may not have requirements for the
+form of the report.
+
+Reports for partners include
+- a teacher level attendance report
+- a teacher level proficiency report
+- implementation reports
+- cohort aggregations
+*** Internal Reports
+- Interventions over time
+- Teacher retention
+- Types of facilitation experience vs implementation
+- Teaching context vs implementation
+  
+*** Curricula
+#+begin_src sql
+    -- These are internal curricula used in trainings. Participants are associated with their most recent training enrollment curricula.
+    -- Currently a training is based on a single curriculum.
+  CREATE TABLE IF NOT EXISTS "curricula" (
+    "id" SERIAL,
+    "name" TEXT
+  );
+
+#+end_src
+
+*** Event Types
+#+begin_src sql
+  -- The scope of the event    "full", "intro", "coaching", "one-on-one", "office_hour", "review"
+  CREATE TABLE IF NOT EXISTS "event_type" (
+    "id" SERIAL PRIMARY KEY,
+    "event_type" TEXT,
+    "date_added" DATE
+  );
+#+end_src
+
+*** Event Formats
+#+begin_src sql
+    --     "intensive",    "distributed",    "one-day",    "half-day"
+  CREATE TABLE IF NOT EXISTS "event_format" (
+    "id" SERIAL PRIMARY KEY,
+    "format" TEXT,
+    "date_added" DATE
+  );
+
+#+end_src
+
+*** Event Roles
+These are the roles are used with respect to enrollment in an event. They answer the
+question what are you doing as part of this event. This list could
+grow as the type and complexity of event planning changes.
+#+begin_src sql
+  CREATE TABLE IF NOT EXISTS "event_role" (
+    "id" SERIAL PRIMARY KEY,
+    "role" TEXT -- "facilitator", "administrator", "participant", "observer"
+  );
+#+end_src
+
+*** Race and Ethnicity
+#+begin_src sql
+  --     "American Indian or Alaska Native",    "Asian",    "Black or African American",    "Native Hawaiian or Other Pacific Islander",    "White"
+  CREATE TABLE IF NOT EXISTS "race" (
+    "id" SERIAL PRIMARY KEY,
+    "description" TEXT
+  );
+
+  CREATE TABLE IF NOT EXISTS "ethnicity" (
+    "id" SERIAL PRIMARY KEY,
+    "description" TEXT
+  );
+#+end_src
+
+*** Gender
+#+begin_src sql
+  --     "female",    "male",    "transgender",    "none of these"
+  CREATE TABLE IF NOT EXISTS "gender" (
+    "id" SERIAL PRIMARY KEY,
+    "description" TEXT
+  );
+
+#+end_src
+
+*** Teacher License Area
+
+#+begin_src sql
+  /*"Early Childhood Education",
+    "Early Childhood Special Education",
+    "Elementary Education",
+    "Secondary Education",
+    "English",
+    "Mathematics",
+    "Sciences",
+    "Biology",
+    "Chemistry",
+    "Life Sciences",
+    "Physics",
+    "Social Sciences",
+    "Agriculture",
+    "American Sign Language",
+    "Art Teacher",
+    "Business Education",
+    "Computer Science",
+    "Dance",
+    "Drama/Theater",
+    "English as a Second Language (ESL)",
+    "Foreign Language"
+    "Gifted and Talented Education (GATE)",
+    "Health",
+    "Home Economics",
+    "Journalism",
+    "Music",
+    "Physical Education",
+    "Reading Specialist",
+    "Special Education",
+    "Speech Language Pathologist",
+    "Technology",
+    "Visually Impaired Teacher",
+    "Education Technology",
+    "Librarian"*/
+  CREATE TABLE IF NOT EXISTS "license_area" (
+    "id" SERIAL PRIMARY KEY,
+    "description" TEXT
+  );
+#+end_src
+
+*** Organization Types
+#+begin_src sql
+  /*    "non-profit",
+	"for-profit",
+	"school",
+	"district",
+	"state government office",
+	"philathropic foundation"
+   */
+  CREATE TABLE IF NOT EXISTS "org_type" (
+    "id" SERIAL PRIMARY KEY,
+    "description" TEXT
+  );
+
+#+end_src
+*** Subjects
+
+#+begin_src sql
+  /*    "Math",
+	"Science",
+	"English",
+	"Social studies",
+	"Health/physical education",
+	"Art/music",
+	"Language other than English"
+   */
+  CREATE TABLE IF NOT EXISTS "subject" (
+    "id" SERIAL PRIMARY KEY,
+    "description" TEXT
+  );
+
+#+end_src
+
+*** Grades
+#+begin_src sql
+  /* "Kindergarten",
+     "1st",
+     "2nd",
+     "3rd",
+     "4th",
+     "5th",
+     "6th",
+     "7th",
+     "8th",
+     "9th",
+     "10th",
+     "11th",
+     "12th"
+  */
+  CREATE TABLE IF NOT EXISTS "grade" (
+    "id" SERIAL PRIMARY KEY,
+    "description" TEXT
+  );
+
+#+end_src
+
+*** Skills
+
+#+begin_src sql
+  /*"S1",
+    "S2",
+    "S3",
+    "S4"
+  */
+  CREATE TABLE IF NOT EXISTS "skill" (
+    "id" SERIAL PRIMARY KEY,
+    "descrition" TEXT
+  );
+#+end_src
+*** Attendance Values
+#+begin_src sql
+  /*"present",
+    "absent",
+    "tardy",
+    "disengaged",
+    "excused"
+  */
+  CREATE TABLE IF NOT EXISTS "attendance_value" (
+    "id" SERIAL PRIMARY KEY,
+    "description" TEXT
+  );
+#+end_src
+*** Assessment Values
+#+begin_src sql
+  /*    "novice",
+	"practitioner",
+	"professional",
+	"master"
+  */
+  CREATE TABLE IF NOT EXISTS "assessment_value" (
+    "id" SERIAL PRIMARY KEY,
+    "description" TEXT
+  );
+#+end_src
+
+#+begin_src sql
+  --------------------------------------------------------------------------------
+  -- Dimensional Data   
+  --------------------------------------------------------------------------------
+#+end_src
+These tables are descriptive data elements that make up the relationships in our
+system. They represent everything we know about the people, organizations, and
+events in our facilitation ecosystem.
+*** States
+
+#+begin_src sql
+  CREATE TABLE IF NOT EXISTS "state" (
+    "name_jurisdiction" TEXT,
+    "ansi_code"         INTEGER,
+    "abbreviation"      varchar(2) PRIMARY KEY
+  );
+
+#+end_src
+
+*** Locations
+
+#+begin_src sql
+  CREATE TABLE IF NOT EXISTS "location" (
+    "id" SERIAL PRIMARY KEY,
+    "address" TEXT UNIQUE,
+    "city"    TEXT,
+    "state"   TEXT REFERENCES "state",
+    "lat"     NUMERIC,
+    "lon"     NUMERIC
+  );
+
+#+end_src
+*** Districts
+Most schools are members of districts or other support organizations.  Partner
+organizations build contracts with Bootstrap to train cohorts of educators. A
+partner organization may or may not be a district.
+
+#+begin_src sql
+  CREATE TABLE IF NOT EXISTS "district" (
+    "LEAID" TEXT PRIMARY KEY, -- Agency identification number
+    "NAME"  TEXT, -- Name of agency
+    "OPSTFIPS" TEXT, -- FIPS state code for operating state
+    "STREET" TEXT, -- Reported location street address
+    "CITY"   TEXT, -- Reported location city
+    "STATE"  TEXT, -- Reported location state
+    "ZIP"    TEXT, -- Reported location ZIP code
+    "STFIP"  TEXT, -- State FIPS
+    "CNTY"   TEXT, -- County FIPS
+    "NMCNTY" TEXT, -- County name
+    "LAT"    NUMERIC, -- Latitude of agency office location
+    "LON"    NUMERIC, -- Longitude of agency office location
+    "CBSA"   TEXT, -- Core Based Statistical Area
+    "NMCBSA" TEXT, -- Core Based Statistical Area name
+    "CBSATYPE" TEXT, -- Metropolitan or Micropolitan Statistical Area indicator
+    "CSA"    TEXT, -- Combined Statistical Area
+    "NMCSA"  TEXT, -- Combined Statistical Area name
+    "NECTA"  TEXT, -- New England City and Town Area
+    "NMNECTA" TEXT, -- New England City and Town Area name
+    "CD"     TEXT, -- Congressional District
+    "SLDL"   TEXT, -- State Legislative District - Lower
+    "SLDU"   TEXT, -- State Legislative District - Upper
+    "SCHOOLYEAR" TEXT, -- School year
+    "LOCALE" TEXT, -- Locale assigned to district
+    "PCT_CITY11" NUMERIC, -- Percentage of enrolled students attending schools in locale 11 (city – large)
+    "PCT_CITY12" NUMERIC, -- Percentage of enrolled students attending schools in locale 12 (city – midsize)
+    "PCT_CITY13" NUMERIC, -- Percentage of enrolled students attending schools in locale 13 (city – small)
+    "PCT_SUB21"  NUMERIC, -- Percentage of enrolled students attending schools in locale 21 (suburb – large)
+    "PCT_SUB22"  NUMERIC, -- Percentage of enrolled students attending schools in locale 22 (suburb – midsize)
+    "PCT_SUB23"  NUMERIC, -- Percentage of enrolled students attending schools in locale 23 (suburb – small)
+    "PCT_TOWN31" NUMERIC, -- Percentage of enrolled students attending schools in locale 31 (town – fringe)
+    "PCT_TOWN32" NUMERIC, -- Percentage of enrolled students attending schools in locale 32 (town – distant)
+    "PCT_TOWN33" NUMERIC, -- Percentage of enrolled students attending schools in locale 33 (town – remote)
+    "PCT_RURAL41" NUMERIC, -- Percentage of enrolled students attending schools in locale 41 (rural – fringe)
+    "PCT_RURAL42" NUMERIC, -- Percentage of enrolled students attending schools in locale 42 (rural – distant)
+    "PCT_RURAL43" NUMERIC  -- Percentage of enrolled students attending schools in locale 43 (rural - remote)
+  );
+
+  #+end_src
+
+*** Schools
+#+begin_src sql
+      CREATE TABLE IF NOT EXISTS "school" (
+	"NCESSCH"    TEXT PRIMARY KEY, -- School identification number
+	"LEAID"      TEXT REFERENCES "district", -- School district identification number
+	"NAME"       TEXT, -- String Name of institution
+	"OPSTFIPS"   TEXT, -- FIPS state code for operating state
+	"STREET"     TEXT, -- Reported location street address
+	"CITY"       TEXT, -- Reported location city
+	"STATE"      TEXT, -- Reported location state
+	"ZIP"        TEXT, -- Reported location ZIP code
+	"STFIP"      TEXT, -- State FIPS
+	"CNTY"       TEXT, -- County FIPS
+	"NMCNTY"     TEXT, -- County name
+	"LOCALE"     TEXT, -- Locale code
+	"LAT"        DOUBLE PRECISION, -- Latitude of school location
+	"LON"        DOUBLE PRECISION, -- Longitude of school location
+	"CBSA"       TEXT, -- Core Based Statistical Area
+	"NMCBSA"     TEXT, -- Core Based Statistical Area name
+	"CBSATYPE"   TEXT, -- Metropolitan or Micropolitan Statistical Area indicator
+	"CSA"        TEXT, -- Combined Statistical
+	"NMCSA"      TEXT, -- Combined Statistical Area name
+	"NECTA"      TEXT, -- New England City and Town Area
+	"NMNECTA"    TEXT, -- New England City and Town Area name
+	"CD"         TEXT, -- Congressional District
+	"SLDL"       TEXT, -- State Legislative District - Lower
+	"SLDU"       TEXT, -- State Legislative District - Upper
+	"SCHOOLYEAR" TEXT  -- School year
+  );
+#+end_src
+*** Textbooks
+
+#+begin_src sql
+  CREATE TABLE IF NOT EXISTS "textbooks" (
+    "id" SERIAL PRIMARY KEY,
+    "name"      TEXT,
+    "publisher" TEXT,
+    "year_published" INTEGER
+    );
+		   
+#+end_src
+
+*** Assessment Instruments
+
+#+begin_src sql
+  CREATE TABLE IF NOT EXISTS "assessment_instrument" (
+    "id" SERIAL PRIMARY KEY,
+    "name" TEXT,
+    "curricula" TEXT REFERENCES "curricula", 
+    "skills" TEXT REFERENCES "skill"
+  );
+
+#+end_src
+
+*** Feedback Instruments
+
+#+begin_src sql
+  CREATE TABLE IF NOT EXISTS "feedback" (
+    "id" SERIAL PRIMARY KEY,
+    "name" TEXT,
+    "curricula" CURRICULA, 
+    "skills" SKILL[]
+  );
+
+#+end_src
+
+*** Partner Organizations
+Bootstrap works with partners organizations to build contracts for
+facilitated events. Organizations can be municipal or state level
+education districts or offices, non-profits, individual schools,
+philanthropic foundations, individuals, or Bootstrap itself.
+
+#+begin_src sql
+  CREATE TABLE IF NOT EXISTS "organization" (
+    "id"           SERIAL PRIMARY KEY,
+    "name"         TEXT NOT NULL UNIQUE,
+    "location_id"  INTEGER,
+    "url"          TEXT,
+    "district_id"  TEXT,
+    CONSTRAINT "fk_location" FOREIGN KEY ("location_id") REFERENCES "location",
+    CONSTRAINT "fk_district" FOREIGN KEY ("district_id") REFERENCES "district"
+  );
+
+#+end_src
+
+** Facts
+#+begin_src sql
+  --------------------------------------------------------------------------------
+  -- Fact Tables
+  --------------------------------------------------------------------------------
+
+#+end_src
+
+*** Implementation
+  - Start Data
+  - End Data
+  - Class
+*** Class
+  - School
+  - # Students
+  - Demographics
+  - Grade Level
+  - Course Name
+  - Subject
+  - Level
+- Comm Preferences    
+- Feedbacks
+  - Confidence
+  - Appropriateness
+- Event Cohorts
+  - event_id
+  - teacher_id
+- Year Cohorts
+- Comments
+  - teacher_id
+  - commenter_id
+  - comment
+  - date
+  - time
+  - tags
+  - refer_to
+- Attendances
+  - teacher_id
+  - event_id
+  - attendance_value
+  - attenadance_date
+  - attendance_period
+- Assessments
+  - teacher_id
+  - title
+  - context
+  - cohort_id
+  - skill
+  - evidence
+  - rating
+  - rater
+  - date
+    
+*** Communication Preferences (Opt In/Out)
+#+begin_src sql
+
+  CREATE TABLE IF NOT EXISTS "comm_preference" (
+    "user_id"    SERIAL PRIMARY KEY,
+    "preference" TEXT,
+    CONSTRAINT "comm_id" FOREIGN KEY ("user_id") REFERENCES "user"
+  );
+
+#+end_src
+
+*** Teaching programs (schedule of classes)
+#+begin_src sql
+  -- a class in a teachers program tells us the subject and grade level where the teacher will be interacticng with students
+  CREATE TABLE IF NOT EXISTS "class" (
+    "id" SERIAL PRIMARY KEY,
+    "teacher_id" INTEGER,
+    "name" TEXT NOT NULL,
+    "subject" SUBJECT,
+    "grade_level" TEXT,
+    "start_date" DATE,
+    "end_date"   DATE,
+    "students"   INTEGER, -- the number of students enrolled in this class
+    "pct_disability" NUMERIC,
+    "pct_african_american" NUMERIC, --  Black or African American
+    "pct_asian" NUMERIC, -- Percent Asian
+    "pct_white" NUMERIC, -- Percent White
+    "pct_american_indian" NUMERIC, -- American Indian or Alaska Native
+    "pct_native_hawaiian" NUMERIC, -- Native Hawaiian or Other Pacific Islander
+    CONSTRAINT "fk_teacher" FOREIGN KEY ("teacher_id") REFERENCES "user"
+  );
+#+end_src
+
+#+begin_src sql
+  CREATE TABLE IF NOT EXISTS "certification" (
+    -- tracks the certifications relative to state wide professional educators
+    "teacher_id"   INTEGER,
+    "cert_id"      TEXT,
+    "state_ab"     varchar(2) REFERENCES "state",
+    "title"        TEXT,
+    "license_area" INTEGER REFERENCES "license_area",
+    CONSTRAINT "fk_teacher" FOREIGN KEY ("teacher_id") REFERENCES "user"
+  );
+
+#+end_src
+
+*** Roles
+#+begin_src sql
+  -- One row per user organization relationship
+  CREATE TABLE IF NOT EXISTS "role" (
+      "id"        SERIAL PRIMARY KEY,
+      "user_id"   INTEGER REFERENCES "user",
+      "org_id"    INTEGER REFERENCES "organization",
+      "title"     TEXT,
+      "start_date" DATE,
+      "end_date"   DATE,
+      "is_teacher" BOOLEAN
+    );
+#+end_src
+
+*** Licences
+#+begin_src sql
+  CREATE TABLE IF NOT EXISTS "license" (
+    "id"      SERIAL PRIMARY KEY,
+    "user_id" INTEGER REFERENCES "user",
+    "license" INTEGER REFERENCES "license_area",
+    "state"   varchar(2) REFERENCES "state"
+  );
+
+#+end_src
+*** Enrollments
+
+#+begin_src sql
+  CREATE TABLE IF NOT EXISTS "enrollment" (
+    "id"          SERIAL PRIMARY KEY,
+    "user_id"     INTEGER,
+    "event_id"    TEXT,
+    "role"        INTEGER REFERENCES "event_role",
+    "is_enrolled" BOOLEAN NOT NULL DEFAULT TRUE,
+    CONSTRAINT "fk_user"  FOREIGN KEY ("user_id")  REFERENCES "user",
+    CONSTRAINT "fk_event" FOREIGN KEY ("event_id") REFERENCES "event"
+  );
+
+#+end_src
+*** Comments
+
+#+begin_src sql
+
+  CREATE TABLE IF NOT EXISTS "comments" (
+    "id" SERIAL PRIMARY KEY,
+    "comment_target" INTEGER, -- the user about which the comment refers
+    "date" DATE, -- the date the comment was authored
+    "comment_author" INTEGER,
+    "tag_id" INTEGER[], -- the ids of any users who should track or follow up on the comment
+    "comment_text" TEXT,
+    CONSTRAINT "fk_user"   FOREIGN KEY ("comment_target") REFERENCES "user",
+    CONSTRAINT "fk_author" FOREIGN KEY ("comment_author") REFERENCES "user"
+  );
+
+#+end_src
+
+*** User-Event-Attendance (Attendance)
+#+begin_src sql
+
+  CREATE TABLE IF NOT EXISTS "attendance" (
+    "id" SERIAL PRIMARY KEY,
+    "event_id"  TEXT NOT NULL,
+    "user_id"   INTEGER NOT NULL,
+    "date"      DATE    NOT NULL,
+    "attendance_value" INTEGER REFERENCES "attendance_value",
+    CONSTRAINT "fk_event" FOREIGN KEY ("event_id") REFERENCES "event",
+    CONSTRAINT "fk_user"  FOREIGN KEY ("user_id")  REFERENCES "users"
+  );
+
+#+end_src
+
+*** Contracts
+
+#+begin_src sql
+  CREATE TABLE IF NOT EXISTS "contract" (
+    "id"  SERIAL PRIMARY KEY,
+    "partner_id" INTEGER,
+    "event_id"   TEXT,
+    CONSTRAINT "fk_partner" FOREIGN KEY ("partner_id") REFERENCES "organization",
+    CONSTRAINT "fk_event"   FOREIGN KEY ("event_id")   REFERENCES "event"
+  );
+
+#+end_src
+
+*** Coaching
+
+Coaching is included in some contracts. The
+coaching table is a postive entry table. Users
+present in the coaching table are invited to
+coaching sessions throughout the year. Enrollment
+in coaching is for one year and is specific to a
+curriculum. Usually you are assigned coaching for
+the curriculum in which you were trained in the
+same calendar year.
+
+#+begin_src sql
+  CREATE TABLE IF NOT EXISTS "coaching" (
+    "user_id"    INTEGER REFERENCES "user", -- Coaching is a postive entry table. A user found in this table has -- coaching included in their contract
+    "start_date" DATE,
+    "end_date"   DATE GENERATED ALWAYS AS ("start_date" + 365) STORED
+  );
+
+#+end_src
+
+*** Assessment Instrument Data
+
+#+begin_src sql
+
+  CREATE TABLE IF NOT EXISTS "assessment" (
+    "id"             SERIAL PRIMARY KEY,
+    "assessment_id"  INTEGER,
+    "user_id"        INTEGER,
+    "assessment_value" INTEGER REFERENCES "assessment_value",
+    "data"           TEXT,
+    CONSTRAINT "fk_assessment" FOREIGN KEY ("assessment_id") REFERENCES "assessment_instrument",
+    CONSTRAINT "fk_user"       FOREIGN KEY ("user_id")       REFERENCES "user"
+  );
+
+#+end_src
+
+* Interactions
+** Event Add
+- Name event
+- Locate event
+- Generate ID
+
+
