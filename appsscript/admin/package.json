@@ -1,5 +1,5 @@
 {
-  "name": "db",
+  "name": "admin",
   "version": "1.0.0",
   "description": "db.",
   "license": "MIT",
@@ -15,9 +15,11 @@
     "API"
   ],
   "devDependencies": {
-    "eslint": "8.18.0",
+    "eslint": "^8.18.0",
     "eslint-config-google": "0.14.0",
-    "eslint-plugin-googleappsscript": "1.0.4"
+    "eslint-plugin-googleappsscript": "1.0.4",
+    "typescript": "^5.4.2",
+    "typescript-eslint": "^7.2.0"
   },
   "scripts": {
     "lint": "./node_modules/.bin/eslint **/*.gs",
@@ -25,5 +27,6 @@
   },
   "eslintIgnore": [
     "**/node_modules/**"
-  ]
+  ],
+  "type": "module"	
 }
