@@ -7,8 +7,23 @@
 	  background-color: <?= myColor("background-color") ?>;
       }
     </style>
+    <script>
+      function getHeaders() {
+	  google.script.run.getHeaders().withSuccessHandler(buildForm)
+      }
+      function buildForm(headers) {
+	  for each (header in headers) {
+	      var newField = header;
+	  }
+}
+    </script>
       </head>
   <body>
     <div>This div should be colored.</div>
+    <form>
+      
+    </form>
+    <script>
+    </script>
   </body>
 </html>
