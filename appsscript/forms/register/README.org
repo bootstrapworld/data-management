@@ -50,6 +50,7 @@ website or social media. Are you uncomfortable with your photo or
 video being shared anonymously?,
 Grade(s) taught, Subject(s) taught, Subjects 
 * Changes
+- Consolidates mailing list, teacher material access, and event registration.
 - No phone number collection
 - Student data collected separately from teacher data
 - Logic for whether you are a teacher
