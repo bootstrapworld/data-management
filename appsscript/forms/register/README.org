@@ -1,14 +1,12 @@
-#+TITLE: Bootstrap User Registration
+g#+TITLE: Bootstrap User Registration Form
 #+SUBTITLE: 2024-03-13 Wed
 * What am I doing?
 Outlining the form and specifying the form design for registering as a
-Bootstrap user. Participants enrolled in Bootstrap training events are
+Bootstrap user. Participants enrolling in Bootstrap training events are
 first added as users and then associated with the training
 event. Typically, once a participant registers they can be
-automatically enrolled in the event.  This document indicates question
-types and further instructions shown to registrants. This form
-collects general information about professional teaching background
-and context.
+automatically enrolled in an event.  This document indicates question
+types and further instructions shown to registrants.
 * What am I not doing?
 Not creating standard lists for multiple choice
 Not collecting information about classes
@@ -58,10 +56,11 @@ Grade(s) taught, Subject(s) taught, Subjects
 - Logic for whether you are an event supervisor
 * Participant Enrollment Form
 ** First time enrolling?
-- Yes (if anything significant has changed like your professional email or employer please register again)
-  - Go to next 
+- Yes 
+  - Continue to enter identification information
 - No
-  - Enter your bootstrap id (email eric@bootstrapworld.org for a reminder)
+  - ID (you do not need to re-register unless there has been a significant change to your contact information or professional affiliation)
+  - Continue to enter information
 ** Why are you registering with Bootstrap?
 - I want to join your mailing list.
 - I want to access teacher only materials.
@@ -108,5 +107,3 @@ Grade(s) taught, Subject(s) taught, Subjects
     - Race (typically not related to cultural background of national origin)
     - Ethnicity (related to cultural background Carribean, African American, White European, Hispanic, Indigenous, Pacific Island, etc.)
     - Gender (transgender male, transgender female, female, male, non-binary
-            
-   
