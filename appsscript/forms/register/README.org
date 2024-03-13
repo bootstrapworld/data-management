@@ -1,0 +1,112 @@
+#+TITLE: Bootstrap User Registration
+#+SUBTITLE: 2024-03-13 Wed
+* What am I doing?
+Outlining the form and specifying the form design for registering as a
+Bootstrap user. Participants enrolled in Bootstrap training events are
+first added as users and then associated with the training
+event. Typically, once a participant registers they can be
+automatically enrolled in the event.  This document indicates question
+types and further instructions shown to registrants. This form
+collects general information about professional teaching background
+and context.
+* What am I not doing?
+Not creating standard lists for multiple choice
+Not collecting information about classes
+* Distinction between registration and enrollment
+- Registration creates a user entity
+- Enrollment connects a user to an event
+* Former Preworkshop Survey
+As a reminder the structure of the preworkshop survey was as follows:
+** Personal, Identity and Contact
+First Name, Last Name, Best email address to reach you, Phone Number
+** Professional, Employer
+School/Organization Name, District Name, School City, School State, School
+Zip,
+** Teacher
+Grade Level, Teacher License, How many CS classes have you taught
+before?,
+** Training Event
+Which PD are you enrolled in?, Bootstrap Curricula?, I heard
+about Bootstrap from...,
+** Professional, Affiliated
+What is your Desmos username? (if
+applicable), If you a member of a professional teachers group (or a
+local affiliate) in your discipline (e.g., NCTM for mathematics, CSTA
+for computer science), please name it/them here.,
+** Personal Demographics
+What is your race/ethnic group?, What is your gender?
+** Student Demographics
+Roughly how many GIRLS do you expect to teach next
+year?, Roughly how many BOYS do you expect to teach next year?,
+Roughly how many African-American students do you expect to teach next
+year?, Roughly how many Hispanic, Latino or Chicano students do you
+expect to teach next year?, Roughly how many students have visual or
+sensorimotor impairments?, Roughly how many NON-BINARY students
+do you expect to teach next year?
+** Motivation
+Why are you participating in this workshop?,
+** Permissions
+We routinely take photos, videos, etc during PD in order to
+learn and improve future workshops. We may also use these on our
+website or social media. Are you uncomfortable with your photo or
+video being shared anonymously?,
+Grade(s) taught, Subject(s) taught, Subjects 
+* Changes
+- No phone number collection
+- Student data collected separately from teacher data
+- Logic for whether you are a teacher
+- Logic for whether you are an event supervisor
+* Participant Enrollment Form
+** First time enrolling?
+- Yes (if anything significant has changed like your professional email or employer please register again)
+  - Go to next 
+- No
+  - Enter your bootstrap id (email eric@bootstrapworld.org for a reminder)
+** Why are you registering with Bootstrap?
+- I want to join your mailing list.
+- I want to access teacher only materials.
+- I am participating in a training event.
+** Identity
+- Full First Name (as on an official id) (required)
+- Nickname or "Call you by" (optional)
+- Last Name (as on an official id) (required)
+** Contact 
+- Professional or school email address (required)
+- Google Account Email (the email from which you will access google resources during the training, if different than above)
+- Preferred email for ongoing communication (optional) (if different than above) (can be personal email)
+** Event supervisor?
+- Supervisor? (are you affiliated with Bootstrap for the purpose of supervising training participants?)
+** Is Teacher?
+- Teacher? (do you spend the majority of your professional hours supervising students?)
+*** Yes
+**** School
+- School Organization Type (paragraph) (words that describe the organipublic, transfer, performing arts, public charter, independent, independent religiously affiliated, etc. describe your school as you would to a colleague from another school, combining any and all of the above and more.)
+- School Community (paragraph) (words to rural, urban, suburban, high poverty, affluent)
+- School Name
+- School District
+- School Address
+- School Zip Code
+- School State
+**** Principal
+- Principal Name
+- Principal Email
+- Other Supervisor Role (optional)
+- Other Supervisor Name (optional)
+- Other Supervisor Email (optional)
+**** Teaching
+- License (paragraph) (If you are licensed by a State or other organization describe your license here. NY 7-12 Math, etc.)
+- Subject (paragraph) (In which subject or department do you typically teach?)
+- Grade level (paragraph) (typical grade or grades of students you work with, e.g. 5th, 9th)
+- Number of students (number) (how many students do you teach in a given year?)
+- Describe students (paragraph) (describe any characteristics that describe your students as a group)
+*** No
+- Describe your role (describe your professional role and how it relates to teaching and learning, if you are a learning coach or administrator please describe the scope of your work with teachers)
+- Participating? (will you be participating in the workshop?)
+** Race and Gender
+- Permission (may we ask you to identify your race, ethnicity, and gender?)
+  - Yes
+    - Race (typically not related to cultural background of national origin)
+    - Ethnicity (related to cultural background Carribean, African American, White European, Hispanic, Indigenous, Pacific Island, etc.)
+    - Gender (transgender male, transgender female, female, male, non-binary
+            
+   
