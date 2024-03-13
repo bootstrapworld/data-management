@@ -1,6 +1,7 @@
 #+TITLE: Participant Data Collection Plan
-#+SUBTITLE: <2024-03-12 Tue>
+#+SUBTITLE: 2024-03-12 Tue
 #+EXPORT_FILE_NAME: ../dataplan.odt
+#+OPTIONS: toc:nil
 * Purpose
 To define the data collected /from/ participants in the Bootstrap
 community during enrollment and participation of
