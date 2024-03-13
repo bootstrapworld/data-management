@@ -1,4 +1,4 @@
-#+TITLE: Bootstrap Training Enrollment Form
+#+TITLE: Bootstrap User Registration
 #+SUBTITLE: 2024-03-13 Wed
 * What am I doing?
 Outlining the form and specifying the form design for participants enrolled in Bootstrap training events.
@@ -44,10 +44,20 @@ website or social media. Are you uncomfortable with your photo or
 video being shared anonymously?,
 Grade(s) taught, Subject(s) taught, Subjects 
 * Changes
+- No phone number collection
 - Student data collected separately from teacher data
 - Logic for whether you are a teacher
 - Logic for whether you are an event supervisor
 * Participant Enrollment Form
+** First time enrolling?
+- Yes (if anything significant has changed like your professional email or employer please register again)
+  - Go to next 
+- No
+  - Enter your bootstrap id (email eric@bootstrapworld.org for a reminder)
+** Why are you registering with Bootstrap?
+- I want to join your mailing list.
+- I want to access teacher only materials.
+- I am participating in a training event.
 ** Identity
 - Full First Name (as on an official id) (required)
 - Nickname or "Call you by" (optional)
