@@ -1,6 +1,9 @@
 #+TITLE: Bootstrap User Registration Form
 #+SUBTITLE: 2024-03-13 Wed
 * What am I doing?
+:PROPERTIES:
+:ID:       f41e27c6-84b7-4161-ac00-27283764d141
+:END:
 Outlining the form and specifying the form design for registering as a
 Bootstrap user. Participants enrolling in Bootstrap training events are
 first added as users and then associated with the training
@@ -8,8 +11,8 @@ event. Typically, once a participant registers they can be
 automatically enrolled in an event.  This document indicates question
 types and further instructions shown to registrants.
 * What am I not doing?
-Not creating standard lists for multiple choice
-Not collecting information about classes
+- Not creating standard lists for multiple choice.
+- Not collecting information about classes
 * Distinction between registration and enrollment
 - Registration creates a user entity
 - Enrollment connects a user to an event
@@ -60,19 +63,19 @@ Grade(s) taught, Subject(s) taught, Subjects
 - Yes 
   - Continue to enter identification information
 - No
-  - ID (you do not need to re-register unless there has been a significant change to your contact information or professional affiliation)
-  - Continue to enter information
+  - Enter Bootstrap ID (you do not need to re-register unless there has been a significant change to your contact information or professional affiliation)
+  - Continue to update information
 ** Why are you registering with Bootstrap?
 - I want to join your mailing list.
 - I want to access teacher only materials.
-- I am participating in a training event.
+- I am participating or supervising a training event.
 ** Identity
 - Full First Name (as on an official id) (required)
 - Nickname or "Call you by" (optional)
 - Last Name (as on an official id) (required)
 ** Contact 
 - Professional or school email address (required)
-- Google Account Email (the email from which you will access google resources during the training, if different than above)
+- Google Account Email (the email from which you will access Bootstrap Google resources during the training, if different than above)
 - Preferred email for ongoing communication (optional) (if different than above) (can be personal email)
 ** Event supervisor?
 - Supervisor? (are you affiliated with Bootstrap for the purpose of supervising training participants?)
@@ -80,8 +83,8 @@ Grade(s) taught, Subject(s) taught, Subjects
 - Teacher? (do you spend the majority of your professional hours supervising students?)
 *** Yes
 **** School
-- School Organization Type (paragraph) (words that describe the organipublic, transfer, performing arts, public charter, independent, independent religiously affiliated, etc. describe your school as you would to a colleague from another school, combining any and all of the above and more.)
-- School Community (paragraph) (words to rural, urban, suburban, high poverty, affluent)
+- School Organization Type (paragraph) (words that describe your organization: public, transfer, performing arts, public charter, independent, independent religiously affiliated, etc. describe your school as you would to a colleague from another school, combining any and all of the above and more.)
+- School Community (paragraph) (words to describe the social context of your school: rural, urban, suburban, high poverty, affluent,  combining any and all of the above and more.) 
 - School Name
 - School District
 - School Address
