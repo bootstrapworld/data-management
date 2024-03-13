@@ -1,4 +1,4 @@
-g#+TITLE: Bootstrap User Registration Form
+#+TITLE: Bootstrap User Registration Form
 #+SUBTITLE: 2024-03-13 Wed
 * What am I doing?
 Outlining the form and specifying the form design for registering as a
