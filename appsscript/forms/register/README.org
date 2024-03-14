@@ -16,6 +16,7 @@ types and further instructions shown to registrants.
 * Distinction between registration and enrollment
 - Registration creates a user entity
 - Enrollment connects a user to an event
+- Users are verified and have access to materials, forum, and mailing list.
 * Former Preworkshop Survey
 As a reminder the structure of the preworkshop survey was as follows:
 ** Personal, Identity and Contact
@@ -111,3 +112,15 @@ Grade(s) taught, Subject(s) taught, Subjects
     - Race (typically not related to cultural background of national origin)
     - Ethnicity (related to cultural background Carribean, African American, White European, Hispanic, Indigenous, Pacific Island, etc.)
     - Gender (transgender male, transgender female, female, male, non-binary
+** Permissions
+*** Event participants
+- As an event participant you are automatically added to the Bootstrap mailing list to receive tips and tricks, event invitations, and personalized support.
+- Opt out select? (you may opt out of receiving addition communication)
+  - Tips
+  - Event Invitations
+  - Coaching
+*** Materials access 
+- You are automatically added to our mailing list.
+- Opt out?
+*** Mailing List
+- Welcome to the mailing list.
