@@ -60,7 +60,7 @@ Grade(s) taught, Subject(s) taught, Subjects
 - Logic for whether you are a teacher
 - Logic for whether you are an event supervisor
 * User Registration Form
-** First time enrolling?
+** First time registering?
 - Yes 
   - Continue to enter identification information
 - No
