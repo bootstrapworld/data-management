@@ -111,7 +111,7 @@ Grade(s) taught, Subject(s) taught, Subjects
   - Yes
     - Race (typically not related to cultural background of national origin)
     - Ethnicity (related to cultural background Carribean, African American, White European, Hispanic, Indigenous, Pacific Island, etc.)
-    - Gender (transgender male, transgender female, female, male, non-binary
+    - Gender (transgender male, transgender female, female, male, non-binary)
 ** Permissions
 *** Event participants
 - As an event participant you are automatically added to the Bootstrap mailing list to receive tips and tricks, event invitations, and personalized support.
