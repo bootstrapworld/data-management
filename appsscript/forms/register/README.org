@@ -60,12 +60,40 @@ Grade(s) taught, Subject(s) taught, Subjects
 - Logic for whether you are a teacher
 - Logic for whether you are an event supervisor
 * User Registration Form
+** Welcome to the Bootstrap User Registration Form!
+*** Description Text
+We are thrilled to join you in bringing computing to your
+students!
+
+Our goal at Bootstrap is to support teachers over a many years
+journey. By registering with Bootstrap you are able to access answer
+keys, enroll in trainings, and post on our forum. You'll also receive
+invitations and tips from us in your inbox periodically. You can
+always opt out of these later.
+
+Most of Bootstrap's users are teachers who work fulltime in
+classrooms. However, you might also be an administrator, learning,
+coach, or otherwise affiliated with teaching and learning in some
+context. Perhaps you're just interested in seeing what this is all
+about.
+
+Many of Bootstrap users are also sent to us from districts or other
+umbrella organizations that support teachers during training and
+throughout the school year. Those partner organizations might contract
+with us for additional trainings and on-going suppport and office
+hours.
+
+However, you got to Bootstrap we are thrilled to be a part
+of your journey!
+
+Click Next to continue your registration.
 ** First time registering?
 - Yes 
   - Continue to enter identification information
 - No
   - Enter Bootstrap ID (you do not need to re-register unless there has been a significant change to your contact information or professional affiliation)
   - Continue to update information
+*** TODO Create a way to check if you are registered
 ** Why are you registering with Bootstrap?
 - I want to join your mailing list.
 - I want to access teacher only materials.
