@@ -25,6 +25,53 @@ function getForm() {
         console.log('Failed with error: %s', err.message);
     }
 }
+
+// clear form
+function clearForm() {
+    try {
+        var form = getForm();
+        var items = form.getItems();
+        console.log(`Item length before deletion ${items.length}`);
+        for (let i = 0; i < items.length; i++) {
+            let item = items[i];
+            form.deleteItem(item);
+        }
+        var items = form.getItems();
+        console.log(`Item length after deletion ${items.length}`);
+    } catch (err) {
+        console.log('Failed with error: %s', err.message);
+    }
+}
+
+
+function getUrl() {
+    var form = getForm();
+    var url = form.getEditUrl();
+    console.log(url);
+    return url;
+}
+
+function getPubUrl() {
+    var form = getForm();
+    var url = form.getPublishedUrl();
+    console.log(url);
+    return url;
+}
+
+function getEmbedUrl() {
+    var form = getForm();
+    var url = form.getPublishedUrl();
+    var embed = `${url}?embedded=true`
+    console.log(embed);
+    return embed;
+}
+function setLogin() {
+    var form = getForm();
+    form.setRequireLogin(false);
+    var req = form.requiresLogin();
+    console.log(`Requires login: ${req}`);
+}
+
 // -> Spreadsheet 
 function setDestination() {
     try {
@@ -84,54 +131,9 @@ function logFormInfo() {
     var form = getForm();
     var id = form.getId();
     var title = form.getTitle();
-    console.log(`Form Id: ${id}` + "\n" + `Title: ${title}`);
-}
-// clear form
-function clear() {
-    try {
-        const form = getForm();
-        const items = form.getItems();
-        const len = items.length;
-        console.log('Number of items: %s', len);
-        form.deleteItem(items[0]);
-        console.log('Number of items: %s', len);
-
-    } catch (err) {
-        console.log('Failed with error: %s', err.message);
-    }
+    console.log(`Form Id: ${id} ` + "\n" + `Title: ${title} `);
 }
 
-// Form Questions
-// First time enrolling?
-function buildForm() {
-    const form = getForm();
-    (function() {
-        const item = form.addMultipleChoiceItem();
-        item.setTitle("First time registering?")
-            .setHelpText("Is this your first time registering with Bootstrap?")
-            .setChoices([
-                item.createChoice("Yes", whyRegistering),
-                item.createChoice("No", FormApp.PageNavigationType.SUBMIT)]);
-    })();
-    const FirstTimeRegistering = form.addPageBreakItem().setTitle('');
-    (function() {
-        form.d
-    })
-    const whyRegistering = form.addPageBreakItem().setTitle('Why are you registering with Bootstrap?');
-    (function() {
-        const item = form.addMultipleChoiceItem();
-        item.setTitle("First time registering?")
-            .setHelpText("Is this your first time registering with Bootstrap?")
-            .setChoices([
-                item.createChoice("Yes", identity),
-                item.createChoice("No", FormApp.PageNavigationType.SUBMIT)]);
-    })();
-
-    const identity = form.addPageBreakItem().setTitle('Identity');
-    const contact = form.addPageBreakItem().setTitle('Contact Information');
-
-
-}
 
 // Data Piping
 
