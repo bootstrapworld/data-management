@@ -86,7 +86,7 @@ hours.
 However, you got to Bootstrap we are thrilled to be a part
 of your journey!
 
-Click Next to continue your registration.
+Click *Next* to continue registering.
 ** First time registering?
 - Yes 
   - Continue to enter identification information
