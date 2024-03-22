@@ -27,6 +27,7 @@ function getForm() {
 }
 
 // clear form
+// only works if there are no goto pages
 function clearForm() {
     try {
         var form = getForm();
