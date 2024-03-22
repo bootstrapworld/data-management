@@ -1,5 +1,5 @@
 function setTrigger() {
-    const form = getForm();
+    const form = FormApp.getActiveForm();// getForm();
     ScriptApp.newTrigger('onSubmit')
         .forForm(form)
         .onFormSubmit()
@@ -8,9 +8,17 @@ function setTrigger() {
 }
 
 function onSubmit(e) {
-    notifyEric();
-    var response = e.response;
-    console.log(response.getEditResponseUrl());
+    //notifyEric();
+    var form = getForm();
+    var res = e.response;
+    var sendId = currentForm.send;
+    console.log(sendId);
+    var send = res.getResponseForItem(form.getItemById(sendId));
+    console.log(send);
+    console.log(send.getId());
+    var responses = res.getItemResponses();
+    var first = responses[0];
+    console.log(first.getItem().getId());
 }
 
 function notifyEric() {
