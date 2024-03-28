@@ -88,6 +88,9 @@ of your journey!
 
 Click *Next* to continue registering.
 ** First time registering?
+Page break, continue after
+
+Not going to use multiple choice here at first.
 - Yes 
   - Continue to enter identification information
 - No
@@ -147,8 +150,5 @@ Click *Next* to continue registering.
   - Tips
   - Event Invitations
   - Coaching
-*** Materials access 
-- You are automatically added to our mailing list.
-- Opt out?
-*** Mailing List
-- Welcome to the mailing list.
+* Form Response
+- Welcome to Bootstrap!
